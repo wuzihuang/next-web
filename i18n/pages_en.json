@@ -1,0 +1,190 @@
+[
+ [
+  "页面中的手机界面为 NEXTBODY App 实际界面截图，所示数据为演示数据；功能与界面以实际 App 为准，可能随版本更新而变化。本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。",
+  "Phone screens are real NEXTBODY App screenshots with demo data; features and screens follow the actual App and may change with updates. This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and advice are for reference only."
+ ],
+ [
+  "本人登录授权后，ChatGPT、Claude、Grok Bot、Muse 等 AI 助手可以读取你自己的身体数据；开启记录餐食后，一句话就能记下这一餐，保存前会先和你确认。",
+  "Once you sign in and authorise it, ChatGPT, Claude, Grok Bot, Muse and other assistants can read your own body data. Turn on meal logging to log a meal in one sentence; it checks with you before saving."
+ ],
+ [
+  "NEXTBODY App：准备度、睡眠、训练负荷、心率、饮食与身体扫描，一屏读懂你的身体。iOS 与 Android 即将上线。",
+  "NEXTBODY App: readiness, sleep, training load, heart rate, food and Body Scan, your whole body on one screen. Coming soon to iOS and Android."
+ ],
+ [
+  "醒来时给出 0–100 的准备度，参考夜间 HRV 与静息心率的个人基线，以及昨夜睡眠带来的恢复；白天随你的状态实时变化。",
+  "A 0–100 readiness score on waking, based on your personal night-HRV and resting-heart-rate baselines and last night's recovery. It updates with you all day."
+ ],
+ [
+  "每 5 分钟结算一次心率区间与活动量，日常和运动不重复计算。每天的建议范围跟着昨晚的睡眠走，告诉你今天练到多少刚刚好。",
+  "Heart-rate zones and activity are tallied every 5 minutes, never double-counting workouts. Your daily range follows last night's sleep, so you know how much is just right today."
+ ],
+ [
+  "NEXTBODY Hoop：极致轻薄的健康手环。心率、睡眠、训练负荷、身体扫描，全天候读懂你的身体。",
+  "NEXTBODY Hoop: an ultra-thin health band. Heart rate, sleep, training load and Body Scan, reading your body all day."
+ ],
+ [
+  "准备度、睡眠、训练负荷、心率、饮食与身体扫描，HOOP 全天自动记录，打开 App 一屏看全。",
+  "Readiness, sleep, training load, heart rate, food and Body Scan. HOOP records it all day; open the App and it's all on one screen."
+ ],
+ [
+  "配合 HOOP 手环使用。上线后即可在 App Store 与 Google Play 下载。",
+  "Made for the HOOP band. Download it from the App Store and Google Play at launch."
+ ],
+ [
+  "满分 100，由七项睡眠因素加权得出。每一项都能点开查看，知道分数为什么高、为什么低。",
+  "Out of 100, weighted across seven sleep factors. Tap any factor to see why your score went up or down."
+ ],
+ [
+  "支持 iOS 17 及以上的 iPhone，以及 Android 9 及以上的手机。",
+  "Supports iPhone on iOS 17+ and Android 9+ phones."
+ ],
+ [
+  "按住侧键 30 秒完成扫描，生物电阻抗测出 14 项身体成分。",
+  "Hold the side key for 30 seconds; bioimpedance estimates 14 body metrics."
+ ],
+ [
+  "多通道绿光 PPG 传感阵列，配合自研心率算法实时监测。",
+  "A multi-channel green PPG array with an in-house algorithm, tracking in real time."
+ ],
+ [
+  "一屏读懂你的身体。iOS 与 Android 即将上线。",
+  "Your whole body on one screen. Coming soon to iOS and Android."
+ ],
+ [
+  "NEXTBODY App 首页：准备度、睡眠与训练负荷",
+  "NEXTBODY App home: readiness, sleep and training load"
+ ],
+ [
+  "极致轻薄 | 专业运动健康管理 | 全新身体扫描",
+  "Ultra-thin | Pro fitness & health tracking | All-new Body Scan"
+ ],
+ [
+  "记下每一餐，摄入与消耗放在同一张图里对比。",
+  "Log every meal and see intake against burn on one chart."
+ ],
+ [
+  "<html lang=\"zh-CN\">",
+  "<html lang=\"en\">"
+ ],
+ [
+  "NEXTBODY App 即将上线",
+  "The NEXTBODY App is coming soon"
+ ],
+ [
+  "Google Play 即将上线",
+  "Google Play, coming soon"
+ ],
+ [
+  "实时体征：心率、压力、体温、步数",
+  "Live vitals: heart rate, stress, temperature, steps"
+ ],
+ [
+  "App Store 即将上线",
+  "App Store, coming soon"
+ ],
+ [
+  "11 大类、67 项健康数据",
+  "67 health metrics in 11 groups"
+ ],
+ [
+  "日常走动和每一场训练，",
+  "Daily movement and every workout"
+ ],
+ [
+  "看懂昨晚睡得怎么样。",
+  "Know how you slept."
+ ],
+ [
+  "接入你常用的 AI。",
+  "Works with your AI."
+ ],
+ [
+  "连接 AI 助手界面",
+  "Connect an AI assistant screen"
+ ],
+ [
+  "身体扫描结果界面",
+  "Body Scan results screen"
+ ],
+ [
+  "读懂你的身体。",
+  "on one screen."
+ ],
+ [
+  "今天能练多少。",
+  "how hard to train."
+ ],
+ [
+  "醒来就知道，",
+  "Wake up knowing"
+ ],
+ [
+  "每日训练负荷",
+  "daily load"
+ ],
+ [
+  "身体扫描界面",
+  "Body Scan screen"
+ ],
+ [
+  "训练负荷界面",
+  "Training load screen"
+ ],
+ [
+  "饮食热量界面",
+  "Food and calories screen"
+ ],
+ [
+  "一个分数，",
+  "One score."
+ ],
+ [
+  "种运动模式",
+  "workout modes"
+ ],
+ [
+  "准备度界面",
+  "Readiness screen"
+ ],
+ [
+  "即将登陆",
+  "Coming to"
+ ],
+ [
+  "即将上线",
+  "Soon"
+ ],
+ [
+  "都算数。",
+  "all count."
+ ],
+ [
+  "心率区间",
+  "heart-rate zones"
+ ],
+ [
+  "睡眠界面",
+  "Sleep screen"
+ ],
+ [
+  "心率界面",
+  "Heart rate screen"
+ ],
+ [
+  "身体扫描",
+  "Body Scan"
+ ],
+ [
+  "一屏，",
+  "Your whole body,"
+ ],
+ [
+  "心率",
+  "Heart rate"
+ ],
+ [
+  "饮食",
+  "Food"
+ ]
+]

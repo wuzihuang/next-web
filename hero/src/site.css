@@ -1,0 +1,32 @@
+/* Site chrome around the handoff styles: one sticky header for the whole page,
+   and a hero that fills the first screen under it. */
+.nb-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nb-top .lp-nav {
+  position: relative;
+}
+.lp-hero-page > .lp-shell {
+  height: calc(100svh - 72px);
+}
+.nb-hero {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+.nb-top .lp-nav {
+  /* Lines up with the product column on / (set by the page script). */
+  padding: 0 var(--gutter, 80px);
+}
+@media (max-width: 720px) {
+  .nb-top .lp-nav {
+    padding: 0 var(--gutter, 24px);
+  }
+  /* The header is 56px tall here. */
+  .lp-hero-page > .lp-shell {
+    height: calc(100svh - 56px);
+  }
+}

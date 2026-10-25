@@ -1,0 +1,90 @@
+/* Page-to-page: the old page sinks back and blurs while the new one wipes up
+   from below. The header keeps its own transition name so it stays put. */
+@view-transition {
+  navigation: auto;
+}
+.nb-top {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation: none;
+}
+::view-transition-old(root) {
+  animation: nb-page-out 0.55s cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+::view-transition-new(root) {
+  animation: nb-page-in 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes nb-page-out {
+  to {
+    filter: blur(14px);
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+@keyframes nb-page-in {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(12%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+/* Switching language turns the page sideways instead: the old language
+   slides off to the left under a blur, the new one sweeps in from the right. */
+html:active-view-transition-type(lang)::view-transition-old(root) {
+  animation: nb-lang-out 0.6s cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+html:active-view-transition-type(lang)::view-transition-new(root) {
+  animation: nb-lang-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes nb-lang-out {
+  to {
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateX(-18%) perspective(1600px) rotateY(18deg);
+  }
+}
+@keyframes nb-lang-in {
+  from {
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(10%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
+/* Body Scan: the lime line that sweeps down the figure (motion.js). */
+.fx-scanline {
+  background: #eff65a;
+  box-shadow: 0 0 18px 6px rgba(239, 246, 90, 0.55), 0 0 60px 18px rgba(239, 246, 90, 0.25);
+  height: 3px;
+  left: -6%;
+  pointer-events: none;
+  position: absolute;
+  width: 112%;
+}
+
+/* Reading progress under the header on the product page. */
+.nb-progress {
+  background: var(--lp-lime, #eff65a);
+  bottom: -1px;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXTBODY App</title>
+<meta name="description" content="NEXTBODY App：准备度、睡眠、训练负荷、心率、饮食与身体扫描，一屏读懂你的身体。iOS 与 Android 即将上线。">
+<meta property="og:title" content="NEXTBODY App">
+<meta property="og:description" content="一屏读懂你的身体。iOS 与 Android 即将上线。">
+<meta property="og:image" content="https://nextbody.ai/a/3ZBVWNGMSJDMECFHK1G1XSNDA4-hd.webp">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@600;800&family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/hero/hero.css">
+<link rel="stylesheet" href="/motion.css">
+<style>
+  :root {
+    --ink: #000;
+    --card: #0c0c0e;
+    --hair: rgb(255 255 255 / 8%);
+    --lime: #eff65a;
+    --text: #fff;
+    --mute: rgb(255 255 255 / 62%);
+    --dim: rgb(255 255 255 / 40%);
+    --display: 'Inter Tight', 'Noto Sans SC', system-ui, sans-serif;
+    --body: 'Jost', 'Noto Sans SC', system-ui, sans-serif;
+    --cn: 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ink); color: var(--text); }
+  body { font-family: var(--cn); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: min(1200px, 100% - 32px); margin: 0 auto; }
+
+  .eyebrow {
+    color: var(--lime);
+    font: 500 12px/16px var(--body);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+  }
+  h1, h2 { font-family: var(--cn); font-weight: 600; margin: 0; letter-spacing: 0.01em; }
+  p { margin: 0; }
+
+  /* Hero */
+  .hero { padding: clamp(56px, 9vw, 120px) 0 0; text-align: center; overflow: hidden; }
+  .hero h1 { font-size: clamp(36px, 6vw, 72px); line-height: 1.16; }
+  .hero .lede { color: var(--mute); font-size: clamp(15px, 1.5vw, 18px); line-height: 1.8; max-width: 560px; margin: 24px auto 0; }
+  .stores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
+  .store {
+    display: inline-flex; align-items: center; gap: 12px;
+    min-width: 200px; padding: 12px 22px 12px 18px;
+    border: 1px solid rgb(255 255 255 / 22%); border-radius: 14px;
+    background: rgb(255 255 255 / 4%);
+    color: var(--mute); cursor: default;
+  }
+  .store svg { width: 26px; height: 26px; flex-shrink: 0; fill: currentColor; }
+  .store small { display: block; font: 500 11px/14px var(--body); letter-spacing: 0.08em; color: var(--dim); }
+  .store b { display: block; font: 600 18px/22px var(--display); color: var(--text); opacity: 0.72; }
+  .store .soon {
+    margin-left: auto; padding: 3px 8px; border-radius: 999px;
+    background: rgb(239 246 90 / 12%); color: var(--lime);
+    font: 500 11px/16px var(--cn); white-space: nowrap;
+  }
+  .req { margin-top: 16px; color: var(--dim); font-size: 13px; }
+
+  .trio {
+    position: relative; display: flex; justify-content: center; align-items: flex-end;
+    gap: clamp(12px, 3vw, 40px); margin-top: clamp(56px, 7vw, 88px);
+    padding-bottom: clamp(40px, 6vw, 80px);
+  }
+  .trio::before {
+    content: ""; position: absolute; left: 50%; bottom: 0; width: 80%; height: 70%;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgb(239 246 90 / 14%), transparent);
+    pointer-events: none;
+  }
+  .trio .phone { width: clamp(110px, 22vw, 280px); }
+  .trio .phone.mid { width: clamp(130px, 26vw, 320px); }
+  .trio .phone.side { transform: translateY(-6%); opacity: 0.92; }
+
+  .phone {
+    position: relative; aspect-ratio: 1206 / 2622;
+    border-radius: 13% / 6%; overflow: hidden; background: #000;
+    box-shadow: 0 0 0 clamp(4px, 0.6vw, 8px) #1b1b1d, 0 0 0 clamp(5px, 0.7vw, 9px) #3a3a3d, 0 40px 80px rgb(0 0 0 / 60%);
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Feature rows */
+  .features { padding: clamp(40px, 8vw, 120px) 0; display: grid; gap: clamp(72px, 10vw, 140px); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 6vw, 96px); }
+  .row.flip .text { order: 2; }
+  .row .media { display: flex; justify-content: center; }
+  .row .phone { width: min(300px, 70vw); }
+  .row h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.3; }
+  .row .desc { color: var(--mute); font-size: 16px; line-height: 1.9; margin-top: 20px; max-width: 460px; }
+  .stats { display: flex; gap: 36px; margin-top: 32px; flex-wrap: wrap; }
+  .stat b { display: block; font: 800 32px/1 'Doto', var(--display); color: var(--lime); }
+  .stat span { display: block; margin-top: 8px; color: var(--dim); font-size: 13px; }
+
+  /* Grid */
+  .grid-head { text-align: center; margin-bottom: 48px; }
+  .grid-head h2 { font-size: clamp(28px, 3.4vw, 44px); }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: clamp(64px, 9vw, 120px); }
+  .card {
+    background: var(--card); border: 1px solid var(--hair); border-radius: 24px;
+    padding: 28px 28px 0; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .card h3 { margin: 0; font-size: 20px; font-weight: 600; }
+  .card p { color: var(--mute); font-size: 14px; line-height: 1.8; margin-top: 10px; }
+  .card .phone { width: 72%; margin: 28px auto -18%; }
+
+  /* Closing CTA */
+  .cta { border-top: 1px solid var(--hair); padding: clamp(64px, 9vw, 120px) 0; text-align: center; }
+  .cta h2 { font-size: clamp(30px, 4vw, 52px); line-height: 1.25; }
+  .cta .lede { color: var(--mute); font-size: 16px; line-height: 1.8; margin-top: 16px; }
+
+  footer { border-top: 1px solid var(--hair); padding: 32px 0 48px; color: var(--dim); font-size: 12px; line-height: 1.8; }
+  footer .wrap { display: grid; gap: 12px; }
+  footer .brand { color: var(--text); font: 700 14px/1 var(--display); letter-spacing: 0.16em; display: flex; align-items: center; gap: 8px; }
+  footer .brand i { width: 6px; height: 6px; background: var(--lime); border-radius: 1px; }
+
+  @media (max-width: 760px) {
+    .row, .row.flip { grid-template-columns: 1fr; text-align: center; }
+    .row.flip .text { order: 0; }
+    .row .desc { margin-left: auto; margin-right: auto; }
+    .stats { justify-content: center; }
+    .cards { grid-template-columns: 1fr; }
+    .card .phone { width: 62%; }
+    .store { min-width: 0; width: 100%; max-width: 320px; }
+  }
+</style>
+</head>
+<body>
+<div class="nb-top lp" data-locale="zh">
+  <header class="lp-nav">
+    <a class="lp-wordmark" href="/zh/">
+      <span class="lp-wordmark-name">NEXTBODY</span>
+      <span class="lp-pip" aria-hidden="true"></span>
+    </a>
+    <div class="lp-nav-end">
+      <nav class="lp-langs" aria-label="Language">
+        <a class="lp-lang is-on" href="/zh/app/" hreflang="zh-CN" lang="zh-CN">中文</a>
+        <span class="lp-lang-rule" aria-hidden="true"></span>
+        <a class="lp-lang" href="/app/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <a class="lp-pill" href="/zh/app/">GET APP</a>
+    </div>
+  </header>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">NEXTBODY APP</p>
+      <h1>一屏，<br>读懂你的身体。</h1>
+      <p class="lede">准备度、睡眠、训练负荷、心率、饮食与身体扫描，HOOP 全天自动记录，打开 App 一屏看全。</p>
+      <div class="stores">
+        <span class="store" aria-label="App Store 即将上线">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66ZM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27Z"/></svg>
+          <span><small>即将登陆</small><b>App Store</b></span>
+          <span class="soon">即将上线</span>
+        </span>
+        <span class="store" aria-label="Google Play 即将上线">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7L4.6 2.3Zm10.8 11-2.2-2.3 2.2-2.3 3.1 1.8c1.1.6 1.1 1.4 0 2l-3.1 1.8Zm-.9.6L5.6 22.1c.4.2.9.2 1.4-.1l9.5-5.4-2-2.7ZM7 2.1c-.5-.3-1-.3-1.4-.1l8.9 8.3 2-2.6L7 2.1Z"/></svg>
+          <span><small>即将登陆</small><b>Google Play</b></span>
+          <span class="soon">即将上线</span>
+        </span>
+      </div>
+      <p class="req">支持 iOS 17 及以上的 iPhone，以及 Android 9 及以上的手机。</p>
+      <div class="trio">
+        <div class="phone side"><img src="/a/0XA2NQCT9W2Z10AE5KFVRG8ZXA-hd.webp" alt="身体扫描界面" loading="lazy"></div>
+        <div class="phone mid"><img src="/a/3ZBVWNGMSJDMECFHK1G1XSNDA4-hd.webp" alt="NEXTBODY App 首页：准备度、睡眠与训练负荷"></div>
+        <div class="phone side"><img src="/a/6MC5S0YA2NMRSGRP9AGWG2TZKB-hd.webp" alt="实时体征：心率、压力、体温、步数" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap features">
+    <div class="row">
+      <div class="text">
+        <p class="eyebrow">READINESS</p>
+        <h2>醒来就知道，<br>今天能练多少。</h2>
+        <p class="desc">醒来时给出 0–100 的准备度，参考夜间 HRV 与静息心率的个人基线，以及昨夜睡眠带来的恢复；白天随你的状态实时变化。</p>
+      </div>
+      <div class="media"><div class="phone"><img src="/a/7HN3BWCNEWNFDBJ45ZDTEP8WW2-hd.webp" alt="准备度界面" loading="lazy"></div></div>
+    </div>
+    <div class="row flip">
+      <div class="text">
+        <p class="eyebrow">SLEEP</p>
+        <h2>一个分数，<br>看懂昨晚睡得怎么样。</h2>
+        <p class="desc">满分 100，由七项睡眠因素加权得出。每一项都能点开查看，知道分数为什么高、为什么低。</p>
+      </div>
+      <div class="media"><div class="phone"><img src="/a/7YXYG9KPQVDK2RCXZ8G51A6X5D-hd.webp" alt="睡眠界面" loading="lazy"></div></div>
+    </div>
+    <div class="row">
+      <div class="text">
+        <p class="eyebrow">TRAINING LOAD</p>
+        <h2>日常走动和每一场训练，<br>都算数。</h2>
+        <p class="desc">每 5 分钟结算一次心率区间与活动量，日常和运动不重复计算。每天的建议范围跟着昨晚的睡眠走，告诉你今天练到多少刚刚好。</p>
+        <div class="stats">
+          <div class="stat"><b>0–21</b><span>每日训练负荷</span></div>
+          <div class="stat"><b>5</b><span>心率区间</span></div>
+          <div class="stat"><b>48</b><span>种运动模式</span></div>
+        </div>
+      </div>
+      <div class="media"><div class="phone"><img src="/a/67WAPXHJRPA6Y3YEQ5E31GWT8M-hd.webp" alt="训练负荷界面" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="grid-head">
+      <p class="eyebrow">AND MORE</p>
+      <h2>11 大类、67 项健康数据</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <h3>心率</h3>
+        <p>多通道绿光 PPG 传感阵列，配合自研心率算法实时监测。</p>
+        <div class="phone"><img src="/a/3J4X44B1KVXH4SM3RGHN786X0H-hd.webp" alt="心率界面" loading="lazy"></div>
+      </article>
+      <article class="card">
+        <h3>饮食</h3>
+        <p>记下每一餐，摄入与消耗放在同一张图里对比。</p>
+        <div class="phone"><img src="/a/0MQNSA7419QTQWSD9AVDM23XQ7-hd.webp" alt="饮食热量界面" loading="lazy"></div>
+      </article>
+      <article class="card">
+        <h3>身体扫描</h3>
+        <p>按住侧键 30 秒完成扫描，生物电阻抗测出 14 项身体成分。</p>
+        <div class="phone"><img src="/a/7HE1XQM98MQWQCJJ0K29YWR5T6-hd.webp" alt="身体扫描结果界面" loading="lazy"></div>
+      </article>
+    </div>
+
+    <div class="row" style="padding-bottom: clamp(64px, 9vw, 120px)">
+      <div class="text">
+        <p class="eyebrow">NEXTBODY MCP</p>
+        <h2>接入你常用的 AI。</h2>
+        <p class="desc">本人登录授权后，ChatGPT、Claude、Grok Bot、Muse 等 AI 助手可以读取你自己的身体数据；开启记录餐食后，一句话就能记下这一餐，保存前会先和你确认。</p>
+      </div>
+      <div class="media"><div class="phone"><img src="/a/6F29WH9AWYRNR0EJPH5GHXDQB8-hd.webp" alt="连接 AI 助手界面" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>NEXTBODY App 即将上线</h2>
+      <p class="lede">配合 HOOP 手环使用。上线后即可在 App Store 与 Google Play 下载。</p>
+      <div class="stores">
+        <span class="store" aria-label="App Store 即将上线">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66ZM14.1 5.86c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27Z"/></svg>
+          <span><small>即将登陆</small><b>App Store</b></span>
+          <span class="soon">即将上线</span>
+        </span>
+        <span class="store" aria-label="Google Play 即将上线">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.6 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7L4.6 2.3Zm10.8 11-2.2-2.3 2.2-2.3 3.1 1.8c1.1.6 1.1 1.4 0 2l-3.1 1.8Zm-.9.6L5.6 22.1c.4.2.9.2 1.4-.1l9.5-5.4-2-2.7ZM7 2.1c-.5-.3-1-.3-1.4-.1l8.9 8.3 2-2.6L7 2.1Z"/></svg>
+          <span><small>即将登陆</small><b>Google Play</b></span>
+          <span class="soon">即将上线</span>
+        </span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="brand">NEXTBODY <i></i></div>
+    <p>页面中的手机界面为 NEXTBODY App 实际界面截图，所示数据为演示数据；功能与界面以实际 App 为准，可能随版本更新而变化。本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。</p>
+    <p>© 2026 NEXTBODY</p>
+  </div>
+</footer>
+<script src="/motion.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXTBODY Hoop</title>
+<meta name="description" content="NEXTBODY Hoop：极致轻薄的健康手环。心率、睡眠、训练负荷、身体扫描，全天候读懂你的身体。">
+<meta property="og:title" content="NEXTBODY Hoop">
+<meta property="og:description" content="极致轻薄 | 专业运动健康管理 | 全新身体扫描">
+<meta property="og:image" content="https://nextbody.ai/a/0NBKQTWEC0AE16VN67CS8NG2ST-hd.webp">
+<meta name="theme-color" content="#F7F7F7">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doto:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/hero/hero.css">
+<link rel="stylesheet" href="/motion.css">
+<link rel="stylesheet" href="/mobile.css">
+<script type="module" src="/hero/hero.js"></script>
+<style>
+  :root { --s: 1; --gutter: 80px; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  /* Like a store product page: a centred column with blank space on both
+     sides, never wider than the 1440px design so images are not enlarged. */
+  main { padding: 0 var(--gutter) 64px; }
+  .ab {
+    position: relative;
+    width: calc(var(--w) * var(--s) * 1px);
+    margin: 0 auto;
+    overflow: hidden;
+    scroll-margin-top: 72px;
+  }
+  @media (max-width: 720px) {
+    .ab { scroll-margin-top: 56px; }
+  }
+  /* zoom (not transform) lays the artboard out at the final size, so text
+     and images are rasterised sharply. */
+  .ab > .in {
+    width: calc(var(--w) * 1px);
+    zoom: var(--s);
+  }
+</style>
+<script>
+  (function () {
+    function fit() {
+      var vw = document.documentElement.clientWidth || window.innerWidth;
+      var gutter = Math.min(80, Math.max(20, vw * 0.05));
+      var content = Math.min(vw - gutter * 2, 1440);
+      var root = document.documentElement.style;
+      root.setProperty("--s", (content / 1440).toFixed(5));
+      root.setProperty("--gutter", ((vw - content) / 2).toFixed(1) + "px");
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+</head>
+<body>
+<!--HEADER-->
+<div class="lp lp-hero-page" data-locale="en">
+  <div class="lp-shell"><div id="nb-hero" class="nb-hero"></div></div>
+</div>
+<!-- The product page stays hidden until the hero's Explore button reveals it. -->
+<main id="product" hidden>
+<!--SECTIONS-->
+</main>
+<script>
+  // Direct links into the product page (/#band) skip the hero gate.
+  if (location.hash && document.getElementById(location.hash.slice(1))) {
+    document.getElementById("product").hidden = false;
+  }
+</script>
+<script src="/mobile.js"></script>
+<script src="/motion.js" defer></script>
+</body>
+</html>
