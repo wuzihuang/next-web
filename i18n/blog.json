@@ -1,0 +1,33 @@
+{
+  "html_lang": { "en": "en", "zh": "zh-CN" },
+  "title": {
+    "en": "Notes · NEXTBODY",
+    "zh": "说明 · NEXTBODY"
+  },
+  "description": {
+    "en": "Technical notes on NEXTBODY Hoop, the NEXTBODY App, and MCP — written from claims already on the product site.",
+    "zh": "关于 NEXTBODY Hoop、NEXTBODY App 与 MCP 的技术说明，内容只依据产品站已发布表述。"
+  },
+  "h1": { "en": "Notes", "zh": "说明" },
+  "lede": {
+    "en": "Short technical docs for HOOP, the App, and how MCP talks to assistants such as ChatGPT and Claude. Nothing here invents medical claims.",
+    "zh": "关于 HOOP、App，以及 MCP 如何对接 ChatGPT、Claude 等助手的短篇技术说明。不另作医疗宣称。"
+  },
+  "post_href": {
+    "en": "/blog/nextbody-mcp/",
+    "zh": "/zh/blog/nextbody-mcp/"
+  },
+  "post_date": { "en": "26 Oct 2026", "zh": "2026年10月26日" },
+  "post_title": {
+    "en": "How NEXTBODY MCP connects health data to ChatGPT and Claude",
+    "zh": "NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude"
+  },
+  "post_excerpt": {
+    "en": "You sign in and authorise it. Assistants can read only your account. Meal logging stays off until you turn it on.",
+    "zh": "需本人登录并授权。助手只能读你自己的账号。记录餐食默认关闭，要你打开才会用。"
+  },
+  "disclaimer": {
+    "en": "HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
+    "zh": "HOOP 与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。数据、提示与建议仅供参考。"
+  }
+}
