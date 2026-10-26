@@ -1,2 +1,4 @@
 /en /  301
 /en/* /:splat 301
+/pricing.html /pricing/ 301
+/zh/pricing.html /zh/pricing/ 301

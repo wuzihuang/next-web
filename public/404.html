@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | NEXTBODY</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="This page is not on nextbody.ai.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/hero/hero.css">
+<link rel="stylesheet" href="/header.css">
+<style>
+  :root {
+    --ink: #070709;
+    --paper: #fff;
+    --lime: #eff65a;
+    --mute: rgb(7 7 9 / 56%);
+    --hair: rgb(7 7 9 / 10%);
+    --display: "Inter Tight", "Noto Sans SC", system-ui, sans-serif;
+    --body: "Jost", "Noto Sans SC", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); }
+  body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--body);
+    min-height: 100svh;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 72px clamp(20px, 5vw, 80px) 96px;
+  }
+  .panel { margin: 0 auto; max-width: 640px; }
+  .code {
+    color: var(--mute);
+    font: 600 13px/1 var(--display);
+    letter-spacing: 0.24em;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font: 700 clamp(40px, 7vw, 72px)/1.05 var(--display);
+    letter-spacing: -0.03em;
+    margin: 0 0 18px;
+  }
+  .lede {
+    color: var(--mute);
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.7;
+    margin: 0 0 36px;
+    max-width: 36em;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  nav a {
+    align-items: center;
+    background: var(--ink);
+    border-radius: 999px;
+    color: #fff;
+    display: inline-flex;
+    font: 600 13px/1 var(--display);
+    letter-spacing: 0.08em;
+    min-height: 44px;
+    padding: 12px 22px;
+    text-decoration: none;
+  }
+  nav a.ghost {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--hair);
+    color: var(--ink);
+  }
+  nav a:hover { background: var(--lime); color: var(--ink); }
+  [lang="zh-CN"] h1,
+  [lang="zh-CN"] .lede,
+  [lang="zh-CN"] nav a { font-family: "Noto Sans SC", var(--display); }
+</style>
+</head>
+<body>
+<div class="nb-top lp" data-locale="en">
+  <header class="lp-nav">
+    <a class="lp-wordmark" href="/">
+      <span class="lp-wordmark-name">NEXTBODY</span>
+      <span class="lp-pip" aria-hidden="true"></span>
+    </a>
+    <div class="lp-nav-end nb-end">
+      <a class="nb-lang" href="/zh/" hreflang="zh-CN" lang="zh-CN" title="Switch to Chinese">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+        <span>中文</span>
+      </a>
+      <span class="nb-rule" aria-hidden="true"></span>
+      <a class="nb-link" href="/app/">GET APP</a>
+      <a class="lp-pill nb-buy" href="/pricing/">BUY</a>
+    </div>
+  </header>
+</div>
+<main>
+  <div class="panel">
+    <p class="code">404</p>
+    <h1>Page not found</h1>
+    <p class="lede">This URL is not on nextbody.ai. The product, pricing and app pages are still here.</p>
+    <nav aria-label="Helpful links">
+      <a href="/">Home</a>
+      <a class="ghost" href="/pricing/">Pricing</a>
+      <a class="ghost" href="/app/">App</a>
+    </nav>
+  </div>
+</main>
+<script>
+function applyLocale() {
+  var zh = location.pathname === "/zh" || location.pathname.indexOf("/zh/") === 0;
+  var root = document.documentElement;
+  var top = document.querySelector(".nb-top");
+  var langLink = document.querySelector(".nb-lang");
+  var appLink = document.querySelector(".nb-link");
+  var buyLink = document.querySelector(".nb-buy");
+  var heading = document.querySelector("h1");
+  var lede = document.querySelector(".lede");
+  var home = document.querySelector('nav a[href="/"]');
+  var pricing = document.querySelector('nav a[href="/pricing/"]');
+  var app = document.querySelector('nav a[href="/app/"]');
+  root.lang = zh ? "zh-CN" : "en";
+  document.title = zh ? "页面不存在 | NEXTBODY" : "Page not found | NEXTBODY";
+  if (top) top.setAttribute("data-locale", zh ? "zh" : "en");
+  if (langLink) {
+    langLink.href = zh ? "/" : "/zh/";
+    langLink.setAttribute("hreflang", zh ? "en" : "zh-CN");
+    langLink.setAttribute("lang", zh ? "en" : "zh-CN");
+    langLink.title = zh ? "Switch to English" : "切换到中文";
+    langLink.querySelector("span").textContent = zh ? "EN" : "中文";
+  }
+  if (appLink) {
+    appLink.href = zh ? "/zh/app/" : "/app/";
+    appLink.textContent = zh ? "下载 App" : "GET APP";
+  }
+  if (buyLink) {
+    buyLink.href = zh ? "/zh/pricing/" : "/pricing/";
+    buyLink.textContent = zh ? "购买" : "BUY";
+  }
+  if (heading) heading.textContent = zh ? "页面不存在" : "Page not found";
+  if (lede) {
+    lede.textContent = zh
+      ? "这个地址不在 nextbody.ai。产品页、购买页和 App 页都还在。"
+      : "This URL is not on nextbody.ai. The product, pricing and app pages are still here.";
+  }
+  if (home) {
+    home.href = zh ? "/zh/" : "/";
+    home.textContent = zh ? "首页" : "Home";
+  }
+  if (pricing) {
+    pricing.href = zh ? "/zh/pricing/" : "/pricing/";
+    pricing.textContent = zh ? "购买" : "Pricing";
+  }
+  if (app) {
+    app.href = zh ? "/zh/app/" : "/app/";
+    app.textContent = zh ? "App" : "App";
+  }
+}
+applyLocale();
+</script>
+</body>
+</html>
