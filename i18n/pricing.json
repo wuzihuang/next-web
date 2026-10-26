@@ -1,0 +1,74 @@
+{
+ "html_lang": {
+  "zh": "zh-CN",
+  "en": "en"
+ },
+ "title": {
+  "zh": "购买 HOOP · NEXTBODY",
+  "en": "Buy HOOP · NEXTBODY"
+ },
+ "description": {
+  "zh": "NEXTBODY HOOP 智能手环，云白与炭黑两种配色，$59.99，在亚马逊购买。",
+  "en": "NEXTBODY HOOP smart band in Cloud White or Charcoal Black. $59.99 on Amazon."
+ },
+ "h1": {
+  "zh": "选择你的 HOOP",
+  "en": "Choose your HOOP"
+ },
+ "lede": {
+  "zh": "两种配色，同样的传感器与 AI。",
+  "en": "Two colours. The same sensors and AI."
+ },
+ "white": {
+  "zh": "云白",
+  "en": "Cloud White"
+ },
+ "white_strap": {
+  "zh": "云雾轻织表带",
+  "en": "Mist Weave strap"
+ },
+ "white_alt": {
+  "zh": "HOOP 云白",
+  "en": "HOOP in Cloud White"
+ },
+ "black": {
+  "zh": "炭黑",
+  "en": "Charcoal Black"
+ },
+ "black_strap": {
+  "zh": "墨黑轻织表带",
+  "en": "Ink Weave strap"
+ },
+ "black_alt": {
+  "zh": "HOOP 炭黑",
+  "en": "HOOP in Charcoal Black"
+ },
+ "buy": {
+  "zh": "在亚马逊购买",
+  "en": "Buy on Amazon"
+ },
+ "days": {
+  "zh": " 天",
+  "en": " days"
+ },
+ "fact_water": {
+  "zh": "防水",
+  "en": "Water resistant"
+ },
+ "fact_battery": {
+  "zh": "续航",
+  "en": "Battery life"
+ },
+ "fact_monitor": {
+  "zh": "全天健康监测",
+  "en": "All-day health monitoring"
+ },
+ "note": {
+  "zh": "价格以美元计，在亚马逊完成结算，税费与运费以亚马逊页面为准。5 天续航为特定测试条件下的结果，实际续航因使用情况而异。",
+  "en": "Prices in USD. Checkout is on Amazon, where tax and shipping are shown. Five-day battery life comes from specific test conditions; real battery life varies with use."
+ },
+ "disclaimer": {
+  "zh": "本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。",
+  "en": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only."
+ }
+}

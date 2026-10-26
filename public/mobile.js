@@ -437,19 +437,5 @@
   });
   document.documentElement.classList.add('m-ready');
 
-  // Entrance motion for phone sections: every block rises in turn.
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('m-in');
-      io.unobserve(e.target);
-    });
-  }, {rootMargin: '0px 0px -8% 0px'});
-  document.querySelectorAll('section.mb > *, .m-box > *').forEach(function (el, i) {
-    el.classList.add('m-fx');
-    el.style.setProperty('--m-delay', (i % 4) * 70 + 'ms');
-    io.observe(el);
-  });
   mq.addEventListener('change', function () { location.reload(); });
 })();

@@ -6,6 +6,8 @@ import os
 import re
 import sys
 
+import seo
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = sys.argv[1] if len(sys.argv) > 1 else ROOT
 ASSET_RE = re.compile(r"https://app\.paper\.design/file-assets/[A-Z0-9]+/([A-Z0-9]+)\.(png|jpg|svg)")
@@ -137,19 +139,27 @@ def translate_pairs(markup, pairs):
 
 
 def header_for(lang, page):
-    """page is "" for the product page or "app/" for the download page."""
+    """page is "" for the product page, "app/" or "pricing/"."""
+    other = "en" if lang == "zh" else "zh"
+    current = ' aria-current="page"'
     return open(os.path.join(ROOT, "header.html")).read().format(
         lang=lang,
         home=LANGS[lang]["prefix"],
         app=LANGS[lang]["prefix"] + "app/",
-        zh_href="/zh/" + page,
-        en_href="/" + page,
-        zh_on=" is-on" if lang == "zh" else "",
-        en_on=" is-on" if lang == "en" else "",
+        pricing=LANGS[lang]["prefix"] + "pricing/",
+        app_label="下载 App" if lang == "zh" else "GET APP",
+        buy_label="购买" if lang == "zh" else "BUY",
+        app_current=current if page == "app/" else "",
+        buy_current=current if page == "pricing/" else "",
+        other_href=LANGS[other]["prefix"] + page,
+        other_label="中文" if other == "zh" else "EN",
+        other_hreflang="zh-CN" if other == "zh" else "en",
+        other_title="切换到中文" if other == "zh" else "Switch to English",
     )
 
 
 def write(path, markup):
+    markup = seo.tags(path, markup)
     full = os.path.join(ROOT, "public", path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w").write(markup)
@@ -181,6 +191,11 @@ def main():
         write(prefix + "index.html", page.replace("<!--HEADER-->", header_for(lang, "")).replace("<!--SECTIONS-->", product))
         app_page = app if lang == "zh" else translate_pairs(app, pairs)
         write(prefix + "app/index.html", app_page.replace("<!--HEADER-->", header_for(lang, "app/")))
+        price_page = open(os.path.join(ROOT, "pricing.html")).read()
+        for key, value in json.load(open(os.path.join(ROOT, "i18n", "pricing.json"))).items():
+            price_page = price_page.replace("{{" + key + "}}", html.escape(value[lang]))
+        write(prefix + "pricing/index.html", price_page.replace("<!--HEADER-->", header_for(lang, "pricing/")))
+    seo.write_sitemap(os.path.join(ROOT, "public"))
 
 
 if __name__ == "__main__":

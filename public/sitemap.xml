@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://nextbody.ai/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/zh/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/app/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/app/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/app/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/zh/app/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/app/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/app/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/pricing/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/pricing/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/zh/pricing/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/pricing/"/>
+  </url>
+</urlset>

@@ -1,5 +1,8 @@
-/* Page-to-page: the old page sinks back and blurs while the new one wipes up
-   from below. The header keeps its own transition name so it stays put. */
+/* Page-to-page, by default (browsers without the Navigation API, or any
+   change not tagged below): the screen goes black, the old page falls back
+   into it like a card being put down, and the new page cuts in on a slanted
+   edge from the right while it settles from slightly oversized. The header keeps its own
+   transition name so it stays put. */
 @view-transition {
   navigation: auto;
 }
@@ -8,66 +11,118 @@
 }
 ::view-transition-group(site-header) {
   animation: none;
+  z-index: 2;
+}
+::view-transition {
+  background: #050505;
 }
 ::view-transition-old(root) {
-  animation: nb-page-out 0.55s cubic-bezier(0.7, 0, 0.84, 0) both;
+  animation: nb-page-out 0.7s cubic-bezier(0.7, 0, 0.84, 0) both;
+  transform-origin: 50% 0;
 }
 ::view-transition-new(root) {
-  animation: nb-page-in 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: nb-page-in 1.1s cubic-bezier(0.83, 0, 0.17, 1) 0.15s both;
 }
 @keyframes nb-page-out {
   to {
-    filter: blur(14px);
-    opacity: 0;
-    transform: scale(0.92);
+    filter: brightness(0.25) blur(6px);
+    transform: perspective(1400px) translateY(6%) rotateX(14deg) scale(0.82);
   }
 }
 @keyframes nb-page-in {
   from {
-    clip-path: inset(100% 0 0 0);
-    transform: translateY(12%);
+    clip-path: polygon(145% 0, 150% 0, 150% 100%, 105% 100%);
+    transform: scale(1.12);
   }
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: polygon(0 0, 150% 0, 150% 100%, -40% 100%);
     transform: none;
   }
 }
 
-/* Switching language turns the page sideways instead: the old language
-   slides off to the left under a blur, the new one sweeps in from the right. */
+/* Switching language turns the page sideways: the old language swings back
+   and away to the left, the new one slides in over it from the right. */
 html:active-view-transition-type(lang)::view-transition-old(root) {
-  animation: nb-lang-out 0.6s cubic-bezier(0.7, 0, 0.84, 0) both;
+  animation: nb-lang-out 0.85s cubic-bezier(0.65, 0, 0.35, 1) both;
 }
 html:active-view-transition-type(lang)::view-transition-new(root) {
-  animation: nb-lang-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: nb-lang-in 0.85s cubic-bezier(0.65, 0, 0.35, 1) both;
 }
 @keyframes nb-lang-out {
   to {
-    filter: blur(10px);
-    opacity: 0;
-    transform: translateX(-18%) perspective(1600px) rotateY(18deg);
+    filter: brightness(0.3);
+    transform: perspective(1800px) translateX(-30%) rotateY(25deg) scale(0.85);
   }
 }
 @keyframes nb-lang-in {
   from {
-    clip-path: inset(0 0 0 100%);
-    transform: translateX(10%);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: none;
+    box-shadow: -40px 0 80px rgba(0, 0, 0, 0.5);
+    transform: translateX(100%);
   }
 }
 
-/* Body Scan: the lime line that sweeps down the figure (motion.js). */
-.fx-scanline {
-  background: #eff65a;
-  box-shadow: 0 0 18px 6px rgba(239, 246, 90, 0.55), 0 0 60px 18px rgba(239, 246, 90, 0.25);
-  height: 3px;
-  left: -6%;
-  pointer-events: none;
-  position: absolute;
-  width: 112%;
+/* Going to /app: the page underneath drops away and the app page slides
+   up over it like a sheet. */
+html:active-view-transition-type(to-app)::view-transition-old(root) {
+  animation: nb-drop 0.8s cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+html:active-view-transition-type(to-app)::view-transition-new(root) {
+  animation: nb-sheet 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+@keyframes nb-drop {
+  to {
+    filter: brightness(0.3);
+    transform: translateY(18%) scale(0.9);
+  }
+}
+@keyframes nb-sheet {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* Going to the pricing page: it grows as a circle out of the BUY button in
+   the top-right corner. */
+html:active-view-transition-type(to-buy)::view-transition-old(root) {
+  animation: nb-dim 0.9s ease-in both;
+}
+html:active-view-transition-type(to-buy)::view-transition-new(root) {
+  animation: nb-from-buy 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+@keyframes nb-dim {
+  to {
+    filter: brightness(0.35);
+    transform: scale(0.96);
+  }
+}
+@keyframes nb-from-buy {
+  from {
+    clip-path: circle(0 at calc(100% - 96px) 36px);
+  }
+  to {
+    clip-path: circle(150% at calc(100% - 96px) 36px);
+  }
+}
+
+/* Back to the product page: the old page fades to black and the product
+   page pulls into focus from slightly too close. */
+html:active-view-transition-type(to-home)::view-transition-old(root) {
+  animation: nb-fade-out 0.5s ease-in both;
+}
+html:active-view-transition-type(to-home)::view-transition-new(root) {
+  animation: nb-focus 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+@keyframes nb-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes nb-focus {
+  from {
+    filter: blur(16px);
+    opacity: 0;
+    transform: scale(1.12);
+  }
 }
 
 /* Reading progress under the header on the product page. */

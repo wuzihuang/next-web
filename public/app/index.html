@@ -17,7 +17,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@600;800&family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/hero/hero.css">
+<link rel="stylesheet" href="/header.css">
 <link rel="stylesheet" href="/motion.css">
+<script src="/nav.js"></script>
 <style>
   :root {
     --ink: #000;
@@ -136,6 +138,16 @@
     .store { min-width: 0; width: 100%; max-width: 320px; }
   }
 </style>
+<link rel="canonical" href="https://nextbody.ai/app/">
+<link rel="alternate" hreflang="en" href="https://nextbody.ai/app/">
+<link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/app/">
+<link rel="alternate" hreflang="x-default" href="https://nextbody.ai/app/">
+<meta property="og:url" content="https://nextbody.ai/app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NEXTBODY">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://nextbody.ai/#org", "name": "NEXTBODY", "url": "https://nextbody.ai/", "logo": "https://nextbody.ai/favicon-192.png"}, {"@type": "WebSite", "@id": "https://nextbody.ai/#site", "name": "NEXTBODY", "url": "https://nextbody.ai/", "inLanguage": "en", "publisher": {"@id": "https://nextbody.ai/#org"}}]}</script>
 </head>
 <body>
 <div class="nb-top lp" data-locale="en">
@@ -144,13 +156,14 @@
       <span class="lp-wordmark-name">NEXTBODY</span>
       <span class="lp-pip" aria-hidden="true"></span>
     </a>
-    <div class="lp-nav-end">
-      <nav class="lp-langs" aria-label="Language">
-        <a class="lp-lang" href="/zh/app/" hreflang="zh-CN" lang="zh-CN">中文</a>
-        <span class="lp-lang-rule" aria-hidden="true"></span>
-        <a class="lp-lang is-on" href="/app/" hreflang="en" lang="en">EN</a>
-      </nav>
-      <a class="lp-pill" href="/app/">GET APP</a>
+    <div class="lp-nav-end nb-end">
+      <a class="nb-lang" href="/zh/app/" hreflang="zh-CN" lang="zh-CN" title="切换到中文">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+        <span>中文</span>
+      </a>
+      <span class="nb-rule" aria-hidden="true"></span>
+      <a class="nb-link" aria-current="page" href="/app/">GET APP</a>
+      <a class="lp-pill nb-buy" href="/pricing/">BUY</a>
     </div>
   </header>
 </div>
