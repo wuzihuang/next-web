@@ -5,6 +5,7 @@ build.py passes every page through tags() and calls write_sitemap() at the end,
 so the tags survive any rebuild. Homepage JSON-LD also includes FAQPage.
 """
 import datetime
+import html as html_lib
 import json
 import os
 import re
@@ -186,10 +187,45 @@ BLOG_POSTS = {
             "zh": "NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude",
         },
     },
+    "blog/whoop-alternative/": {
+        "published": "2026-10-26",
+        "headline": {
+            "en": "A screenless band that publishes a hardware price",
+            "zh": "一块公布了硬件价的无屏手环",
+        },
+    },
+    "blog/oura-alternative/": {
+        "published": "2026-10-26",
+        "headline": {
+            "en": "Ring or wrist: another way to go screenless",
+            "zh": "戒指还是手腕：另一种无屏选法",
+        },
+    },
 }
 
+COMPARE = "compare/screenless-fitness-band/"
 
-def json_ld(lang, page, description, image):
+
+def faq_from_markup(markup):
+    """Visible <details> on the compare hub become FAQPage mainEntity."""
+    items = []
+    for match in re.finditer(
+        r"<details>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>\s*</details>",
+        markup,
+        re.S,
+    ):
+        name = html_lib.unescape(re.sub(r"<[^>]+>", "", match.group(1))).strip()
+        text = html_lib.unescape(re.sub(r"<[^>]+>", "", match.group(2))).strip()
+        if name and text:
+            items.append({
+                "@type": "Question",
+                "name": name,
+                "acceptedAnswer": {"@type": "Answer", "text": text},
+            })
+    return items
+
+
+def json_ld(lang, page, description, image, faq_items=None):
     org = {
         "@type": "Organization",
         "@id": SITE + "/#org",
@@ -248,6 +284,28 @@ def json_ld(lang, page, description, image):
             "url": url(lang, page),
             "inLanguage": HREFLANG[lang],
         })
+    if page == COMPARE:
+        page_url = url(lang, page)
+        graph.append({
+            "@type": "ItemPage",
+            "name": description or "NEXTBODY Hoop",
+            "url": page_url,
+            "isPartOf": {"@id": SITE + "/#site"},
+            "mainEntity": {"@id": page_url + "#product"},
+        })
+        graph.append({
+            "@type": "Product",
+            "@id": page_url + "#product",
+            "name": "NEXTBODY Hoop",
+            "brand": {"@type": "Brand", "name": "NEXTBODY"},
+            "description": description,
+            "image": image,
+            "url": page_url,
+            "offers": {"@type": "Offer", "url": url(lang, "pricing/"), **PRICE,
+                       "availability": "https://schema.org/InStock"},
+        })
+        if faq_items:
+            graph.append({"@type": "FAQPage", "mainEntity": faq_items})
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
 
 
@@ -277,7 +335,7 @@ def tags(path, markup):
         '<meta property="og:site_name" content="NEXTBODY">',
         f'<meta property="og:locale" content="{OG_LOCALE[lang]}">',
         '<meta name="twitter:card" content="summary_large_image">',
-        f'<script type="application/ld+json">{json_ld(lang, page, description, image)}</script>',
+        f'<script type="application/ld+json">{json_ld(lang, page, description, image, faq_from_markup(markup) if page == COMPARE else None)}</script>',
     ]
     return markup.replace("</head>", "\n".join(head) + "\n</head>", 1)
 

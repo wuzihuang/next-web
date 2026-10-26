@@ -10,8 +10,8 @@
   },
   "h1": { "en": "Notes", "zh": "说明" },
   "lede": {
-    "en": "Short technical docs for HOOP, the App, and how MCP talks to assistants such as ChatGPT and Claude. Nothing here invents medical claims.",
-    "zh": "关于 HOOP、App，以及 MCP 如何对接 ChatGPT、Claude 等助手的短篇技术说明。不另作医疗宣称。"
+    "en": "Short notes for HOOP, MCP, and the screenless-band category. Nothing here invents medical claims. The citable fact table is on the compare hub.",
+    "zh": "关于 HOOP、MCP 与无屏手环品类的短篇说明。不另作医疗宣称。可供核对的事实表在对照页。"
   },
   "post_href": {
     "en": "/blog/nextbody-mcp/",
@@ -25,6 +25,32 @@
   "post_excerpt": {
     "en": "You sign in and authorise it. Assistants can read only your account. Meal logging stays off until you turn it on.",
     "zh": "需本人登录并授权。助手只能读你自己的账号。记录餐食默认关闭，要你打开才会用。"
+  },
+  "whoop_href": {
+    "en": "/blog/whoop-alternative/",
+    "zh": "/zh/blog/whoop-alternative/"
+  },
+  "whoop_date": { "en": "26 Oct 2026", "zh": "2026年10月26日" },
+  "whoop_title": {
+    "en": "A screenless band that publishes a hardware price",
+    "zh": "一块公布了硬件价的无屏手环"
+  },
+  "whoop_excerpt": {
+    "en": "For “WHOOP alternative / no subscription” searches. Pointer to the compare hub — not a copy of Strain or Recovery.",
+    "zh": "写给“WHOOP 平替 / 不要订阅”。指向对照页，不是 Strain / Recovery 的复制。"
+  },
+  "oura_href": {
+    "en": "/blog/oura-alternative/",
+    "zh": "/zh/blog/oura-alternative/"
+  },
+  "oura_date": { "en": "26 Oct 2026", "zh": "2026年10月26日" },
+  "oura_title": {
+    "en": "Ring or wrist: another way to go screenless",
+    "zh": "戒指还是手腕：另一种无屏选法"
+  },
+  "oura_excerpt": {
+    "en": "Oura is a ring; Hoop is a wrist band with Body Scan. One caveated same-night sleep note, then the hub.",
+    "zh": "Oura 是戒指；Hoop 是带身体扫描的手环。一则有限定的同晚睡眠说明，然后去对照页。"
   },
   "disclaimer": {
     "en": "HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",

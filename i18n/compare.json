@@ -1,0 +1,212 @@
+{
+  "html_lang": { "en": "en", "zh": "zh-CN" },
+  "title": {
+    "en": "Screenless fitness band: where NEXTBODY Hoop fits · NEXTBODY",
+    "zh": "无屏智能手环怎么选：NEXTBODY Hoop 适合谁 · NEXTBODY"
+  },
+  "description": {
+    "en": "A fair, footnoted map of the screenless fitness-band category. NEXTBODY Hoop specs come from the live product site: 8mm / 10g, Body Scan, $59.99 hardware price, optional MCP.",
+    "zh": "无屏智能手环品类的公平对照页。NEXTBODY Hoop 规格只引用官网已发布内容：8mm / 10g、身体扫描、硬件价 $59.99、可选 MCP。"
+  },
+  "eyebrow": { "en": "Category note", "zh": "品类说明" },
+  "h1": {
+    "en": "Screenless fitness band: where NEXTBODY Hoop fits",
+    "zh": "无屏智能手环怎么选：NEXTBODY Hoop 适合谁"
+  },
+  "lede": {
+    "en": "People comparing WHOOP, Oura and other screenless trackers usually want sleep, recovery and load without a watch face. This page places NEXTBODY Hoop on that map using only numbers and limits already published on nextbody.ai.",
+    "zh": "对比 WHOOP、Oura 和其他无屏追踪器的人，多半想要睡眠、恢复和负荷，但不想要一块腕上屏幕。本页只用 nextbody.ai 已发布的数字与限制，把 NEXTBODY Hoop 放进这张品类地图。"
+  },
+  "h_who": { "en": "Who this category is for", "zh": "这个品类适合谁" },
+  "p_who": {
+    "en": "A screenless band is a wrist tracker that keeps the display in a phone app. HOOP is one of those: no screen on the device, data in the NEXTBODY App. It is a fit if you want the following, and a poor fit if you want a watch face or a clinical instrument.",
+    "zh": "无屏手环把显示留在手机 App。HOOP 就是这样：机身无屏，数据在 NEXTBODY App。下面这些需求更合适；若你要的是表盘或医疗器械，则不合适。"
+  },
+  "li_who_screen": {
+    "en": "You would rather not wear a screen on your wrist for sleep and all-day tracking.",
+    "zh": "睡眠和全天佩戴时，不想在手腕上看一块屏幕。"
+  },
+  "li_who_sleep": {
+    "en": "You care about sleep staging, a readiness score and a daily training-load number — as wellness references, not medical advice.",
+    "zh": "在意睡眠分期、准备度分数和每日训练负荷——当作健康参考，而不是医疗建议。"
+  },
+  "li_who_ai": {
+    "en": "You may want an optional chat over your own account via MCP, instead of living only in dashboards.",
+    "zh": "可能想通过 MCP 可选地把自己的账号接到对话里，而不是只看仪表盘。"
+  },
+  "h_glance": { "en": "HOOP at a glance", "zh": "HOOP 一览" },
+  "p_glance": {
+    "en": "Every cell below cites a live page. Weight-chart numbers are strap-off measurements from the homepage. This is not a clinical accuracy claim, and it is not “better than DEXA”.",
+    "zh": "下表每一格都指向现网站点。重量图数字是首页不含表带的实测。这不是临床精度宣称，也不是“优于 DEXA”。"
+  },
+  "caption_glance": {
+    "en": "Published NEXTBODY Hoop specs. Third-party products are named only to describe the homepage chart.",
+    "zh": "已发布的 NEXTBODY Hoop 规格。第三方名称仅用于说明首页重量图。"
+  },
+  "th_spec": { "en": "Spec", "zh": "项目" },
+  "th_hoop": { "en": "NEXTBODY Hoop", "zh": "NEXTBODY Hoop" },
+  "th_source": { "en": "Source on this site", "zh": "本站出处" },
+  "row_thin": { "en": "Thickness", "zh": "厚度" },
+  "val_thin": {
+    "en": "8mm device body, without the strap",
+    "zh": "机身 8mm，不含表带"
+  },
+  "row_weight": { "en": "Weight", "zh": "重量" },
+  "val_weight": {
+    "en": "10g device body, without the strap. Homepage chart (strap-off): HOOP 10g, WHOOP 12.08g, Xiaomi Band 10 Pro 21.64g, Apple Watch 31.81g, Apple Watch Ultra 61.77g",
+    "zh": "机身 10g，不含表带。首页重量图（均不含表带）：HOOP 10g、WHOOP 12.08g、小米手环 10 Pro 21.64g、Apple Watch 31.81g、Apple Watch Ultra 61.77g"
+  },
+  "row_battery": { "en": "Battery", "zh": "续航" },
+  "val_battery": {
+    "en": "5 days per charge under specific test conditions; real life varies",
+    "zh": "特定测试条件下充一次 5 天；实际续航因使用而异"
+  },
+  "row_water": { "en": "Water", "zh": "防水" },
+  "val_water": {
+    "en": "IP68. Hand-washing, rain, sweat and shallow-water pool use: yes. Diving, hot showers, saunas: no. Not permanent.",
+    "zh": "IP68。洗手、雨天、出汗和泳池浅水可以。潜水、热水淋浴、桑拿不可以。并非永久有效。"
+  },
+  "row_scan": { "en": "Body Scan", "zh": "身体扫描" },
+  "val_scan": {
+    "en": "Bioimpedance (BIA). About 30 seconds. 14 body-composition estimates. Not a medical diagnosis.",
+    "zh": "生物电阻抗（BIA）。约 30 秒。14 项身体成分估算。不是医疗诊断。"
+  },
+  "row_sleep": { "en": "Sleep", "zh": "睡眠" },
+  "val_sleep": {
+    "en": "Deep / light / REM staging. Score out of 100 from seven HOOP-weighted factors. Not a clinical scale.",
+    "zh": "深睡 / 浅睡 / 快速眼动分期。满分 100，由七项因素按 HOOP 规则加权。不是临床量表。"
+  },
+  "row_ready": { "en": "Readiness and load", "zh": "准备度与负荷" },
+  "val_ready": {
+    "en": "Readiness 0–100. Training load 0–21. Algorithm estimates for reference only; not the same as WHOOP Strain or Recovery.",
+    "zh": "准备度 0–100。训练负荷 0–21。算法估算，仅供参考；与 WHOOP 的 Strain / Recovery 不是同一套算法。"
+  },
+  "row_price": { "en": "Published price", "zh": "已发布价格" },
+  "val_price": {
+    "en": "$59.99 USD hardware price on the pricing page (Cloud White or Charcoal Black). This page does not claim every future App feature will stay free of a subscription.",
+    "zh": "定价页硬件价 $59.99 美元（云白或炭黑）。本页不宣称日后所有 App 功能都永远不订阅。"
+  },
+  "row_mcp": { "en": "MCP", "zh": "MCP" },
+  "val_mcp": {
+    "en": "Optional connector so a signed-in assistant can read your own account. Not HIPAA or clinical AI.",
+    "zh": "可选连接器：本人登录后，助手只能读你自己的账号。不是 HIPAA，也不是临床 AI。"
+  },
+  "src_weight": { "en": "Homepage weight section", "zh": "首页重量图" },
+  "src_pricing": { "en": "Pricing", "zh": "购买页" },
+  "src_faq": { "en": "Homepage FAQ / notes", "zh": "首页常见问题 / 注释" },
+  "src_scan": { "en": "Homepage Body Scan", "zh": "首页身体扫描" },
+  "src_mcp": { "en": "MCP note", "zh": "MCP 说明" },
+  "href_home_weight": { "en": "/#weight", "zh": "/zh/#weight" },
+  "href_home_scan": { "en": "/#bodyscan", "zh": "/zh/#bodyscan" },
+  "href_home_faq": { "en": "/#faq", "zh": "/zh/#faq" },
+  "href_pricing": { "en": "/pricing/", "zh": "/zh/pricing/" },
+  "href_mcp": { "en": "/blog/nextbody-mcp/", "zh": "/zh/blog/nextbody-mcp/" },
+  "href_app": { "en": "/app/", "zh": "/zh/app/" },
+  "p_chart": {
+    "en": "The “lightest” line on the homepage is that strap-off chart, not a lab ranking of every wearable. Other products’ weights can vary by model and batch.",
+    "zh": "首页“最轻”对应的是这张不含表带的实测图，不是对所有穿戴设备的实验室排名。其他产品重量可能因型号与批次而不同。"
+  },
+  "h_differ": { "en": "How it differs (neutral tradeoffs)", "zh": "和其他形态的差别（中性取舍）" },
+  "p_differ": {
+    "en": "The useful question is not “which brand wins”. It is which tradeoff you want: a subscription-first band, a ring, a screen-on watch, or a screenless band with a published hardware price. Third-party names below are descriptive. They do not imply partnership or endorsement, and this page does not list other brands’ prices.",
+    "zh": "有用的问题不是“谁赢”，而是你要哪种取舍：订阅优先的手环、戒指、带屏手表，还是公布了硬件价的无屏手环。下列第三方名称为描述性使用，不代表合作或背书；本页不列出其他品牌的价格。"
+  },
+  "h_whoop": { "en": "Versus a subscription-first band (WHOOP)", "zh": "对比订阅优先的手环（WHOOP）" },
+  "p_whoop": {
+    "en": "WHOOP is the name people use when they want a screenless wrist band focused on strain, recovery and sleep, usually with a membership as the commercial model. HOOP is also a screenless wrist band, and it publishes a $59.99 hardware price on /pricing/. That is a different commercial shape — not a promise that HOOP copies WHOOP’s Strain or Recovery algorithms, and not a claim that HOOP will never charge for a future App feature. Readiness (0–100) and training load (0–21) on HOOP are HOOP’s own estimates.",
+    "zh": "人们说 WHOOP 时，通常指一块关注负荷、恢复和睡眠的无屏腕带，商业模式多半是会员制。HOOP 也是无屏腕带，并在 /pricing/ 公布 $59.99 的硬件价。这是另一种商业形态——并不表示 HOOP 复制了 WHOOP 的 Strain 或 Recovery 算法，也不表示日后 App 功能永远不收费。HOOP 的准备度（0–100）和训练负荷（0–21）是 HOOP 自己的估算。"
+  },
+  "h_oura": { "en": "Versus a ring (Oura)", "zh": "对比戒指形态（Oura）" },
+  "p_oura": {
+    "en": "Oura is a ring. HOOP is a wrist band. A ring leaves the wrist free and has no Body Scan on HOOP’s terms; a band can run a finger-to-band BIA scan and may feel different during sleep or lifting. The product site reports one same-person, same-night wear with an Oura Ring: 99.5% agreement on total sleep (awake time excluded). That is a single anecdote, not a clinical study, and other nights will differ. HOOP’s sleep-score weights draw on Oura’s published sleep factors but are HOOP’s own rules — not Oura’s algorithm.",
+    "zh": "Oura 是戒指，HOOP 是手环。戒指不占手腕，也不会按 HOOP 的方式做身体扫描；手环可以用手指按住侧键做 BIA，睡眠或力量训练时的体感也不同。产品站有一次同一人、同一晚与 Oura Ring 同时佩戴的记录：总睡眠时长一致性 99.5%（不含清醒）。这是单次个例，不是临床研究，其他夜晚会不同。HOOP 的睡眠分数权重参考了 Oura 公开的睡眠因素，但是 HOOP 自定规则，不是 Oura 的算法。"
+  },
+  "h_watch": { "en": "Versus a smartwatch with a screen", "zh": "对比带屏智能手表" },
+  "p_watch": {
+    "en": "A watch keeps apps and glances on the wrist. HOOP keeps the screen in the phone. The homepage weight chart places an Apple Watch at 31.81g and Apple Watch Ultra at 61.77g without straps, against HOOP at 10g — only to show device-body weight, not to rank features or accuracy.",
+    "zh": "手表把应用和一瞥留在手腕上。HOOP 把屏幕留在手机里。首页重量图里，Apple Watch 不含表带 31.81g、Apple Watch Ultra 61.77g，HOOP 为 10g——只说明机身重量，不比较功能或精度。"
+  },
+  "h_scan": { "en": "Body Scan callout", "zh": "身体扫描说明" },
+  "p_scan": {
+    "en": "Body Scan uses bioimpedance. You hold the side key for about 30 seconds. The App then shows 14 estimated metrics (fat, muscle, water, protein, bone and related values) from impedance plus the height, weight, age and sex you entered. Weight is typed in, not measured by the band. Results can differ from a smart scale or DEXA and are for long-term trends, not diagnosis.",
+    "zh": "身体扫描用生物电阻抗。按住侧键约 30 秒。App 用阻抗，再加上你填写的身高、体重、年龄与性别，给出 14 项估算（体脂、肌肉、水分、蛋白质、骨量及相关值）。体重是你输入的，不是手环称出来的。结果可能与体脂秤或 DEXA 不同，更适合看长期趋势，不能用于诊断。"
+  },
+  "p_scan_who": {
+    "en": "Do not use Body Scan if you have a pacemaker, implantable defibrillator or other implanted electronic medical device. It is not recommended during pregnancy, with metal implants, or on broken or inflamed skin.",
+    "zh": "体内植入心脏起搏器、植入式除颤器或其他电子医疗设备者请勿使用身体扫描。孕期、体内有金属植入物，或接触部位皮肤破损、发炎时不建议使用。"
+  },
+  "faq_label": { "en": "FAQ", "zh": "常见问题" },
+  "q_medical": { "en": "Is HOOP a medical device?", "zh": "HOOP 是医疗器械吗？" },
+  "a_medical": {
+    "en": "No. Neither the HOOP band nor the NEXTBODY App is a medical device, and neither is meant to diagnose, treat, cure or prevent any disease. Heart rate, SpO2, HRV, skin temperature, sleep, body composition, readiness, training load and related tips are for everyday wellness only, not medical decisions. If you feel unwell, see a doctor.",
+    "zh": "不是。HOOP 手环与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。心率、血氧、HRV、皮肤温度、睡眠、身体成分、准备度、训练负荷等数据与提示仅供日常健康管理参考，不作为诊疗依据。如有身体不适，请及时就医并遵从医生建议。"
+  },
+  "q_swim": { "en": "Can I swim or shower with HOOP?", "zh": "HOOP 可以戴着游泳、洗澡吗？" },
+  "a_swim": {
+    "en": "HOOP is rated IP68 for dust and water. Wear it for hand-washing, rain, sweat and shallow-water activities such as pool swimming. It's not for diving, high-board jumps, hot showers, hot springs, saunas or high-speed water. Rinse with fresh water and dry after sea or pool use. Don't run Body Scan in water or with wet skin. Nylon straps take a while to dry, and staying damp can irritate skin. Water resistance isn't permanent and may decline over time.",
+    "zh": "HOOP 达到 IP68 防尘防水等级，日常洗手、雨天、出汗及泳池等浅水运动时可以佩戴。不适用于潜水、跳水、热水淋浴、温泉、桑拿、高速水流等场景；在海水或泳池中使用后请用清水冲洗并擦干。请勿在水中或皮肤潮湿时进行身体扫描。尼龙表带浸水后需要较长时间晾干，长期潮湿可能引起皮肤不适。防水性能并非永久有效，可能随使用时间下降。"
+  },
+  "q_battery": { "en": "Does one charge really last 5 days?", "zh": "充一次电真的能用 5 天吗？" },
+  "a_battery": {
+    "en": "Five days comes from specific test conditions. Real battery life varies with tracking settings, workout time, how often you scan or measure, sync frequency and temperature, and capacity declines gradually over time.",
+    "zh": "5 天续航为特定测试条件下的结果。实际续航会因监测设置、运动时长、身体扫描与主动测量次数、与手机同步的频率、环境温度等不同而有所差异，电池容量也会随使用时间逐渐衰减。"
+  },
+  "q_mcp": { "en": "Is connecting ChatGPT, Claude or other AI (MCP) safe?", "zh": "把数据接入 ChatGPT、Claude 等 AI（MCP）安全吗？" },
+  "a_mcp": {
+    "en": "You sign in and authorise it yourself, and the assistant can only read your own account's data. Meal logging is off by default; when on, the AI confirms the food, portion and time with you before saving. Once data is sent to a third-party AI service, that service's privacy policy applies, so decide for yourself. The assistant's analysis and advice are for reference only, not medical, nutrition or training prescriptions. A longer note is at /blog/nextbody-mcp/.",
+    "zh": "接入需要你本人登录并授权，AI 助手只能读取你自己账号下的数据。记录餐食默认关闭，开启后 AI 会在保存前与你确认食物、份量与时间。数据一旦发送给第三方 AI 服务，将按照该服务的隐私政策处理，请自行评估后使用。AI 助手给出的分析与建议仅供参考，不构成医疗、营养或训练处方。更长的说明在 /blog/nextbody-mcp/。"
+  },
+  "q_app": { "en": "Is the NEXTBODY App available today?", "zh": "NEXTBODY App 现在能下载吗？" },
+  "a_app": {
+    "en": "The product FAQ lists support for iPhone on iOS 17 or later and Android 9 or later. The /app/ page currently marks store badges as coming soon and does not publish a launch date. Some features depend on the App version actually shipped.",
+    "zh": "产品常见问题写明支持 iOS 17 及以上的 iPhone，以及 Android 9 及以上。/app/ 页的商店徽章目前是“即将上线”，没有公布上架日期。部分功能以实际发布的 App 版本为准。"
+  },
+  "q_scan": { "en": "Who shouldn't use Body Scan?", "zh": "哪些人不能使用身体扫描？" },
+  "a_scan": {
+    "en": "Do not use Body Scan if you have a pacemaker, implantable defibrillator or other implanted electronic medical device. It's not recommended during pregnancy, with metal implants, or on broken or inflamed skin, where results may also be inaccurate.",
+    "zh": "体内植入心脏起搏器、植入式心律转复除颤器等电子医疗设备的人群请勿使用身体扫描。孕妇、体内有金属植入物者，以及接触部位皮肤有破损或炎症时不建议使用，结果也可能不准确。"
+  },
+  "h_cta": { "en": "Next", "zh": "下一步" },
+  "p_cta": {
+    "en": "The fact table above is the citable source. These links go back to the live pages it quotes.",
+    "zh": "上面的事实表是可供核对的出处。下面这些链接回到它所引用的页面。"
+  },
+  "cta_pricing": { "en": "Buy HOOP · $59.99 on the pricing page", "zh": "购买 HOOP · 定价页 $59.99" },
+  "cta_weight": { "en": "Homepage weight chart (strap-off)", "zh": "首页重量对比图（不含表带）" },
+  "cta_scan": { "en": "Homepage Body Scan section", "zh": "首页身体扫描" },
+  "cta_faq": { "en": "Homepage FAQ", "zh": "首页常见问题" },
+  "cta_mcp": { "en": "How NEXTBODY MCP connects to ChatGPT and Claude", "zh": "NEXTBODY MCP 如何接到 ChatGPT 与 Claude" },
+  "cta_app": { "en": "NEXTBODY App page", "zh": "NEXTBODY App 页面" },
+  "fn_measure": {
+    "en": "8mm and 10g are for the device body without the strap. Results may vary with measurement position, method and tools. The product itself is the reference.",
+    "zh": "8mm 与 10g 为机身数据，不含表带；因测量位置、方法与工具不同，结果可能存在差异，请以实物为准。"
+  },
+  "fn_chart": {
+    "en": "All weights in the homepage comparison chart were measured without straps. Other products’ figures may vary by model, version and batch; the chart only illustrates the difference.",
+    "zh": "重量对比图中各产品重量均为不含表带的实测值，其他产品数据可能因型号、版本与批次不同而有所差异，对比仅用于说明重量差别。"
+  },
+  "fn_sleep": {
+    "en": "The Sleep algorithm 2.0 vs. Oura Ring comparison is a single result from one person wearing both on the same night; total sleep excludes time awake. “99.5% total-sleep agreement” refers to that comparison. Results vary by person and night, and are not clinical findings.",
+    "zh": "睡眠算法 2.0 与 Oura Ring 的对比为同一人、同一晚同时佩戴的单次结果，总睡眠时长不计入清醒时长；「总睡眠时长一致性 99.5%」即指该次对比，不同个体与不同夜晚的结果可能不同，不代表临床研究结论。"
+  },
+  "fn_hr": {
+    "en": "98.2% heart-rate accuracy on the product site comes from specific test scenarios and conditions; real-world accuracy may vary with fit, exercise intensity, wrist hair, tattoos, skin tone and environment.",
+    "zh": "产品站上的心率准确度 98.2% 为特定测试场景与条件下的结果，实际使用中可能因佩戴松紧、运动强度、手腕毛发、纹身、肤色及环境因素等，准确度有所不同。"
+  },
+  "fn_price": {
+    "en": "Prices in USD on /pricing/. Checkout is on Amazon, where tax and shipping are shown. This page does not invent competitor prices or put other brands in Offer markup.",
+    "zh": "价格以美元计，见 /pricing/。结算在亚马逊完成，税费与运费以亚马逊页面为准。本页不编造竞品价格，也不把其他品牌写进 Offer。"
+  },
+  "disclaimer": {
+    "en": "This page restates published product-site copy. It is not a review scorecard and does not invent medical claims. Features follow the actual App and may change.",
+    "zh": "本页只复述产品站已发布文案。不是评测打分，也不另作医疗宣称。功能以实际 App 为准，可能随版本变化。"
+  },
+  "footer_legal": {
+    "en": "HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
+    "zh": "HOOP 与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。数据、提示与建议仅供参考。"
+  },
+  "footer_marks": {
+    "en": "Oura, Oura Ring, WHOOP, Apple Watch, iPhone, ChatGPT, Claude, Grok Bot, Muse and other third-party names and trademarks belong to their owners. They're mentioned only to describe compatibility or comparison and do not imply partnership, licensing or endorsement.",
+    "zh": "页面中提及的 Oura、Oura Ring、WHOOP、Apple Watch、iPhone、ChatGPT、Claude、Grok Bot、Muse 等第三方产品名称与商标归其各自权利人所有，提及仅用于说明兼容性或对比，不代表与相关公司存在合作、授权或背书关系。"
+  }
+}
