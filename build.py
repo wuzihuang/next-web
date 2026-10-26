@@ -12,7 +12,14 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = sys.argv[1] if len(sys.argv) > 1 else ROOT
 ASSET_RE = re.compile(r"https://app\.paper\.design/file-assets/[A-Z0-9]+/([A-Z0-9]+)\.(png|jpg|svg)")
 # Header links land on these artboards.
-ANCHORS = {"3SP-0": "band", "3T2-0": "science"}
+ANCHORS = {
+    "3SP-0": "band",
+    "3WW-0": "weight",
+    "3T2-0": "science",
+    "457-0": "bodyscan",
+    "4BC-0": "mcp",
+    "4ME-0": "faq",
+}
 UNITLESS = {"fontWeight", "lineHeight", "opacity", "zIndex", "flexGrow", "flexShrink", "flex", "order"}
 VOID_SVG = {"br", "path", "circle", "rect", "line", "stop", "ellipse", "polygon", "polyline", "use"}
 
@@ -139,14 +146,14 @@ def translate_pairs(markup, pairs):
 
 
 def header_for(lang, page):
-    """page is "" for the product page, "app/", "pricing/", or "blog/..."."""
+    """page is "" for the product page, "app/", "pricing/", "blog/...", or "compare/..."."""
     other = "en" if lang == "zh" else "zh"
     current = ' aria-current="page"'
     prefix = LANGS[lang]["prefix"]
     blog_link = ""
-    if page.startswith("blog/"):
+    if page.startswith("blog/") or page.startswith("compare/"):
         label = "博客" if lang == "zh" else "Blog"
-        blog_link = f'<a class="nb-link"{current} href="{prefix}blog/">{label}</a>\n      '
+        blog_link = f'<a class="nb-link"{current if page.startswith("blog/") else ""} href="{prefix}blog/">{label}</a>\n      '
     return open(os.path.join(ROOT, "header.html")).read().format(
         lang=lang,
         home=prefix,
@@ -221,6 +228,28 @@ def main():
             prefix + "blog/nextbody-mcp/index.html",
             blog_mcp.replace("<!--HEADER-->", header_for(lang, "blog/nextbody-mcp/")),
         )
+        compare = fill_i18n(
+            open(os.path.join(ROOT, "compare.html")).read(),
+            json.load(open(os.path.join(ROOT, "i18n", "compare.json"))),
+            lang,
+        )
+        write(
+            prefix + "compare/screenless-fitness-band/index.html",
+            compare.replace("<!--HEADER-->", header_for(lang, "compare/screenless-fitness-band/")),
+        )
+        for slug, name in (
+            ("whoop-alternative/", "blog_whoop.json"),
+            ("oura-alternative/", "blog_oura.json"),
+        ):
+            note = fill_i18n(
+                open(os.path.join(ROOT, "blog_note.html")).read(),
+                json.load(open(os.path.join(ROOT, "i18n", name))),
+                lang,
+            )
+            write(
+                prefix + "blog/" + slug + "index.html",
+                note.replace("<!--HEADER-->", header_for(lang, "blog/" + slug)),
+            )
     seo.write_sitemap(os.path.join(ROOT, "public"))
 
 

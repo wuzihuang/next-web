@@ -1,0 +1,55 @@
+{
+  "html_lang": { "en": "en", "zh": "zh-CN" },
+  "title": {
+    "en": "Oura alternative on the wrist: ring vs screenless band · NEXTBODY",
+    "zh": "Oura 平替在手腕上：戒指和无屏手环怎么选 · NEXTBODY"
+  },
+  "description": {
+    "en": "Oura is a ring; NEXTBODY Hoop is a screenless wrist band with Body Scan. One same-night sleep comparison on the site is a caveated anecdote, not a clinical study.",
+    "zh": "Oura 是戒指；NEXTBODY Hoop 是带身体扫描的无屏手环。站上那次同晚睡眠对比是有限定的个例，不是临床研究。"
+  },
+  "eyebrow": { "en": "Category note", "zh": "品类说明" },
+  "h1": {
+    "en": "Ring or wrist: another way to go screenless",
+    "zh": "戒指还是手腕：另一种无屏选法"
+  },
+  "date": { "en": "26 October 2026", "zh": "2026年10月26日" },
+  "blog_href": { "en": "/blog/", "zh": "/zh/blog/" },
+  "back": { "en": "All notes", "zh": "全部说明" },
+  "lede": {
+    "en": "A short pointer for “Oura alternative” searches. Form-factor tradeoffs and the HOOP fact table are on the compare hub.",
+    "zh": "写给在搜“Oura 平替”的人。形态取舍和 HOOP 事实表在对照页。"
+  },
+  "p1": {
+    "en": "Oura is a ring. NEXTBODY Hoop is a wrist band with no screen. A ring leaves the wrist free. A band can run HOOP’s Body Scan: hold the side key for about 30 seconds for 14 bioimpedance estimates. That is a different tradeoff, not a claim that a ring is worse.",
+    "zh": "Oura 是戒指。NEXTBODY Hoop 是无屏手环。戒指不占手腕。手环可以做 HOOP 的身体扫描：按住侧键约 30 秒，得到 14 项生物电阻抗估算。这是不同取舍，不是说戒指更差。"
+  },
+  "p2": {
+    "en": "The product site includes one same-person, same-night wear with an Oura Ring. Total sleep agreed to 99.5% (awake time excluded). The notes call this a single result, not a clinical finding. HOOP’s seven-factor sleep score draws on Oura’s published sleep factors but is not Oura’s algorithm.",
+    "zh": "产品站有一次同一人、同一晚与 Oura Ring 同时佩戴的记录，总睡眠时长一致性 99.5%（不含清醒）。注释写明这是单次结果，不是临床结论。HOOP 七项睡眠分数参考了 Oura 公开的睡眠因素，但不是 Oura 的算法。"
+  },
+  "p3": {
+    "en": "Do not use Body Scan with a pacemaker or other implanted electronic medical device. HOOP is not a medical device. The published hardware price is $59.99 on the pricing page.",
+    "zh": "植入起搏器等电子医疗设备者请勿使用身体扫描。HOOP 不是医疗器械。定价页公布的硬件价是 $59.99。"
+  },
+  "p4": {
+    "en": "If the search was really “WHOOP alternative no subscription”, or you want the strap-off weight chart next to sleep and MCP limits, use the hub. This note stays short on purpose.",
+    "zh": "若你其实在搜“WHOOP 平替、不要订阅”，或想把不含表带的重量图和睡眠、MCP 限制放在一起看，请去对照页。这篇刻意写短。"
+  },
+  "hub_href": {
+    "en": "/compare/screenless-fitness-band/",
+    "zh": "/zh/compare/screenless-fitness-band/"
+  },
+  "hub_cta": {
+    "en": "Open the screenless-band compare hub.",
+    "zh": "打开无屏手环对照页。"
+  },
+  "disclaimer": {
+    "en": "Oura, Oura Ring and other marks belong to their owners. Mention is descriptive only.",
+    "zh": "Oura、Oura Ring 及其他商标归其权利人所有。提及仅为描述。"
+  },
+  "footer_legal": {
+    "en": "HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
+    "zh": "HOOP 与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。数据、提示与建议仅供参考。"
+  }
+}

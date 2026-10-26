@@ -1,0 +1,75 @@
+/* Additive layout for /compare/ only. Marketing pages do not load this file. */
+.table-wrap {
+  margin: 24px 0 8px;
+  overflow-x: auto;
+}
+table.facts {
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+  width: 100%;
+}
+table.facts caption {
+  caption-side: bottom;
+  color: var(--mute);
+  font-size: 13px;
+  padding-top: 12px;
+  text-align: left;
+}
+table.facts th,
+table.facts td {
+  border-bottom: 1px solid var(--hair);
+  padding: 12px 14px 12px 0;
+  text-align: left;
+  vertical-align: top;
+}
+table.facts thead th {
+  color: var(--mute);
+  font: 500 12px/1 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+table.facts tbody th {
+  font-weight: 600;
+  width: 28%;
+}
+table.facts a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.note-inline {
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+article h3 {
+  font: 600 18px/1.35 var(--display);
+  margin: 28px 0 10px;
+}
+.cta-list {
+  margin: 16px 0 8px;
+  padding-left: 1.2em;
+}
+.cta-list a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footnotes {
+  border-top: 1px solid var(--hair);
+  color: var(--mute);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 40px 0 0;
+  padding: 20px 0 0 1.2em;
+}
+.footnotes li + li { margin-top: 8px; }
+article a { text-underline-offset: 3px; }
+
+html[lang="zh-CN"] article h3 { font-family: var(--cn); }
+
+@media (max-width: 640px) {
+  table.facts th,
+  table.facts td { padding: 10px 10px 10px 0; }
+  table.facts tbody th { width: auto; }
+}

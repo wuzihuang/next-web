@@ -1,0 +1,55 @@
+{
+  "html_lang": { "en": "en", "zh": "zh-CN" },
+  "title": {
+    "en": "WHOOP alternative, without a subscription-first model · NEXTBODY",
+    "zh": "WHOOP 平替：不是订阅优先的无屏手环 · NEXTBODY"
+  },
+  "description": {
+    "en": "NEXTBODY Hoop is a screenless wrist band with a published $59.99 hardware price. It is a different tradeoff from a subscription-first band such as WHOOP — not a copy of Strain or Recovery.",
+    "zh": "NEXTBODY Hoop 是无屏腕带，定价页公布硬件价 $59.99。这和 WHOOP 这类订阅优先手环是不同取舍，并不是 Strain / Recovery 的复制。"
+  },
+  "eyebrow": { "en": "Category note", "zh": "品类说明" },
+  "h1": {
+    "en": "A screenless band that publishes a hardware price",
+    "zh": "一块公布了硬件价的无屏手环"
+  },
+  "date": { "en": "26 October 2026", "zh": "2026年10月26日" },
+  "blog_href": { "en": "/blog/", "zh": "/zh/blog/" },
+  "back": { "en": "All notes", "zh": "全部说明" },
+  "lede": {
+    "en": "A short pointer for “WHOOP alternative / no subscription” searches. The citable fact table lives on the compare hub.",
+    "zh": "写给在搜“WHOOP 平替 / 不要订阅”的人。可供核对的事实表在对照页。"
+  },
+  "p1": {
+    "en": "WHOOP is the usual name for a screenless wrist band sold around strain, recovery and sleep, with membership as the commercial model. That is a descriptive use of the name, not a review of WHOOP’s current plan or price — this site does not republish other brands’ prices.",
+    "zh": "人们提到 WHOOP，多半是一块围绕负荷、恢复和睡眠的无屏腕带，商业模式是会员制。这里只是描述性使用这个名称，不是在评 WHOOP 现在的套餐或价格——本站不转载其他品牌的价格。"
+  },
+  "p2": {
+    "en": "NEXTBODY Hoop is also screenless. The live pricing page lists Cloud White and Charcoal Black at $59.99. That is a hardware price, not a claim that every future App feature will stay free of a subscription.",
+    "zh": "NEXTBODY Hoop 同样无屏。现网购买页上，云白与炭黑均为 $59.99。这是硬件价，并不表示日后所有 App 功能都永远不订阅。"
+  },
+  "p3": {
+    "en": "HOOP’s readiness (0–100) and training load (0–21) are HOOP’s own algorithm estimates. They are not WHOOP Strain or Recovery. Sleep, Body Scan and MCP each have limits already written on the product site.",
+    "zh": "HOOP 的准备度（0–100）和训练负荷（0–21）是 HOOP 自己的算法估算，不是 WHOOP 的 Strain 或 Recovery。睡眠、身体扫描和 MCP 的限制，产品站已经写过。"
+  },
+  "p4": {
+    "en": "If you also compared a ring such as Oura, or a screen-on watch, use the hub. It covers those tradeoffs in one place and footnotes every HOOP number to the homepage, FAQ or pricing page.",
+    "zh": "若你还在对比 Oura 这类戒指，或带屏手表，请看对照页。取舍写在同一处，HOOP 的每个数字都脚注回首页、常见问题或购买页。"
+  },
+  "hub_href": {
+    "en": "/compare/screenless-fitness-band/",
+    "zh": "/zh/compare/screenless-fitness-band/"
+  },
+  "hub_cta": {
+    "en": "Open the screenless-band compare hub.",
+    "zh": "打开无屏手环对照页。"
+  },
+  "disclaimer": {
+    "en": "WHOOP and other marks belong to their owners. Mention is descriptive only.",
+    "zh": "WHOOP 及其他商标归其权利人所有。提及仅为描述。"
+  },
+  "footer_legal": {
+    "en": "HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
+    "zh": "HOOP 与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。数据、提示与建议仅供参考。"
+  }
+}

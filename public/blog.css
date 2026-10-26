@@ -80,6 +80,10 @@ article p, article li {
   font-size: 16px;
   line-height: 1.85;
 }
+article a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 article p + p { margin-top: 16px; }
 article ul { padding-left: 1.2em; }
 article li + li { margin-top: 8px; }
