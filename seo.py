@@ -177,6 +177,18 @@ def attr(value):
     return value.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;")
 
 
+# Tech notes under /blog/. Headlines stay in step with i18n/blog*.json.
+BLOG_POSTS = {
+    "blog/nextbody-mcp/": {
+        "published": "2026-10-26",
+        "headline": {
+            "en": "How NEXTBODY MCP connects health data to ChatGPT and Claude",
+            "zh": "NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude",
+        },
+    },
+}
+
+
 def json_ld(lang, page, description, image):
     org = {
         "@type": "Organization",
@@ -205,6 +217,37 @@ def json_ld(lang, page, description, image):
         })
     if page == "":
         graph.append(faq_page(lang))
+    if page == "blog/":
+        graph.append({
+            "@type": "CollectionPage",
+            "name": description or "Notes",
+            "url": url(lang, page),
+            "isPartOf": {"@id": SITE + "/#site"},
+            "hasPart": [
+                {
+                    "@type": "TechArticle",
+                    "headline": post["headline"][lang],
+                    "url": url(lang, slug),
+                    "datePublished": post["published"],
+                }
+                for slug, post in BLOG_POSTS.items()
+            ],
+        })
+    if page in BLOG_POSTS:
+        post = BLOG_POSTS[page]
+        graph.append({
+            "@type": "TechArticle",
+            "headline": post["headline"][lang],
+            "description": description,
+            "image": image,
+            "datePublished": post["published"],
+            "dateModified": post["published"],
+            "author": {"@id": SITE + "/#org"},
+            "publisher": {"@id": SITE + "/#org"},
+            "mainEntityOfPage": url(lang, page),
+            "url": url(lang, page),
+            "inLanguage": HREFLANG[lang],
+        })
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
 
 
@@ -230,7 +273,7 @@ def tags(path, markup):
     head.append(f'<link rel="alternate" hreflang="x-default" href="{url("en", page)}">')
     head += [
         f'<meta property="og:url" content="{url(lang, page)}">',
-        '<meta property="og:type" content="website">',
+        f'<meta property="og:type" content="{"article" if page in BLOG_POSTS else "website"}">',
         '<meta property="og:site_name" content="NEXTBODY">',
         f'<meta property="og:locale" content="{OG_LOCALE[lang]}">',
         '<meta name="twitter:card" content="summary_large_image">',

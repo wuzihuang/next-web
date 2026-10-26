@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude · NEXTBODY</title>
+<meta name="description" content="NEXTBODY MCP 在你本人登录授权后，让 ChatGPT、Claude、Grok Bot 或 Muse 读取你自己的身体数据。记录餐食默认关闭。建议不构成医疗处方。">
+<meta property="og:title" content="NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude · NEXTBODY">
+<meta property="og:description" content="NEXTBODY MCP 在你本人登录授权后，让 ChatGPT、Claude、Grok Bot 或 Muse 读取你自己的身体数据。记录餐食默认关闭。建议不构成医疗处方。">
+<meta property="og:image" content="https://nextbody.ai/a/6F29WH9AWYRNR0EJPH5GHXDQB8-hd.webp">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/hero/hero.css">
+<link rel="stylesheet" href="/header.css">
+<link rel="stylesheet" href="/motion.css">
+<link rel="stylesheet" href="/blog.css">
+<script src="/nav.js"></script>
+<link rel="canonical" href="https://nextbody.ai/zh/blog/nextbody-mcp/">
+<link rel="alternate" hreflang="en" href="https://nextbody.ai/blog/nextbody-mcp/">
+<link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/blog/nextbody-mcp/">
+<link rel="alternate" hreflang="x-default" href="https://nextbody.ai/blog/nextbody-mcp/">
+<meta property="og:url" content="https://nextbody.ai/zh/blog/nextbody-mcp/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NEXTBODY">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://nextbody.ai/#org", "name": "NEXTBODY", "url": "https://nextbody.ai/", "logo": "https://nextbody.ai/favicon-192.png"}, {"@type": "WebSite", "@id": "https://nextbody.ai/#site", "name": "NEXTBODY", "url": "https://nextbody.ai/", "inLanguage": "zh-CN", "publisher": {"@id": "https://nextbody.ai/#org"}}, {"@type": "TechArticle", "headline": "NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude", "description": "NEXTBODY MCP 在你本人登录授权后，让 ChatGPT、Claude、Grok Bot 或 Muse 读取你自己的身体数据。记录餐食默认关闭。建议不构成医疗处方。", "image": "https://nextbody.ai/a/6F29WH9AWYRNR0EJPH5GHXDQB8-hd.webp", "datePublished": "2026-10-26", "dateModified": "2026-10-26", "author": {"@id": "https://nextbody.ai/#org"}, "publisher": {"@id": "https://nextbody.ai/#org"}, "mainEntityOfPage": "https://nextbody.ai/zh/blog/nextbody-mcp/", "url": "https://nextbody.ai/zh/blog/nextbody-mcp/", "inLanguage": "zh-CN"}]}</script>
+</head>
+<body>
+<div class="nb-top lp" data-locale="zh">
+  <header class="lp-nav">
+    <a class="lp-wordmark" href="/zh/">
+      <span class="lp-wordmark-name">NEXTBODY</span>
+      <span class="lp-pip" aria-hidden="true"></span>
+    </a>
+    <div class="lp-nav-end nb-end">
+      <a class="nb-lang" href="/blog/nextbody-mcp/" hreflang="en" lang="en" title="Switch to English">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+        <span>EN</span>
+      </a>
+      <span class="nb-rule" aria-hidden="true"></span>
+      <a class="nb-link" aria-current="page" href="/zh/blog/">博客</a>
+      <a class="nb-link" href="/zh/app/">下载 App</a>
+      <a class="lp-pill nb-buy" href="/zh/pricing/">购买</a>
+    </div>
+  </header>
+</div>
+
+<main>
+  <article class="wrap">
+    <header class="head">
+      <p class="eyebrow">NEXTBODY MCP</p>
+      <h1>NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude</h1>
+      <p class="meta">
+        <time datetime="2026-10-26">2026年10月26日</time>
+        <a href="/zh/blog/">全部说明</a>
+      </p>
+      <p class="lede">这篇说明只整理产品站已经写过的 MCP 内容：谁能接入、能读什么、不能当作什么用。</p>
+    </header>
+
+    <p>HOOP 是无屏智能健康手环（机身薄至 8mm、轻至 10g，不含表带）。心率、睡眠分期、训练负荷与 14 项身体扫描在 NEXTBODY App 里查看。MCP 是把该账号可选接到第三方助手的桥。</p>
+
+    <h2>MCP 做什么</h2>
+    <p>NEXTBODY MCP 不会公开所有人的数据。接入第三方 AI 助手需要你本人登录并授权，助手只能读取你自己账号下的数据。</p>
+    <p>站点目前点名的助手是 ChatGPT、Claude、Grok Bot 与 Muse。提及只为说明兼容性，不代表合作或背书；可接入的助手以 App 实际支持为准。</p>
+    <ul>
+      <li>授权后，助手可以读取你在 NEXTBODY App 里自己的身体数据。</li>
+      <li>不能读取别人的账号。</li>
+      <li>你没有登录并授权，MCP 就不会分享这些数据。</li>
+    </ul>
+
+    <h2>记录餐食默认关闭</h2>
+    <p>记录餐食默认关闭。打开后可以用一句话记下这一餐；保存前助手会与你确认食物、份量和时间。热量、蛋白质、碳水与脂肪按描述估算，不是称重或实验室测定；每日目标是一般性建议，不构成营养处方。</p>
+
+    <h2>接入的是哪些数据</h2>
+    <p>MCP 读的是 App 里已经展示的健康记录。手环无屏，显示在 App。下列表述均已出现在 nextbody.ai。</p>
+    <ul>
+      <li>准备度（0–100）以昨晚睡眠为起点，对比夜间 HRV 与静息心率的个人基线。这是算法估算，仅供参考。</li>
+      <li>睡眠分数满分 100，由七项因素按 HOOP 自有规则加权。不是临床量表。</li>
+      <li>训练负荷（0–21）每 5 分钟结算心率区间与活动量，不能替代教练。</li>
+      <li>身体扫描用生物电阻抗，再结合 App 中的身高、体重、年龄与性别，估算 14 项身体成分。结果是估算值，不是医疗诊断。植入起搏器等电子医疗设备者请勿使用。</li>
+    </ul>
+
+    <h2>边界、隐私与语气</h2>
+    <p>数据一旦发给第三方 AI 服务，即按其隐私政策处理，接入前请自行判断。助手的分析与建议仅供参考，不构成医疗、营养或训练处方。HOOP 与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。如有不适，请就医。</p>
+
+    <section class="faq" aria-label="摘自产品常见问题">
+      <h2>摘自产品常见问题</h2>
+      <details>
+        <summary>把数据接入 ChatGPT、Claude 等 AI（MCP）安全吗？</summary>
+        <p>接入需要你本人登录并授权，AI 助手只能读取你自己账号下的数据。记录餐食默认关闭，开启后 AI 会在保存前与你确认食物、份量与时间。数据一旦发送给第三方 AI 服务，将按照该服务的隐私政策处理，请自行评估后使用。AI 助手给出的分析与建议仅供参考，不构成医疗、营养或训练处方。</p>
+      </details>
+      <details>
+        <summary>HOOP 是医疗器械吗？</summary>
+        <p>不是。HOOP 手环与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。心率、血氧、HRV、皮肤温度、睡眠、身体成分、准备度、训练负荷等数据与提示仅供日常健康管理参考，不作为诊疗依据。如有身体不适，请及时就医并遵从医生建议。</p>
+      </details>
+      <details>
+        <summary>饮食记录的热量和营养素准确吗？</summary>
+        <p>餐食的热量、蛋白质、碳水与脂肪基于食物种类与份量描述估算，不是称重或实验室测定结果，可能与实际摄入存在差异。每日热量与营养目标为一般性建议，不构成营养处方；孕期、哺乳期、患有慢性病或有特殊饮食需求的人群请遵医嘱。</p>
+      </details>
+    </section>
+
+    <p class="note">本文只复述产品站已发布文案。营销页中的手机界面为 App 实拍与演示数据；功能以实际 App 为准，可能随版本变化。第三方名称归其权利人所有。</p>
+  </article>
+</main>
+<footer>
+  <div class="wide">
+    <div class="brand">NEXTBODY <i></i></div>
+    <p>HOOP 与 NEXTBODY App 均非医疗器械，不用于诊断、治疗、治愈或预防任何疾病。数据、提示与建议仅供参考。</p>
+    <p>© 2026 NEXTBODY</p>
+  </div>
+</footer>
+<script src="/motion.js" defer></script>
+</body>
+</html>

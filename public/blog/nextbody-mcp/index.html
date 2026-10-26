@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How NEXTBODY MCP connects health data to ChatGPT and Claude · NEXTBODY</title>
+<meta name="description" content="NEXTBODY MCP lets ChatGPT, Claude, Grok Bot or Muse read your own body data after you sign in. Meal logging is off by default. Advice is not a medical prescription.">
+<meta property="og:title" content="How NEXTBODY MCP connects health data to ChatGPT and Claude · NEXTBODY">
+<meta property="og:description" content="NEXTBODY MCP lets ChatGPT, Claude, Grok Bot or Muse read your own body data after you sign in. Meal logging is off by default. Advice is not a medical prescription.">
+<meta property="og:image" content="https://nextbody.ai/a/6F29WH9AWYRNR0EJPH5GHXDQB8-hd.webp">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/hero/hero.css">
+<link rel="stylesheet" href="/header.css">
+<link rel="stylesheet" href="/motion.css">
+<link rel="stylesheet" href="/blog.css">
+<script src="/nav.js"></script>
+<link rel="canonical" href="https://nextbody.ai/blog/nextbody-mcp/">
+<link rel="alternate" hreflang="en" href="https://nextbody.ai/blog/nextbody-mcp/">
+<link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/blog/nextbody-mcp/">
+<link rel="alternate" hreflang="x-default" href="https://nextbody.ai/blog/nextbody-mcp/">
+<meta property="og:url" content="https://nextbody.ai/blog/nextbody-mcp/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NEXTBODY">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://nextbody.ai/#org", "name": "NEXTBODY", "url": "https://nextbody.ai/", "logo": "https://nextbody.ai/favicon-192.png"}, {"@type": "WebSite", "@id": "https://nextbody.ai/#site", "name": "NEXTBODY", "url": "https://nextbody.ai/", "inLanguage": "en", "publisher": {"@id": "https://nextbody.ai/#org"}}, {"@type": "TechArticle", "headline": "How NEXTBODY MCP connects health data to ChatGPT and Claude", "description": "NEXTBODY MCP lets ChatGPT, Claude, Grok Bot or Muse read your own body data after you sign in. Meal logging is off by default. Advice is not a medical prescription.", "image": "https://nextbody.ai/a/6F29WH9AWYRNR0EJPH5GHXDQB8-hd.webp", "datePublished": "2026-10-26", "dateModified": "2026-10-26", "author": {"@id": "https://nextbody.ai/#org"}, "publisher": {"@id": "https://nextbody.ai/#org"}, "mainEntityOfPage": "https://nextbody.ai/blog/nextbody-mcp/", "url": "https://nextbody.ai/blog/nextbody-mcp/", "inLanguage": "en"}]}</script>
+</head>
+<body>
+<div class="nb-top lp" data-locale="en">
+  <header class="lp-nav">
+    <a class="lp-wordmark" href="/">
+      <span class="lp-wordmark-name">NEXTBODY</span>
+      <span class="lp-pip" aria-hidden="true"></span>
+    </a>
+    <div class="lp-nav-end nb-end">
+      <a class="nb-lang" href="/zh/blog/nextbody-mcp/" hreflang="zh-CN" lang="zh-CN" title="切换到中文">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+        <span>中文</span>
+      </a>
+      <span class="nb-rule" aria-hidden="true"></span>
+      <a class="nb-link" aria-current="page" href="/blog/">Blog</a>
+      <a class="nb-link" href="/app/">GET APP</a>
+      <a class="lp-pill nb-buy" href="/pricing/">BUY</a>
+    </div>
+  </header>
+</div>
+
+<main>
+  <article class="wrap">
+    <header class="head">
+      <p class="eyebrow">NEXTBODY MCP</p>
+      <h1>How NEXTBODY MCP connects health data to ChatGPT and Claude</h1>
+      <p class="meta">
+        <time datetime="2026-10-26">26 October 2026</time>
+        <a href="/blog/">All notes</a>
+      </p>
+      <p class="lede">A technical note on what the product site already says about MCP: who can connect, what they can read, and what they must not be used for.</p>
+    </header>
+
+    <p>HOOP is a screenless smart health band (8mm thin, 10g without the strap). The NEXTBODY App is where you read heart rate, sleep staging, training load and a 14-metric Body Scan. MCP is the optional bridge from that account to a third-party assistant.</p>
+
+    <h2>What MCP does</h2>
+    <p>NEXTBODY MCP is not a public dump of everyone&#x27;s data. Connecting a third-party AI assistant requires your own sign-in and authorisation. The assistant can only read data under your account.</p>
+    <p>Supported assistants named on the site today are ChatGPT, Claude, Grok Bot and Muse. Names are used to describe compatibility. They do not imply a partnership or endorsement, and the list may change with what the App actually supports.</p>
+    <ul>
+      <li>Once you authorise it, the assistant can read your own body data from the NEXTBODY App.</li>
+      <li>It cannot read another person&#x27;s account.</li>
+      <li>If you do not sign in and authorise the connection, MCP does not share that data.</li>
+    </ul>
+
+    <h2>Meal logging stays off until you turn it on</h2>
+    <p>Meal logging is off by default. After you turn it on, you can log a meal in one sentence. The assistant confirms the food, portion and time with you before saving. Calories, protein, carbs and fat are estimated from that description — not weighed or lab-tested — and daily targets are general guidance, not a nutrition prescription.</p>
+
+    <h2>What sits behind the connection</h2>
+    <p>MCP reads the same wellness record the App already shows. The band is screenless; the App is the display. Claims below are the ones already published on nextbody.ai.</p>
+    <ul>
+      <li>Readiness (0–100) starts from last night&#x27;s sleep and compares night HRV and resting heart rate with your personal baseline. It is an algorithm estimate for reference only.</li>
+      <li>Sleep score is out of 100, weighted across seven factors by HOOP&#x27;s own rules. It is not a clinical scale.</li>
+      <li>Training load (0–21) tallies heart-rate zones and activity every 5 minutes and does not replace a coach.</li>
+      <li>Body Scan uses bioimpedance plus the height, weight, age and sex in the App to estimate 14 body-composition metrics. Results are estimates, not a medical diagnosis. Do not use Body Scan with a pacemaker or other implanted electronic medical device.</li>
+    </ul>
+
+    <h2>Limits, privacy and tone</h2>
+    <p>Once data is sent to a third-party AI service, that service&#x27;s privacy policy applies, so decide for yourself before connecting. The assistant&#x27;s analysis and advice are for reference only — not medical, nutrition or training prescriptions. HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. If you feel unwell, see a doctor.</p>
+
+    <section class="faq" aria-label="From the product FAQ">
+      <h2>From the product FAQ</h2>
+      <details>
+        <summary>Is connecting ChatGPT, Claude or other AI (MCP) safe?</summary>
+        <p>You sign in and authorise it yourself, and the assistant can only read your own account&#x27;s data. Meal logging is off by default; when on, the AI confirms the food, portion and time with you before saving. Once data is sent to a third-party AI service, that service&#x27;s privacy policy applies, so decide for yourself. The assistant&#x27;s analysis and advice are for reference only, not medical, nutrition or training prescriptions.</p>
+      </details>
+      <details>
+        <summary>Is HOOP a medical device?</summary>
+        <p>No. Neither the HOOP band nor the NEXTBODY App is a medical device, and neither is meant to diagnose, treat, cure or prevent any disease. Heart rate, SpO2, HRV, skin temperature, sleep, body composition, readiness, training load and related tips are for everyday wellness only, not medical decisions. If you feel unwell, see a doctor.</p>
+      </details>
+      <details>
+        <summary>How accurate are food calories and macros?</summary>
+        <p>Calories, protein, carbs and fat are estimated from the food type and portion you describe, not weighed or lab-tested, so they may differ from what you actually ate. Daily targets are general guidance, not a nutrition prescription. If you&#x27;re pregnant, breastfeeding, have a chronic condition or special dietary needs, follow your doctor&#x27;s advice.</p>
+      </details>
+    </section>
+
+    <p class="note">This note restates published product-site copy. Phone screens on the marketing pages are real App screenshots with demo data; features follow the actual App and may change. Third-party names belong to their owners.</p>
+  </article>
+</main>
+<footer>
+  <div class="wide">
+    <div class="brand">NEXTBODY <i></i></div>
+    <p>HOOP and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.</p>
+    <p>© 2026 NEXTBODY</p>
+  </div>
+</footer>
+<script src="/motion.js" defer></script>
+</body>
+</html>

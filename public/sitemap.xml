@@ -29,6 +29,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/app/"/>
   </url>
   <url>
+    <loc>https://nextbody.ai/blog/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/blog/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/zh/blog/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/blog/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/blog/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/blog/nextbody-mcp/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/blog/nextbody-mcp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/blog/nextbody-mcp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/blog/nextbody-mcp/"/>
+  </url>
+  <url>
+    <loc>https://nextbody.ai/zh/blog/nextbody-mcp/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/blog/nextbody-mcp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://nextbody.ai/zh/blog/nextbody-mcp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nextbody.ai/blog/nextbody-mcp/"/>
+  </url>
+  <url>
     <loc>https://nextbody.ai/pricing/</loc>
     <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://nextbody.ai/pricing/"/>

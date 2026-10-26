@@ -139,23 +139,35 @@ def translate_pairs(markup, pairs):
 
 
 def header_for(lang, page):
-    """page is "" for the product page, "app/" or "pricing/"."""
+    """page is "" for the product page, "app/", "pricing/", or "blog/..."."""
     other = "en" if lang == "zh" else "zh"
     current = ' aria-current="page"'
+    prefix = LANGS[lang]["prefix"]
+    blog_link = ""
+    if page.startswith("blog/"):
+        label = "博客" if lang == "zh" else "Blog"
+        blog_link = f'<a class="nb-link"{current} href="{prefix}blog/">{label}</a>\n      '
     return open(os.path.join(ROOT, "header.html")).read().format(
         lang=lang,
-        home=LANGS[lang]["prefix"],
-        app=LANGS[lang]["prefix"] + "app/",
-        pricing=LANGS[lang]["prefix"] + "pricing/",
+        home=prefix,
+        app=prefix + "app/",
+        pricing=prefix + "pricing/",
         app_label="下载 App" if lang == "zh" else "GET APP",
         buy_label="购买" if lang == "zh" else "BUY",
         app_current=current if page == "app/" else "",
         buy_current=current if page == "pricing/" else "",
+        blog_link=blog_link,
         other_href=LANGS[other]["prefix"] + page,
         other_label="中文" if other == "zh" else "EN",
         other_hreflang="zh-CN" if other == "zh" else "en",
         other_title="切换到中文" if other == "zh" else "Switch to English",
     )
+
+
+def fill_i18n(markup, table, lang):
+    for key, value in table.items():
+        markup = markup.replace("{{" + key + "}}", html.escape(value[lang]))
+    return markup
 
 
 def write(path, markup):
@@ -192,9 +204,23 @@ def main():
         app_page = app if lang == "zh" else translate_pairs(app, pairs)
         write(prefix + "app/index.html", app_page.replace("<!--HEADER-->", header_for(lang, "app/")))
         price_page = open(os.path.join(ROOT, "pricing.html")).read()
-        for key, value in json.load(open(os.path.join(ROOT, "i18n", "pricing.json"))).items():
-            price_page = price_page.replace("{{" + key + "}}", html.escape(value[lang]))
+        price_page = fill_i18n(price_page, json.load(open(os.path.join(ROOT, "i18n", "pricing.json"))), lang)
         write(prefix + "pricing/index.html", price_page.replace("<!--HEADER-->", header_for(lang, "pricing/")))
+        blog_index = fill_i18n(
+            open(os.path.join(ROOT, "blog.html")).read(),
+            json.load(open(os.path.join(ROOT, "i18n", "blog.json"))),
+            lang,
+        )
+        write(prefix + "blog/index.html", blog_index.replace("<!--HEADER-->", header_for(lang, "blog/")))
+        blog_mcp = fill_i18n(
+            open(os.path.join(ROOT, "blog_mcp.html")).read(),
+            json.load(open(os.path.join(ROOT, "i18n", "blog_mcp.json"))),
+            lang,
+        )
+        write(
+            prefix + "blog/nextbody-mcp/index.html",
+            blog_mcp.replace("<!--HEADER-->", header_for(lang, "blog/nextbody-mcp/")),
+        )
     seo.write_sitemap(os.path.join(ROOT, "public"))
 
 
