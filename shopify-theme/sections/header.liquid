@@ -1,0 +1,72 @@
+{% liquid
+  if settings.buy_product != blank
+    assign buy_url = settings.buy_product.url
+  else
+    assign buy_url = routes.all_products_collection_url
+  endif
+  if pages.app != empty
+    assign app_url = pages.app.url
+  else
+    assign app_url = '/pages/app'
+  endif
+  if pages.notes != empty
+    assign notes_url = pages.notes.url
+  else
+    assign notes_url = '/pages/notes'
+  endif
+  assign locale_code = request.locale.iso_code | downcase
+  if locale_code contains 'zh'
+    assign nav_locale = 'zh'
+  else
+    assign nav_locale = 'en'
+  endif
+%}
+<div class="nb-top lp" data-locale="{{ nav_locale }}">
+  <header class="lp-nav">
+    <a class="lp-wordmark" href="{{ routes.root_url }}">
+      <span class="lp-wordmark-name">NEXTBODY</span>
+      <span class="lp-pip" aria-hidden="true"></span>
+    </a>
+    <div class="lp-nav-end nb-end">
+      {% if localization.available_languages.size > 1 %}
+        {% form 'localization', class: 'nb-lang-form' %}
+          {% for language in localization.available_languages %}
+            {% unless language.iso_code == localization.language.iso_code %}
+              <button class="nb-lang" type="submit" name="locale_code" value="{{ language.iso_code }}" lang="{{ language.iso_code }}" title="{{ 'header.switch_language' | t }}">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+                <span>{{ language.endonym_name }}</span>
+              </button>
+            {% endunless %}
+          {% endfor %}
+        {% endform %}
+        <span class="nb-rule" aria-hidden="true"></span>
+      {% endif %}
+      <a class="nb-link{% if template.suffix == 'notes' or template.name == 'blog' %} is-current{% endif %}" href="{{ notes_url }}"{% if template.suffix == 'notes' %} aria-current="page"{% endif %}>{{ 'header.notes' | t }}</a>
+      <a class="nb-link{% if template.suffix == 'app' %} is-current{% endif %}" href="{{ app_url }}"{% if template.suffix == 'app' %} aria-current="page"{% endif %}>{{ 'header.app' | t }}</a>
+      {% if cart.item_count > 0 %}
+        <a class="nb-link" href="{{ routes.cart_url }}">{{ 'header.cart' | t }} ({{ cart.item_count }})</a>
+      {% endif %}
+      <a class="lp-pill nb-buy{% if template.name == 'collection' or template.name == 'product' %} is-current{% endif %}" href="{{ buy_url }}"{% if template.name == 'collection' %} aria-current="page"{% endif %}>{{ 'header.buy' | t }}</a>
+    </div>
+  </header>
+</div>
+{% stylesheet %}
+.nb-lang-form {
+  display: inline-flex;
+  margin: 0;
+}
+.nb-lang-form .nb-lang {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [],
+  "presets": [{ "name": "Header" }]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{% liquid
+  assign catalog_products = settings.catalog_products
+  if catalog_products == blank or catalog_products.size == 0
+    if settings.catalog_collection != blank
+      assign catalog_products = settings.catalog_collection.products
+    else
+      assign catalog_products = collections.all.products
+    endif
+  endif
+%}
+<section class="nb-catalog wrap">
+  <header class="nb-catalog-head">
+    <p class="eyebrow">{{ 'catalog.eyebrow' | t }}</p>
+    <h1>{{ 'catalog.title' | t }}</h1>
+    <p class="lede">{{ 'catalog.lede' | t }}</p>
+  </header>
+
+  {% if catalog_products.size == 0 %}
+    <div class="nb-empty" role="status">
+      <h2>{{ 'catalog.empty_title' | t }}</h2>
+      <p>{{ 'catalog.empty_body' | t }}</p>
+    </div>
+  {% else %}
+    <div class="skus">
+      {% for product in catalog_products %}
+        {% render 'product-card', product: product, index: forloop.index0 %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="facts">
+    <div class="fact"><b>IP68</b><span>{{ 'catalog.fact_water' | t }}</span></div>
+    <div class="fact"><b>5{{ 'catalog.days' | t }}</b><span>{{ 'catalog.fact_battery' | t }}</span></div>
+    <div class="fact"><b>24h</b><span>{{ 'catalog.fact_monitor' | t }}</span></div>
+  </div>
+  <p class="note">{{ 'catalog.note' | t }}</p>
+  <p class="note">{{ 'catalog.disclaimer' | t }}</p>
+</section>
+
+{% schema %}
+{
+  "name": "Buy catalog",
+  "settings": [],
+  "presets": [{ "name": "Buy catalog" }]
+}
+{% endschema %}

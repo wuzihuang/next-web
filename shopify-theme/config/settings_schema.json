@@ -1,0 +1,35 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "NEXTBODY",
+    "theme_version": "1.0.0",
+    "theme_author": "NEXTBODY",
+    "theme_documentation_url": "https://nextbody.ai",
+    "theme_support_url": "https://nextbody.ai"
+  },
+  {
+    "name": "Catalog",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Pick live Shopify products. Leave these empty until products exist; the theme will not invent prices or stock."
+      },
+      {
+        "type": "product_list",
+        "id": "catalog_products",
+        "label": "Featured products",
+        "limit": 16
+      },
+      {
+        "type": "collection",
+        "id": "catalog_collection",
+        "label": "Fallback collection"
+      },
+      {
+        "type": "product",
+        "id": "buy_product",
+        "label": "Header BUY product"
+      }
+    ]
+  }
+]

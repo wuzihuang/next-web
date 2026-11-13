@@ -1,0 +1,88 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_image = current_variant.featured_image | default: product.featured_image
+  assign product_form_id = 'product-form-' | append: section.id
+%}
+<section class="nb-product wrap" data-product-section>
+  <div class="nb-product-grid">
+    <div class="nb-product-media">
+      {% if featured_image %}
+        {% assign image_alt = featured_image.alt | default: product.title %}
+        {{ featured_image | image_url: width: 1600 | image_tag: class: 'nb-product-image', alt: image_alt }}
+      {% endif %}
+    </div>
+    <div class="nb-product-info">
+      <p class="eyebrow">{{ product.vendor | default: shop.name }}</p>
+      <h1>{{ product.title }}</h1>
+      <p class="nb-product-price" data-product-price>
+        {% if current_variant %}
+          {{ current_variant.price | money }}
+          <small>{{ cart.currency.iso_code }}</small>
+        {% endif %}
+      </p>
+      {% if product.description != blank %}
+        <div class="nb-product-desc">{{ product.description }}</div>
+      {% endif %}
+
+      {% capture copy_add %}{{ 'product.add_to_cart' | t }}{% endcapture %}
+      {% capture copy_unavailable %}{{ 'product.unavailable' | t }}{% endcapture %}
+      {% capture copy_sold %}{{ 'product.sold_out' | t }}{% endcapture %}
+      {% capture copy_missing %}{{ 'product.no_variant' | t }}{% endcapture %}
+      {% capture copy_added %}{{ 'product.added' | t }}{% endcapture %}
+      {% form 'product', product, id: product_form_id, class: 'nb-product-form', data-product-form: 'true', data-copy-add: copy_add, data-copy-unavailable: copy_unavailable, data-copy-sold-out: copy_sold, data-copy-no-variant: copy_missing, data-copy-added: copy_added %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="nb-option">
+              <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ 'product.choose' | t: name: option.name }}</label>
+              <select
+                id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                data-option-index="{{ forloop.index0 }}"
+              >
+                {% for value in option.values %}
+                  <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>
+                    {{ value }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        {% endunless %}
+        <div class="nb-qty">
+          <label for="Quantity-{{ section.id }}">{{ 'product.quantity' | t }}</label>
+          <input id="Quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" step="1">
+        </div>
+        <p class="nb-product-status" data-product-status role="status">
+          {% if current_variant == blank %}
+            {{ 'product.no_variant' | t }}
+          {% elsif current_variant.available == false %}
+            {{ 'product.sold_out' | t }}
+          {% endif %}
+        </p>
+        <button
+          class="buy"
+          type="submit"
+          data-add
+          {% unless current_variant.available %}disabled{% endunless %}
+        >
+          {% if current_variant.available %}
+            {{ 'product.add_to_cart' | t }}
+          {% else %}
+            {{ 'product.unavailable' | t }}
+          {% endif %}
+        </button>
+        <a class="nb-view-cart" href="{{ routes.cart_url }}">{{ 'product.view_cart' | t }}</a>
+      {% endform %}
+    </div>
+  </div>
+  <script type="application/json" data-product-json>
+    {{ product | json }}
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

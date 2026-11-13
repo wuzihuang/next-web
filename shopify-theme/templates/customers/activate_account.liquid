@@ -1,0 +1,11 @@
+<section class="wrap nb-account">
+  <h1>{{ 'customers.activate' | t }}</h1>
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+    <label for="ActivatePassword">{{ 'customers.password' | t }}</label>
+    <input id="ActivatePassword" type="password" name="customer[password]" autocomplete="new-password">
+    <label for="ActivatePasswordConfirm">{{ 'customers.password' | t }}</label>
+    <input id="ActivatePasswordConfirm" type="password" name="customer[password_confirmation]" autocomplete="new-password">
+    <button class="buy" type="submit">{{ 'customers.submit' | t }}</button>
+  {% endform %}
+</section>

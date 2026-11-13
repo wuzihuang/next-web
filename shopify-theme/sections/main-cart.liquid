@@ -1,0 +1,49 @@
+<section class="nb-cart wrap">
+  <h1>{{ 'cart.title' | t }}</h1>
+  {% if cart.item_count == 0 %}
+    <p class="lede">{{ 'cart.empty' | t }}</p>
+    <a class="buy" href="{{ routes.all_products_collection_url }}">{{ 'cart.continue' | t }}</a>
+  {% else %}
+    {% form 'cart', cart, class: 'nb-cart-form', data-cart-form: 'true' %}
+      <ul class="nb-cart-lines">
+        {% for item in cart.items %}
+          <li class="nb-cart-line">
+            {% if item.image %}
+              {% assign line_alt = item.image.alt | default: item.product.title %}
+              {{ item.image | image_url: width: 240 | image_tag: alt: line_alt }}
+            {% endif %}
+            <div>
+              <a href="{{ item.url }}">{{ item.product.title }}</a>
+              {% unless item.product.has_only_default_variant %}
+                <p>{{ item.variant.title }}</p>
+              {% endunless %}
+              <p>{{ item.final_line_price | money }}</p>
+              <label>
+                {{ 'cart.quantity' | t }}
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" id="Updates_{{ item.key }}">
+              </label>
+              <a href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      <p class="nb-cart-subtotal">
+        {{ 'cart.subtotal' | t }}
+        {{ cart.total_price | money }}
+        <small>{{ cart.currency.iso_code }}</small>
+      </p>
+      <p class="note">{{ 'cart.note' | t }}</p>
+      <div class="nb-cart-actions">
+        <button class="buy" type="submit" name="update">{{ 'cart.update' | t }}</button>
+        <button class="buy" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+      </div>
+    {% endform %}
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

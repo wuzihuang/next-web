@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero": {
+      "type": "landing-hero",
+      "settings": {}
+    },
+    "artboards": {
+      "type": "landing-artboards",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "artboards"]
+}

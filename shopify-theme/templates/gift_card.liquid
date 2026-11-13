@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ 'gift_card.title' | t }} · {{ shop.name }}</title>
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body class="template-gift-card">
+  <main class="wrap nb-gift">
+    <h1>{{ shop.name }}</h1>
+    <p>{{ 'gift_card.title' | t }} {{ gift_card.balance | money }}</p>
+    {% if gift_card.enabled == false or gift_card.expired %}
+      {% if gift_card.enabled == false %}
+        <p>{{ 'gift_card.disabled' | t }}</p>
+      {% elsif gift_card.expired %}
+        {% assign expired_on = gift_card.expires_on | date: '%Y-%m-%d' %}
+        <p>{{ 'gift_card.expired' | t: date: expired_on }}</p>
+      {% endif %}
+    {% endif %}
+    <p class="nb-gift-code">{{ gift_card.code | format_code }}</p>
+    <p>{{ 'gift_card.redeem' | t }}</p>
+    {% if gift_card.pass_url %}
+      <p><a href="{{ gift_card.pass_url }}">Apple Wallet</a></p>
+    {% endif %}
+    <p><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a></p>
+  </main>
+</body>
+</html>

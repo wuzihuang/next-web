@@ -1,0 +1,69 @@
+{% liquid
+  assign locale_code = request.locale.iso_code | downcase
+  if locale_code contains 'zh'
+    assign loc = 'zh'
+  else
+    assign loc = 'en'
+  endif
+  assign suffix = template.suffix | default: ''
+  assign handle = page.handle | default: ''
+%}
+<div class="nb-static nb-static-{{ suffix | default: handle }}">
+  {% if suffix == 'app' %}
+    {% if loc == 'zh' %}
+      {% render 'page-app-zh' %}
+    {% else %}
+      {% render 'page-app-en' %}
+    {% endif %}
+  {% elsif suffix == 'notes' %}
+    {% if loc == 'zh' %}
+      {% render 'page-notes-zh' %}
+    {% else %}
+      {% render 'page-notes-en' %}
+    {% endif %}
+  {% elsif suffix == 'compare' or handle == 'screenless-fitness-band' %}
+    {% if loc == 'zh' %}
+      {% render 'page-compare-zh' %}
+    {% else %}
+      {% render 'page-compare-en' %}
+    {% endif %}
+  {% elsif suffix == 'note' or handle == 'nextbody-mcp' or handle == 'whoop-alternative' or handle == 'oura-alternative' %}
+    {% case handle %}
+      {% when 'whoop-alternative' %}
+        {% if loc == 'zh' %}
+          {% render 'page-note-whoop-zh' %}
+        {% else %}
+          {% render 'page-note-whoop-en' %}
+        {% endif %}
+      {% when 'oura-alternative' %}
+        {% if loc == 'zh' %}
+          {% render 'page-note-oura-zh' %}
+        {% else %}
+          {% render 'page-note-oura-en' %}
+        {% endif %}
+      {% when 'nextbody-mcp' %}
+        {% if loc == 'zh' %}
+          {% render 'page-note-mcp-zh' %}
+        {% else %}
+          {% render 'page-note-mcp-en' %}
+        {% endif %}
+      {% else %}
+        <article class="wide">
+          <h1>{{ page.title }}</h1>
+          {{ page.content }}
+        </article>
+    {% endcase %}
+  {% else %}
+    <article class="wide">
+      <h1>{{ page.title }}</h1>
+      {{ page.content }}
+    </article>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Static page",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,109 @@
+{
+  "general": {
+    "meta": {
+      "title": "NEXTBODY Hoop",
+      "description": "NEXTBODY Hoop 是无屏智能健康手环。心率、睡眠分期、训练负荷与 14 项身体扫描，在 NEXTBODY App 中查看。"
+    },
+    "home": "首页",
+    "accessibility": {
+      "skip": "跳到正文",
+      "cart": "购物车"
+    }
+  },
+  "header": {
+    "buy": "购买",
+    "app": "下载 App",
+    "notes": "说明",
+    "cart": "购物车",
+    "switch_language": "切换语言"
+  },
+  "footer": {
+    "disclaimer": "本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。",
+    "copyright": "© {{ year }} NEXTBODY"
+  },
+  "catalog": {
+    "eyebrow": "NEXTBODY HOOP",
+    "title": "选择你的 HOOP",
+    "lede": "配色、传感器与文案与产品站一致。价格与是否可售以 Shopify 中该变体的实时数据为准。",
+    "empty_title": "还没有上架商品",
+    "empty_body": "本店尚未向 Online Store 发布任何商品。店主发布商品后，这里会显示 Shopify 中的价格、变体与库存。本页不会编造 SKU 或金额。",
+    "view_product": "查看",
+    "from": "起",
+    "unavailable": "不可购买",
+    "sold_out": "售罄",
+    "fact_water": "防水",
+    "fact_battery": "续航",
+    "fact_monitor": "全天健康监测",
+    "days": " 天",
+    "note": "税费与运费在 Shopify 结账页计算。5 天续航为特定测试条件下的结果，实际续航因使用情况而异。",
+    "disclaimer": "本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。"
+  },
+  "product": {
+    "add_to_cart": "加入购物车",
+    "unavailable": "不可购买",
+    "sold_out": "售罄",
+    "quantity": "数量",
+    "choose": "选择{{ name }}",
+    "price": "价格",
+    "view_cart": "查看购物车",
+    "added": "已加入购物车",
+    "no_variant": "该组合不可购买。"
+  },
+  "cart": {
+    "title": "购物车",
+    "empty": "购物车是空的。",
+    "continue": "继续浏览",
+    "checkout": "结账",
+    "update": "更新",
+    "remove": "移除",
+    "subtotal": "小计",
+    "quantity": "数量",
+    "note": "税费、运费与应付总额由 Shopify 结账计算。本主题不会编造这些金额。"
+  },
+  "search": {
+    "title": "搜索",
+    "placeholder": "搜索",
+    "submit": "搜索",
+    "no_results": "没有与“{{ terms }}”匹配的结果。",
+    "empty": "请输入搜索词。"
+  },
+  "blog": {
+    "title": "说明"
+  },
+  "404": {
+    "code": "404",
+    "title": "页面不存在",
+    "lede": "这个地址不在本店。产品、目录和 App 页面仍可访问。",
+    "pricing": "选购"
+  },
+  "password": {
+    "title": "密码",
+    "lede": "本店目前需要密码才能查看。",
+    "submit": "进入",
+    "error": "密码不正确。"
+  },
+  "customers": {
+    "login": "登录",
+    "register": "创建账户",
+    "email": "邮箱",
+    "password": "密码",
+    "submit": "提交",
+    "forgot": "忘记密码",
+    "account": "账户",
+    "logout": "退出",
+    "orders": "订单",
+    "addresses": "地址",
+    "recover": "找回密码",
+    "reset": "重置密码",
+    "activate": "激活账户",
+    "first_name": "名",
+    "last_name": "姓",
+    "order": "订单 {{ name }}"
+  },
+  "gift_card": {
+    "title": "礼品卡",
+    "disabled": "已停用",
+    "expired": "已于 {{ date }} 过期",
+    "redeem": "结账时使用此代码"
+  }
+}

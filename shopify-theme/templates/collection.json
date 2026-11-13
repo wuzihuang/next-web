@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "buy-catalog",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {%- if page_title == blank -%}
+      {{ 'general.meta.title' | t }}
+    {%- else -%}
+      {{ page_title }}
+    {%- endif -%}
+    {%- unless page_title contains shop.name -%}
+      · {{ shop.name }}
+    {%- endunless -%}
+  </title>
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% else %}
+    <meta name="description" content="{{ 'general.meta.description' | t }}">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="{{ 'favicon.ico' | asset_url }}" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ 'favicon-192.png' | asset_url }}">
+  <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doto:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+  {{ 'hero.css' | asset_url | stylesheet_tag }}
+  {{ 'header.css' | asset_url | stylesheet_tag }}
+  {{ 'motion.css' | asset_url | stylesheet_tag }}
+  {{ 'mobile.css' | asset_url | stylesheet_tag }}
+  {{ 'blog.css' | asset_url | stylesheet_tag }}
+  {{ 'compare.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+  <script>
+    window.NB_ASSETS = {
+      heroVector: {{ 'hero-vector.svg' | asset_url | json }}
+    };
+    window.NB_ROUTES = {
+      root: {{ routes.root_url | json }},
+      catalog: {{ routes.all_products_collection_url | json }},
+      cart: {{ routes.cart_url | json }},
+      search: {{ routes.search_url | json }},
+      account: {{ routes.account_url | json }}
+    };
+    window.NB_MONEY_FORMAT = {{ shop.money_format | json }};
+  </script>
+  <script>
+    (function () {
+      window.addEventListener("pagereveal", function (event) {
+        if (!event.viewTransition) {
+          return;
+        }
+        var act = window.navigation && window.navigation.activation;
+        var src = (act && act.from && act.from.url) || document.referrer;
+        if (!src) {
+          return;
+        }
+        try {
+          if (new URL(src).origin !== location.origin) {
+            return;
+          }
+        } catch (err) {
+          return;
+        }
+        var from = new URL(src).pathname;
+        var to = location.pathname;
+        if (from === to) {
+          return;
+        }
+        var strip = function (path) {
+          return path.replace(/^\/[a-z]{2}(-[A-Z]{2})?(?=\/|$)/, "");
+        };
+        var type = "to-home";
+        if (strip(from) === strip(to)) {
+          type = "lang";
+        } else if (/\/pages\/app\/?$/.test(to)) {
+          type = "to-app";
+        } else if (/\/collections\//.test(to) || /\/products\//.test(to)) {
+          type = "to-buy";
+        }
+        event.viewTransition.types.add(type);
+      });
+    })();
+  </script>
+  <script type="module" src="{{ 'hero.js' | asset_url }}"></script>
+  <script type="module" src="{{ 'product-form.js' | asset_url }}"></script>
+  <script type="module" src="{{ 'cart.js' | asset_url }}"></script>
+</head>
+<body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.suffix }}{% endif %}">
+  <a class="skip-link" href="#MainContent">{{ 'general.accessibility.skip' | t }}</a>
+  {% sections 'header-group' %}
+  <div id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </div>
+  {% sections 'footer-group' %}
+  <script src="{{ 'mobile.js' | asset_url }}" defer></script>
+  <script src="{{ 'motion.js' | asset_url }}" defer></script>
+</body>
+</html>
