@@ -15,10 +15,7 @@ Renders a catalog tile from a live Shopify product.
 %}
 <article class="{{ card_class }}" {% if index %}data-index="{{ index }}"{% endif %}>
   <a class="shot" href="{{ product.url }}">
-    {% if product.featured_image %}
-      {% assign image_alt = product.featured_image.alt | default: product.title %}
-      {{ product.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: image_alt }}
-    {% endif %}
+    {% render 'product-image', product: product, variant: current_variant, img_class: 'nb-product-image', img_width: 1200 %}
   </a>
   <div class="info">
     <div>

@@ -1,18 +1,34 @@
-# NEXTBODY Online Store theme (unpublished export)
+# YEHETAO Online Store theme (unpublished export)
 
 Isolated Shopify Online Store 2.0 Liquid theme generated from this repo’s
-static NEXTBODY site (`public/`). It does **not** replace the Cloudflare
-Pages deployment. Do not publish it, change DNS, or place orders from this
-package — those steps stay with the store owner.
+static NextBody product site (`public/`). Store trademark is **YEHETAO**.
+The wearable model remains **NextBody Hoop**. It does **not** replace the
+Cloudflare Pages deployment. Do not publish it, change DNS, or place orders
+from this package — those steps stay with the store owner.
+
+## Brand vs model
+
+- Site-level wordmark, footer, password eyebrow, meta title prefix, and
+  copyright use **YEHETAO**.
+- Product/model copy stays **NextBody Hoop** / `NEXTBODY HOOP`. The
+  **NEXTBODY App** software name is unchanged.
+- This is not a blind replace of NextBody. Artboards copied from `public/`
+  still describe the hoop and app as they do on the product site.
+- Live Shopify product metadata (already corrected, not written by this
+  theme): title `YEHETAO NextBody Hoop`, vendor `YEHETAO`, handle
+  `yehetao-hoop`, official product photos on the product and its colour
+  variants.
 
 ## What this theme does
 
 - Keeps the existing landing artboards, hero, app/notes/compare pages, and
   bilingual copy from `public/` and `i18n/`.
 - Lists **real Shopify products** only. Featured products are a theme-editor
-  product list; if that list is empty it falls back to a chosen collection,
-  then to the Online Store catalog. Prices, availability and variant IDs come
-  from Shopify Liquid (`product` / `variant` / `cart`). Nothing is hardcoded.
+  product list defaulting to `yehetao-hoop`; collection fallback is
+  `frontpage`; header BUY targets `yehetao-hoop`. Prices, availability and
+  variant IDs come from Shopify Liquid. Nothing is hardcoded in commerce UI.
+- Renders Shopify product/variant media and a thumbnail gallery when
+  `product.media` exists. It does not upload or duplicate product photos.
 - Uses native `{% form 'product' %}` and `{% form 'cart' %}` so add-to-cart
   and checkout go through Shopify. Unavailable variants disable submit.
 - Ships `locales/en.default.json` (default) and `locales/zh.json`. The
@@ -21,12 +37,13 @@ package — those steps stay with the store owner.
 
 ## What it does not do
 
-- It does not invent products, SKUs, prices, or stock. YEHETAO currently has
-  an empty catalog; the buy page shows an empty state until products are
-  published to the Online Store channel.
+- It does not invent products, SKUs, prices, or stock, and it does not
+  upload images into Shopify product media.
 - It does not copy Amazon checkout, `$59.99`, or the separate Hydrogen
-  README `$99` amount into commerce UI.
-- It does not upload itself. Preview with an unpublished theme push.
+  README `$99` amount into commerce Liquid.
+- It does not mutate the live MAIN theme (`147573276756`). The Shopify
+  connector refuses writes to MAIN. Parent must push this package as a
+  **new unpublished theme**, preserving Catalog settings.
 
 ## Build
 
@@ -36,35 +53,31 @@ From the repository root (after `pnpm install`):
 pnpm run build
 ```
 
-This writes a complete theme to `shopify-theme/.build/theme` and a ZIP to
-`dist/nextbody-online-store-theme.zip`. Artboard HTML and images are copied
-from `public/` at build time so the static Cloudflare site stays untouched.
+This writes a complete theme to `shopify-theme/.build/theme`, a full ZIP to
+`dist/nextbody-online-store-theme.zip`, and an incremental overlay to
+`dist/yehetao-theme-update-files.zip` plus `dist/CHANGED_FILES.txt`.
+Artboard HTML and images are copied from `public/` at build time so the
+static Cloudflare site stays untouched.
 
-## Unpublished preview (store owner)
+## Unpublished preview (store owner / parent)
 
-With Shopify CLI logged into the YEHETAO shop (`ga5u0n-qv`):
+Theme `147573276756` is already MAIN, storefront password is off, and the
+shop is on the Basic plan. Do **not** `theme push` onto that id. Push this
+build as a new unpublished theme:
 
 ```bash
 shopify theme push --unpublished --path shopify-theme/.build/theme
 ```
 
-Use the preview link Shopify prints. Do **not** run `theme publish`, do not
-replace the live Horizon theme, and do not change `yehetao.com`.
+Keep Catalog settings on the new theme:
 
-Before the buy flow can complete, the owner still needs to:
+- `catalog_products`: `yehetao-hoop`
+- `catalog_collection`: `frontpage`
+- `buy_product`: `yehetao-hoop`
 
-1. Upgrade the trial plan if selling is required.
-2. Create HOOP (or other) products with real variants, prices and inventory.
-3. Publish those products to Online Store publication
-   `gid://shopify/Publication/185056526420`.
-4. Optionally assign them in **Theme settings → Catalog** (product list).
-5. Add a published Chinese locale if the `/zh` artboards should appear for
-   customers. The theme already contains `zh.json`.
-6. Create Online Store pages with these handles and templates if those
-   routes should resolve: `app` (`page.app`), `notes` (`page.notes`),
-   `nextbody-mcp` (`page.note`), `whoop-alternative` (`page.note`),
-   `oura-alternative` (`page.note`), `screenless-fitness-band`
-   (`page.compare`).
+Those values are in `config/settings_data.json`. Use the preview link
+Shopify prints. Do **not** run `theme publish`, do not replace MAIN, and
+do not change `yehetao.com`.
 
 ## Checks
 
@@ -76,5 +89,6 @@ pnpm run theme-check
 
 Theme check runs against the built tree. Cart and unavailable-variant
 behavior is covered by `shopify-theme/scripts/product-form.test.mjs` plus
-structural tests that require native product/cart forms and forbid hardcoded
+structural tests that require native product/cart forms, YEHETAO branding,
+NextBody Hoop model copy, Shopify media rendering, and no hardcoded
 commerce prices.

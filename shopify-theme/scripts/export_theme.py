@@ -263,14 +263,69 @@ def main() -> None:
         extract_page(zh_rel, dest + "-zh", snippets)
 
     zip_theme(BUILD, ZIP_PATH)
+    write_update_bundle()
     write_previews()
     print("Wrote", BUILD)
     print("Wrote", ZIP_PATH)
 
 
+UPDATE_FILES = (
+    "config/settings_data.json",
+    "config/settings_schema.json",
+    "locales/en.default.json",
+    "locales/zh.json",
+    "sections/header.liquid",
+    "sections/footer.liquid",
+    "sections/main-product.liquid",
+    "sections/main-password.liquid",
+    "sections/main-cart.liquid",
+    "snippets/product-card.liquid",
+    "snippets/product-image.liquid",
+    "assets/product-form.js",
+    "assets/theme.css",
+)
+
+UPDATE_ZIP = os.path.join(DIST, "yehetao-theme-update-files.zip")
+CHANGED_LIST = os.path.join(DIST, "CHANGED_FILES.txt")
+
+
+def write_update_bundle() -> None:
+    update_dir = os.path.join(DIST, "theme-update")
+    if os.path.exists(update_dir):
+        shutil.rmtree(update_dir)
+    lines = [
+        "# Changed deployable theme files for a NEW unpublished theme (parent push).",
+        "# Do not write to MAIN theme 147573276756. Connector refuses live MAIN writes.",
+        "# Preserve Theme settings: catalog_products=['yehetao-hoop'], catalog_collection=frontpage, buy_product=yehetao-hoop",
+        "# Do not upload product media; live yehetao-hoop already has official photos.",
+        "",
+    ]
+    for rel in UPDATE_FILES:
+        src = os.path.join(BUILD, rel)
+        dest = os.path.join(update_dir, rel)
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        shutil.copy2(src, dest)
+        lines.append(rel)
+    write_text(CHANGED_LIST, "\n".join(lines) + "\n")
+    shutil.copy2(CHANGED_LIST, os.path.join(update_dir, "CHANGED_FILES.txt"))
+    with zipfile.ZipFile(UPDATE_ZIP, "w", zipfile.ZIP_DEFLATED) as archive:
+        for rel in UPDATE_FILES:
+            archive.write(os.path.join(update_dir, rel), rel)
+        archive.write(CHANGED_LIST, "CHANGED_FILES.txt")
+    print("Wrote", UPDATE_ZIP)
+
+
 def write_previews() -> None:
     preview_dir = os.path.join(DIST, "previews")
     os.makedirs(preview_dir, exist_ok=True)
+    media_dir = os.path.join(preview_dir, "media")
+    os.makedirs(media_dir, exist_ok=True)
+    for name in (
+        "4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp",
+        "0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp",
+        "0NBKQTWEC0AE16VN67CS8NG2ST-hd.webp",
+    ):
+        shutil.copy2(os.path.join(PUBLIC, "a", name), os.path.join(media_dir, name))
     css_href = "../../shopify-theme/assets/theme.css"
     header_css = "../../public/header.css"
     hero_css = "../../public/hero/hero.css"
@@ -278,9 +333,21 @@ def write_previews() -> None:
 <title>{title}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@600;800&family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{hero}"><link rel="stylesheet" href="{header}"><link rel="stylesheet" href="{css}">
+<style>
+.nb-fixture-banner{{background:#eff65a;color:#070709;font:600 12px/1.4 Jost,sans-serif;letter-spacing:.08em;padding:8px 16px;text-align:center;text-transform:uppercase}}
+.nb-top.lp{{background:#000;color:#fff}}
+.lp-nav{{align-items:center;display:flex;justify-content:space-between;padding:16px clamp(20px,5vw,80px)}}
+.lp-wordmark{{align-items:center;display:flex;gap:8px;text-decoration:none}}
+.lp-wordmark-name{{color:#fff;font-family:"Inter Tight",system-ui,sans-serif;font-size:18px;font-weight:700;letter-spacing:.16em;line-height:22px}}
+.lp-pip{{background:#eff65a;height:6px;width:6px}}
+.lp-nav-end{{align-items:center;display:flex;gap:16px}}
+.nb-link{{color:#fff;font-size:13px;letter-spacing:.12em;text-decoration:none}}
+.lp-pill.nb-buy{{background:#eff65a;border-radius:999px;color:#070709;padding:10px 18px;text-decoration:none}}
+</style>
 </head><body class="{body}">
+<p class="nb-fixture-banner">Labeled fixture — not a live Shopify deployment</p>
 <div class="nb-top lp" data-locale="en"><header class="lp-nav">
-<a class="lp-wordmark" href="#"><span class="lp-wordmark-name">NEXTBODY</span><span class="lp-pip" aria-hidden="true"></span></a>
+<a class="lp-wordmark" href="#"><span class="lp-wordmark-name">YEHETAO</span><span class="lp-pip" aria-hidden="true"></span></a>
 <div class="lp-nav-end nb-end"><a class="nb-link" href="#">GET APP</a><a class="lp-pill nb-buy" href="#">BUY</a></div>
 </header></div>
 {main}
@@ -296,7 +363,7 @@ def write_previews() -> None:
 <p class="note">Tax and shipping are calculated in Shopify checkout. Five-day battery life comes from specific test conditions; real battery life varies with use.</p>
 </section>"""
     unavailable = """<section class="nb-product wrap"><div class="nb-product-grid">
-<div class="nb-product-media" style="min-height:320px;background:#f1f0ec"></div>
+<div class="nb-product-media"><img class="nb-product-image" src="media/0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp" alt="NextBody Hoop Charcoal Black" width="1200" height="900"></div>
 <div class="nb-product-info"><p class="eyebrow">PREVIEW FIXTURE</p>
 <h1>Unavailable variant</h1>
 <p class="nb-product-price">— <small>USD</small></p>
@@ -311,10 +378,50 @@ def write_previews() -> None:
 <a class="buy" href="#">Continue shopping</a>
 <p class="note">Shopify checkout calculates tax, shipping and the payable total. This theme does not invent those amounts.</p>
 </section>"""
+    product = """<section class="nb-product wrap" data-product-section>
+<div class="nb-product-grid">
+<div class="nb-product-media">
+<img class="nb-product-image" data-product-image src="media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp" alt="YEHETAO NextBody Hoop — Cloud White · Mist Weave" width="1200" height="900">
+<ul class="nb-product-thumbs">
+<li><button type="button" class="nb-product-thumb"><img src="media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp" alt="" width="240" height="180"></button></li>
+<li><button type="button" class="nb-product-thumb"><img src="media/0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp" alt="" width="240" height="180"></button></li>
+<li><button type="button" class="nb-product-thumb"><img src="media/0NBKQTWEC0AE16VN67CS8NG2ST-hd.webp" alt="" width="240" height="180"></button></li>
+</ul>
+</div>
+<div class="nb-product-info">
+<p class="eyebrow">YEHETAO</p>
+<h1>YEHETAO NextBody Hoop</h1>
+<p class="nb-product-price">$59.99 <small>USD</small></p>
+<div class="nb-product-desc">
+<p>Ultra-thin, ultra-light Pro fitness and health tracking. Activity and sleep tracking. Two colours. The same sensors and AI.</p>
+</div>
+<form class="nb-product-form">
+<div class="nb-option"><label>Choose Colour</label>
+<select><option selected>Cloud White · Mist Weave</option><option>Charcoal Black</option></select>
+</div>
+<div class="nb-qty"><label>Quantity</label><input type="number" value="1" min="1"></div>
+<button class="buy" type="button">Add to cart</button>
+<a class="nb-view-cart" href="#">View cart</a>
+</form>
+<p class="note">Labeled fixture using current yehetao-hoop sample data (vendor YEHETAO, handle yehetao-hoop, title YEHETAO NextBody Hoop). Not a live Shopify deployment. Live photos come from product metadata; this page only illustrates brand/model/image layout.</p>
+</div></div></section>"""
+    catalog = """<section class="nb-catalog wrap"><header class="nb-catalog-head"><p class="eyebrow">NEXTBODY HOOP</p>
+<h1>Choose your HOOP</h1>
+<p class="lede">Store brand YEHETAO. Wearable model NextBody Hoop. Prices come from Shopify when live.</p></header>
+<div class="skus">
+<article class="sku"><a class="shot" href="#"><img class="nb-product-image" src="media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp" alt="NextBody Hoop Cloud White" width="1200" height="900"></a>
+<div class="info"><div><h2 class="name">YEHETAO NextBody Hoop</h2><p class="price">From $59.99 <small>USD</small></p><p class="strap">Cloud White · Mist Weave</p></div><a class="buy" href="#">View</a></div></article>
+<article class="sku dark"><a class="shot" href="#"><img class="nb-product-image" src="media/0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp" alt="NextBody Hoop Charcoal Black" width="1200" height="900"></a>
+<div class="info"><div><h2 class="name">YEHETAO NextBody Hoop</h2><p class="price">From $59.99 <small>USD</small></p><p class="strap">Charcoal Black</p></div><a class="buy" href="#">View</a></div></article>
+</div>
+<p class="note">Labeled fixture. Authentic same-product photos from the product site. Not a live Shopify deployment.</p>
+</section>"""
     for name, title, body, main in (
         ("empty-catalog.html", "Empty catalog", "template-collection", empty),
         ("unavailable-variant.html", "Unavailable variant", "template-product", unavailable),
         ("empty-cart.html", "Cart", "template-cart", cart),
+        ("yehetao-product-fixture.html", "YEHETAO NextBody Hoop", "template-product", product),
+        ("yehetao-catalog-fixture.html", "YEHETAO catalog", "template-collection", catalog),
     ):
         write_text(
             os.path.join(preview_dir, name),

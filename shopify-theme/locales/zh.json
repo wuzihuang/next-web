@@ -1,8 +1,10 @@
 {
   "general": {
+    "brand": "YEHETAO",
+    "model": "NextBody Hoop",
     "meta": {
-      "title": "NEXTBODY Hoop",
-      "description": "NEXTBODY Hoop 是无屏智能健康手环。心率、睡眠分期、训练负荷与 14 项身体扫描，在 NEXTBODY App 中查看。"
+      "title": "YEHETAO · NextBody Hoop",
+      "description": "YEHETAO 销售 NextBody Hoop 无屏智能健康手环。心率、睡眠分期、训练负荷与 14 项身体扫描，在 NEXTBODY App 中查看。"
     },
     "home": "首页",
     "accessibility": {
@@ -19,7 +21,7 @@
   },
   "footer": {
     "disclaimer": "本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。",
-    "copyright": "© {{ year }} NEXTBODY"
+    "copyright": "© {{ year }} YEHETAO"
   },
   "catalog": {
     "eyebrow": "NEXTBODY HOOP",

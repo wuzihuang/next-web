@@ -1,0 +1,55 @@
+{% doc %}
+Renders Shopify product/variant media when present. Empty media keeps a
+non-blank well; live product photos come from Shopify product metadata.
+@param {product} product - Shopify product
+@param {variant} [variant] - Selected variant
+@param {string} [img_class] - Class for the img
+@param {number} [img_width] - Image width for Shopify CDN
+@example
+{% render 'product-image', product: product, variant: current_variant %}
+{% enddoc %}
+{% liquid
+  assign current = variant | default: product.selected_or_first_available_variant
+  assign media_image = false
+  if current != blank and current.featured_image != blank
+    assign media_image = current.featured_image
+  elsif product.featured_image != blank
+    assign media_image = product.featured_image
+  endif
+  if media_image == blank
+    for item in product.media
+      if item.media_type == 'image'
+        if item.preview_image != blank
+          assign media_image = item.preview_image
+        else
+          assign media_image = item
+        endif
+        break
+      endif
+    endfor
+  endif
+  assign alt_text = product.title | default: 'NextBody Hoop'
+  if media_image != blank and media_image.alt != blank
+    assign alt_text = media_image.alt
+  endif
+  assign css_class = img_class | default: 'nb-product-image'
+  assign cdn_width = img_width | default: 1600
+%}
+{% if media_image != blank %}
+  <img
+    class="{{ css_class }}"
+    data-product-image
+    src="{{ media_image | image_url: width: cdn_width }}"
+    width="{{ media_image.width | default: cdn_width }}"
+    height="{{ media_image.height | default: 1200 }}"
+    alt="{{ alt_text | escape }}"
+    loading="lazy"
+  >
+{% else %}
+  <div
+    class="{{ css_class }} nb-product-image-empty"
+    data-product-image-empty
+    role="img"
+    aria-label="{{ alt_text | escape }}"
+  ></div>
+{% endif %}

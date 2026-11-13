@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
   cartStateForVariant,
+  featuredImageUrl,
   findVariant,
   formatMoney,
   readSelectedOptions,
@@ -62,5 +63,27 @@ describe("readSelectedOptions", () => {
       },
     };
     assert.deepEqual(readSelectedOptions(form), ["Cloud White", "Mist Weave"]);
+  });
+});
+
+describe("featuredImageUrl", () => {
+  it("prefers the variant featured image when Shopify media exists", () => {
+    const url = featuredImageUrl(
+      { featured_image: { src: "https://cdn.example/white.jpg" } },
+      { featured_image: "https://cdn.example/product.jpg" }
+    );
+    assert.equal(url, "https://cdn.example/white.jpg");
+  });
+
+  it("falls through to product media when the variant has none", () => {
+    const url = featuredImageUrl(
+      { featured_image: null },
+      { featured_image: null, images: ["https://cdn.example/product.jpg"] }
+    );
+    assert.equal(url, "https://cdn.example/product.jpg");
+  });
+
+  it("returns null when Shopify media is empty", () => {
+    assert.equal(featuredImageUrl({ featured_image: null }, { images: [], media: [] }), null);
   });
 });

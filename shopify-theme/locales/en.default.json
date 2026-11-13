@@ -1,8 +1,10 @@
 {
   "general": {
+    "brand": "YEHETAO",
+    "model": "NextBody Hoop",
     "meta": {
-      "title": "NEXTBODY Hoop",
-      "description": "NEXTBODY Hoop is a screenless smart health band. Heart rate, sleep staging, training load and a 14-metric Body Scan, read in the NEXTBODY App."
+      "title": "YEHETAO · NextBody Hoop",
+      "description": "YEHETAO sells NextBody Hoop, a screenless smart health band. Heart rate, sleep staging, training load and a 14-metric Body Scan, read in the NEXTBODY App."
     },
     "home": "Home",
     "accessibility": {
@@ -19,7 +21,7 @@
   },
   "footer": {
     "disclaimer": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
-    "copyright": "© {{ year }} NEXTBODY"
+    "copyright": "© {{ year }} YEHETAO"
   },
   "catalog": {
     "eyebrow": "NEXTBODY HOOP",

@@ -1,14 +1,34 @@
 {% liquid
   assign current_variant = product.selected_or_first_available_variant
-  assign featured_image = current_variant.featured_image | default: product.featured_image
   assign product_form_id = 'product-form-' | append: section.id
 %}
 <section class="nb-product wrap" data-product-section>
   <div class="nb-product-grid">
     <div class="nb-product-media">
-      {% if featured_image %}
-        {% assign image_alt = featured_image.alt | default: product.title %}
-        {{ featured_image | image_url: width: 1600 | image_tag: class: 'nb-product-image', alt: image_alt }}
+      {% render 'product-image', product: product, variant: current_variant, img_class: 'nb-product-image', img_width: 1600 %}
+      {% if product.media.size > 1 %}
+        <ul class="nb-product-thumbs">
+          {% for media in product.media %}
+            {% if media.media_type == 'image' %}
+              <li>
+                <button
+                  type="button"
+                  class="nb-product-thumb"
+                  data-product-thumb
+                  data-src="{{ media | image_url: width: 1600 }}"
+                >
+                  <img
+                    src="{{ media | image_url: width: 240 }}"
+                    alt="{{ media.alt | default: product.title | escape }}"
+                    width="{{ media.preview_image.width | default: 240 }}"
+                    height="{{ media.preview_image.height | default: 180 }}"
+                    loading="lazy"
+                  >
+                </button>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
       {% endif %}
     </div>
     <div class="nb-product-info">

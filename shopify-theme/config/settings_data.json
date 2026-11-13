@@ -1,7 +1,7 @@
 {
   "current": {
-    "catalog_products": [],
-    "catalog_collection": "",
-    "buy_product": ""
+    "catalog_products": ["yehetao-hoop"],
+    "catalog_collection": "frontpage",
+    "buy_product": "yehetao-hoop"
   }
 }
