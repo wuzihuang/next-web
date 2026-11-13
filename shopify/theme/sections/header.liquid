@@ -1,0 +1,48 @@
+{%- liquid
+  assign code = request.locale.iso_code | downcase
+  if code == 'zh-cn' or code == 'zh'
+    assign locale_attr = 'zh'
+  else
+    assign locale_attr = 'en'
+  endif
+  capture buy_href
+    render 'buy-url'
+  endcapture
+  capture app_href
+    render 'app-url'
+  endcapture
+  capture journal_href
+    render 'journal-url'
+  endcapture
+  assign buy_href = buy_href | strip
+  assign app_href = app_href | strip
+  assign journal_href = journal_href | strip
+-%}
+<a class="skip-link" href="#MainContent">{{ 'general.accessibility.skip' | t }}</a>
+<div class="nb-top lp" data-locale="{{ locale_attr }}">
+  <header class="lp-nav">
+    <a class="lp-wordmark" href="{{ routes.root_url }}">
+      <span class="lp-wordmark-name">{{ 'header.home' | t }}</span>
+      <span class="lp-pip" aria-hidden="true"></span>
+    </a>
+    <div class="lp-nav-end nb-end">
+      {% render 'language-switch' %}
+      <span class="nb-rule" aria-hidden="true"></span>
+      {% if template.name == 'blog' or template.name == 'article' or template.suffix == 'journal' or template.suffix == 'nextbody-mcp' or template.suffix == 'whoop-alternative' or template.suffix == 'oura-alternative' or template.suffix == 'compare' %}
+        <a class="nb-link" aria-current="page" href="{{ journal_href }}">{{ 'header.blog' | t }}</a>
+      {% endif %}
+      <a class="nb-link"{% if template.suffix == 'app' %} aria-current="page"{% endif %} href="{{ app_href }}">{{ 'header.app' | t }}</a>
+      <a class="lp-pill nb-buy"{% if template.name == 'collection' and template.suffix == blank %} aria-current="page"{% endif %} href="{{ buy_href }}">{{ 'header.buy' | t }}</a>
+      <a class="nb-cart" href="{{ routes.cart_url }}" aria-label="{{ 'general.accessibility.cart' | t: count: cart.item_count }}">
+        <span class="nb-cart-label">{{ 'header.cart' | t }}</span>
+        <span class="nb-cart-count" data-nb-cart-count>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </header>
+</div>
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}

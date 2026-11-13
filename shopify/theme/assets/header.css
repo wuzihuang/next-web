@@ -1,0 +1,75 @@
+/* Header actions, in order of weight: a quiet language toggle (globe plus
+   the language you would switch to), the app as a text link, and buying the
+   band as the one solid button. */
+.nb-end {
+  align-items: center;
+  display: flex;
+  gap: 28px;
+}
+.nb-lang,
+.nb-link {
+  color: rgb(255 255 255 / 55%);
+  font-family: var(--lp-body, 'Jost', sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+}
+.nb-lang {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+.nb-lang svg {
+  height: 14px;
+  width: 14px;
+}
+.nb-link {
+  color: rgb(255 255 255 / 80%);
+}
+.lp[data-locale='zh'] .nb-link,
+.nb-lang span:lang(zh-CN) {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.nb-lang:hover,
+.nb-link:hover,
+.nb-link[aria-current] {
+  color: #fff;
+}
+.nb-rule {
+  background: rgb(255 255 255 / 22%);
+  height: 14px;
+  margin: 0 -8px;
+  width: 1px;
+}
+.lp .nb-buy {
+  padding: 10px 22px;
+  transition: background 0.2s;
+}
+.lp[data-locale='zh'] .nb-buy {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.lp .nb-buy:hover,
+.lp .nb-buy[aria-current] {
+  background: var(--lp-lime, #eff65a);
+}
+@media (max-width: 720px) {
+  .nb-end {
+    gap: 16px;
+  }
+  .nb-rule {
+    display: none;
+  }
+  .lp .nb-buy {
+    padding: 9px 16px;
+  }
+}
+@media (max-width: 360px) {
+  .nb-lang span {
+    display: none;
+  }
+}

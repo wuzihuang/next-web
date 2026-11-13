@@ -1,0 +1,38 @@
+{%- liquid
+  assign zh_language = nil
+  assign en_language = nil
+  for language in localization.available_languages
+    assign code = language.iso_code | downcase
+    if code == 'zh-cn' or code == 'zh'
+      assign zh_language = language
+    endif
+    if code == 'en' or code == 'en-us'
+      assign en_language = language
+    endif
+  endfor
+  assign current = request.locale.iso_code | downcase
+  assign is_zh = false
+  if current == 'zh-cn' or current == 'zh'
+    assign is_zh = true
+  endif
+-%}
+{% if is_zh %}
+  {% if en_language != blank %}
+    <a class="nb-lang" href="{{ en_language.root_url }}" hreflang="{{ en_language.iso_code }}" lang="{{ en_language.iso_code }}" title="{{ 'header.lang_to_en' | t }}">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+      <span>{{ 'header.lang_to_en' | t }}</span>
+    </a>
+  {% endif %}
+{% else %}
+  {% if zh_language != blank %}
+    <a class="nb-lang" href="{{ zh_language.root_url }}" hreflang="{{ zh_language.iso_code }}" lang="{{ zh_language.iso_code }}" title="{{ 'header.lang_to_zh' | t }}">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+      <span>{{ 'header.lang_to_zh' | t }}</span>
+    </a>
+  {% else %}
+    <span class="nb-lang is-disabled" title="{{ 'header.lang_zh_unavailable' | t }}">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M1.6 8h12.8M8 1.6c1.8 1.9 2.7 4 2.7 6.4S9.8 12.5 8 14.4M8 1.6C6.2 3.5 5.3 5.6 5.3 8s.9 4.5 2.7 6.4"/></svg>
+      <span>{{ 'header.lang_to_zh' | t }}</span>
+    </span>
+  {% endif %}
+{% endif %}

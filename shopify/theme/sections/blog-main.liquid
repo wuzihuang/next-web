@@ -1,0 +1,30 @@
+{{ 'blog.css' | asset_url | stylesheet_tag }}
+<div class="wide">
+  <section class="head">
+    <p class="eyebrow">NEXTBODY</p>
+    <h1>{{ blog.title | escape }}</h1>
+  </section>
+  {% if blog.articles_count == 0 %}
+    {% if request.locale.iso_code contains 'zh' %}
+      {% render 'page-journal-zh' %}
+    {% else %}
+      {% render 'page-journal-en' %}
+    {% endif %}
+  {% else %}
+    <div class="cards">
+      {% for article in blog.articles %}
+        <a class="card" href="{{ article.url }}">
+          <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d %b %Y' }}</time>
+          <h2>{{ article.title | escape }}</h2>
+          <p>{{ article.excerpt_or_content | strip_html | truncate: 160 }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Blog",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{% if product != blank and variant != blank and variant.id != blank %}
+  {% form 'product', product, id: form_id, class: 'nb-product-form', data-type: 'add-to-cart-form' %}
+    <input type="hidden" name="id" value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+    <label class="visually-hidden" for="{{ form_id }}-qty">{{ 'products.quantity' | t }}</label>
+    <input id="{{ form_id }}-qty" class="visually-hidden" type="number" name="quantity" value="1" min="1" {% unless variant.available %}disabled{% endunless %}>
+    {% if variant.available %}
+      <button class="buy{% if tone == 'dark' %} buy-lime{% endif %}" type="submit" name="add">
+        {{ 'products.add_to_cart' | t }}
+        {% render 'icon-arrow' %}
+      </button>
+    {% else %}
+      <button class="buy is-disabled" type="button" disabled>
+        {{ 'products.sold_out' | t }}
+      </button>
+    {% endif %}
+  {% endform %}
+{% else %}
+  <button class="buy is-disabled" type="button" disabled>
+    {{ 'products.coming_soon' | t }}
+  </button>
+{% endif %}

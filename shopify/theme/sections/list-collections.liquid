@@ -1,0 +1,18 @@
+<div class="wrap">
+  <h1>{{ 'header.buy' | t }}</h1>
+  <ul class="nb-collection-list">
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' and collection.products_count == 0 %}
+        <li>
+          <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+        </li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Collection list",
+  "settings": []
+}
+{% endschema %}

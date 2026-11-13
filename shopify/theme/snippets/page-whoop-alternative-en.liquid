@@ -1,0 +1,18 @@
+<article class="wrap">
+    <header class="head">
+      <p class="eyebrow">Category note</p>
+      <h1>A screenless band that publishes a hardware price</h1>
+      <p class="meta">
+        <time datetime="2026-10-26">26 October 2026</time>
+        <a href="{% if blogs.news.handle != blank %}{{ blogs.news.url }}{% elsif pages.journal.url != blank %}{{ pages.journal.url }}{% else %}{{ routes.all_products_collection_url }}?view=journal{% endif %}">All notes</a>
+      </p>
+      <p class="lede">A short pointer for “WHOOP alternative / no subscription” searches. The citable fact table lives on the compare hub.</p>
+    </header>
+
+    <p>WHOOP is the usual name for a screenless wrist band sold around strain, recovery and sleep, with membership as the commercial model. That is a descriptive use of the name, not a review of WHOOP’s current plan or price — this site does not republish other brands’ prices.</p>
+    <p>NEXTBODY Hoop is also screenless. The live pricing page lists Cloud White and Charcoal Black at $59.99. That is a hardware price, not a claim that every future App feature will stay free of a subscription.</p>
+    <p>HOOP’s readiness (0–100) and training load (0–21) are HOOP’s own algorithm estimates. They are not WHOOP Strain or Recovery. Sleep, Body Scan and MCP each have limits already written on the product site.</p>
+    <p>If you also compared a ring such as Oura, or a screen-on watch, use the hub. It covers those tradeoffs in one place and footnotes every HOOP number to the homepage, FAQ or pricing page.</p>
+
+    <p class="note">WHOOP and other marks belong to their owners. Mention is descriptive only. <a href="{% if pages['screenless-fitness-band'].url != blank %}{{ pages['screenless-fitness-band'].url }}{% else %}{{ routes.all_products_collection_url }}?view=compare{% endif %}">Open the screenless-band compare hub.</a></p>
+  </article>

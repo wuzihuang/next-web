@@ -1,0 +1,53 @@
+{%- liquid
+  assign key = section.settings.page_key
+  assign zh = false
+  if request.locale.iso_code contains 'zh'
+    assign zh = true
+  endif
+-%}
+{% if key == 'app' %}
+  {{ 'nb-app.css' | asset_url | stylesheet_tag }}
+{% elsif key == 'compare' %}
+  {{ 'compare.css' | asset_url | stylesheet_tag }}
+{% else %}
+  {{ 'blog.css' | asset_url | stylesheet_tag }}
+{% endif %}
+<div class="nb-editorial" data-page="{{ key }}">
+  {% case key %}
+    {% when 'app' %}
+      {% if zh %}{% render 'page-app-zh' %}{% else %}{% render 'page-app-en' %}{% endif %}
+    {% when 'journal' %}
+      {% if zh %}{% render 'page-journal-zh' %}{% else %}{% render 'page-journal-en' %}{% endif %}
+    {% when 'nextbody-mcp' %}
+      {% if zh %}{% render 'page-nextbody-mcp-zh' %}{% else %}{% render 'page-nextbody-mcp-en' %}{% endif %}
+    {% when 'whoop-alternative' %}
+      {% if zh %}{% render 'page-whoop-alternative-zh' %}{% else %}{% render 'page-whoop-alternative-en' %}{% endif %}
+    {% when 'oura-alternative' %}
+      {% if zh %}{% render 'page-oura-alternative-zh' %}{% else %}{% render 'page-oura-alternative-en' %}{% endif %}
+    {% when 'compare' %}
+      {% if zh %}{% render 'page-compare-zh' %}{% else %}{% render 'page-compare-en' %}{% endif %}
+    {% else %}
+      <div class="wrap"><h1>{{ page.title | default: shop.name | escape }}</h1></div>
+  {% endcase %}
+</div>
+{% schema %}
+{
+  "name": "Editorial page",
+  "settings": [
+    {
+      "type": "select",
+      "id": "page_key",
+      "label": "Page",
+      "options": [
+        { "value": "app", "label": "App" },
+        { "value": "journal", "label": "Notes" },
+        { "value": "nextbody-mcp", "label": "MCP note" },
+        { "value": "whoop-alternative", "label": "WHOOP note" },
+        { "value": "oura-alternative", "label": "Oura note" },
+        { "value": "compare", "label": "Compare hub" }
+      ],
+      "default": "app"
+    }
+  ]
+}
+{% endschema %}

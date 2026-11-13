@@ -1,0 +1,12 @@
+<div class="nb-account wrap">
+  <h1>{{ 'customers.addresses' | t }}</h1>
+  {% for address in customer.addresses %}
+    <article>
+      {{ address | format_address }}
+    </article>
+  {% endfor %}
+  {% form 'customer_address', customer.new_address %}
+    {{ form.errors | default_errors }}
+    <button class="buy" type="submit">{{ 'customers.submit' | t }}</button>
+  {% endform %}
+</div>

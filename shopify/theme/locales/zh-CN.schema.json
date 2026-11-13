@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "catalog": {
+      "name": "商品目录",
+      "help": "把主题指向真实的 Shopify 商品。价格、库存和结账一律来自这些商品。商品尚未创建时请留空，购买按钮会保持不可用。",
+      "hoop_product": "HOOP 商品（含白/黑色款式）",
+      "white_product": "云白商品（可选独立商品）",
+      "black_product": "炭黑商品（可选独立商品）",
+      "hoop_handle": "备用商品 handle",
+      "white_sku": "白色款 SKU",
+      "black_sku": "黑色款 SKU",
+      "shop_collection": "购买按钮对应的商品集合"
+    },
+    "social": {
+      "name": "社交",
+      "twitter": "X / Twitter 链接",
+      "facebook": "Facebook 链接",
+      "instagram": "Instagram 链接"
+    }
+  }
+}

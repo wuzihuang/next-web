@@ -1,0 +1,13 @@
+{
+  "name": "nextbody-shopify-theme",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 scripts/build_theme.py",
+    "export": "python3 scripts/build_theme.py",
+    "lint": "python3 scripts/build_theme.py && shopify theme check --path theme"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^5.0.1"
+  }
+}

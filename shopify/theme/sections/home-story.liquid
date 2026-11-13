@@ -1,0 +1,19 @@
+<div id="product" class="nb-story-main" hidden>
+  <h1 class="visually-hidden">{{ 'general.meta.home_title' | t }}</h1>
+  {% if request.locale.iso_code contains 'zh' %}
+    {% render 'home-story-zh' %}
+  {% else %}
+    {% render 'home-story-en' %}
+  {% endif %}
+</div>
+<script>
+  if (location.hash && document.getElementById(location.hash.slice(1))) {
+    document.getElementById('product').hidden = false;
+  }
+</script>
+{% schema %}
+{
+  "name": "Home story",
+  "settings": []
+}
+{% endschema %}

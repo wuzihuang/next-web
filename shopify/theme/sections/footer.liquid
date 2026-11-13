@@ -1,0 +1,14 @@
+<footer class="nb-footer">
+  <div class="wrap">
+    <div class="brand">NEXTBODY <i></i></div>
+    <p>{{ 'footer.disclaimer' | t }}</p>
+    {%- assign footer_year = 'now' | date: '%Y' -%}
+    <p>{{ 'footer.copyright' | t: year: footer_year }}</p>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

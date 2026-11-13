@@ -1,0 +1,22 @@
+{{ 'nb-404.css' | asset_url | stylesheet_tag }}
+<div class="nb-404">
+  <div class="panel">
+    <p class="code">{{ '404.code' | t }}</p>
+    <h1>{{ '404.title' | t }}</h1>
+    <p class="lede">{{ '404.lede' | t }}</p>
+    <nav>
+      <a href="{{ routes.root_url }}">{{ '404.home' | t }}</a>
+      {% if settings.shop_collection != blank %}
+        <a href="{{ settings.shop_collection.url }}">{{ '404.shop' | t }}</a>
+      {% else %}
+        <a href="{{ routes.all_products_collection_url }}">{{ '404.shop' | t }}</a>
+      {% endif %}
+    </nav>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "404",
+  "settings": []
+}
+{% endschema %}

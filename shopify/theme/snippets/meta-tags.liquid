@@ -1,0 +1,31 @@
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:type" content="{% if request.page_type == 'product' %}product{% else %}website{% endif %}">
+<meta property="og:locale" content="{{ request.locale.iso_code | replace: '-', '_' }}">
+{% if page_description %}
+  <meta property="og:description" content="{{ page_description | escape }}">
+{% endif %}
+{%- liquid
+  if request.page_type == 'product' and product.featured_image
+    assign og_image = product.featured_image
+  elsif request.page_type == 'article' and article.image
+    assign og_image = article.image
+  elsif settings.hoop_product.featured_image
+    assign og_image = settings.hoop_product.featured_image
+  endif
+-%}
+{% if og_image != blank %}
+  <meta property="og:image" content="{{ og_image | image_url: width: 1200 }}">
+  <meta property="og:image:alt" content="{{ og_image.alt | default: page_title | escape }}">
+{% else %}
+  <meta property="og:image" content="{{ '0NBKQTWEC0AE16VN67CS8NG2ST-hd.webp' | asset_url }}">
+{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+{% for language in localization.available_languages %}
+  <link rel="alternate" hreflang="{{ language.iso_code }}" href="{{ language.root_url }}">
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ localization.language.root_url | default: canonical_url }}">
+{% if request.page_type == 'product' %}
+  <script type="application/ld+json">{{ product | structured_data }}</script>
+{% endif %}

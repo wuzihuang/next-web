@@ -1,0 +1,119 @@
+{%- liquid
+  assign hoop = settings.hoop_product
+  assign white_product = settings.white_product
+  assign black_product = settings.black_product
+  assign white_sku = settings.white_sku | strip | downcase
+  assign black_sku = settings.black_sku | strip | downcase
+  assign hoop_handle = settings.hoop_handle | strip | handleize
+  if hoop == blank and hoop_handle != blank
+    assign hoop = all_products[hoop_handle]
+  endif
+  if hoop == blank
+    assign hoop = all_products['hoop']
+  endif
+  if hoop == blank
+    assign hoop = all_products['nextbody-hoop']
+  endif
+
+  assign white_variant = nil
+  assign black_variant = nil
+  assign generic_product = nil
+  assign generic_variant = nil
+
+  if white_product != blank
+    assign white_variant = white_product.selected_or_first_available_variant
+    for variant in white_product.variants
+      assign sku = variant.sku | strip | downcase
+      if white_sku != blank and sku == white_sku
+        assign white_variant = variant
+      endif
+    endfor
+  endif
+  if black_product != blank
+    assign black_variant = black_product.selected_or_first_available_variant
+    for variant in black_product.variants
+      assign sku = variant.sku | strip | downcase
+      if black_sku != blank and sku == black_sku
+        assign black_variant = variant
+      endif
+    endfor
+  endif
+
+  if hoop != blank
+    for variant in hoop.variants
+      assign sku = variant.sku | strip | downcase
+      assign title = variant.title | downcase
+      assign hay = sku | append: ' ' | append: title
+      if white_variant == blank
+        if white_sku != blank and sku == white_sku
+          assign white_variant = variant
+          assign white_product = hoop
+        elsif hay contains 'cloud white' or hay contains 'mist weave' or hay contains '云白'
+          assign white_variant = variant
+          assign white_product = hoop
+        elsif title == 'white' or title == '白色'
+          assign white_variant = variant
+          assign white_product = hoop
+        endif
+      endif
+      if black_variant == blank
+        if black_sku != blank and sku == black_sku
+          assign black_variant = variant
+          assign black_product = hoop
+        elsif hay contains 'charcoal' or hay contains 'ink weave' or hay contains '炭黑'
+          assign black_variant = variant
+          assign black_product = hoop
+        elsif title == 'black' or title == '黑色'
+          assign black_variant = variant
+          assign black_product = hoop
+        endif
+      endif
+    endfor
+    if white_variant == blank and black_variant == blank
+      assign generic_product = hoop
+      assign generic_variant = hoop.selected_or_first_available_variant
+    endif
+  endif
+-%}
+<div class="skus">
+  {% render 'sku-card',
+    tone: 'light',
+    name_key: 'buy.white',
+    strap_key: 'buy.white_strap',
+    alt_key: 'buy.white_alt',
+    image_asset: '4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp',
+    swatch: '#e9e7e1',
+    product: white_product,
+    variant: white_variant,
+    form_id: 'nb-add-white'
+  %}
+  {% render 'sku-card',
+    tone: 'dark',
+    name_key: 'buy.black',
+    strap_key: 'buy.black_strap',
+    alt_key: 'buy.black_alt',
+    image_asset: '0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp',
+    swatch: '#1a1a1a',
+    product: black_product,
+    variant: black_variant,
+    form_id: 'nb-add-black'
+  %}
+</div>
+{% if generic_product != blank and generic_variant != blank %}
+  <article class="sku sku-generic">
+    <div class="info">
+      <div>
+        <h2 class="name">{{ generic_product.title | escape }}</h2>
+        {% if generic_variant.available %}
+          <p class="price">{{ generic_variant.price | money }}<small>{{ cart.currency.iso_code }}</small></p>
+        {% else %}
+          <p class="price price-muted">{{ 'products.unavailable' | t }}</p>
+        {% endif %}
+      </div>
+      {% render 'add-to-cart', product: generic_product, variant: generic_variant, tone: 'light', form_id: 'nb-add-generic' %}
+    </div>
+  </article>
+{% endif %}
+{% if white_variant == blank and black_variant == blank and generic_product == blank %}
+  <p class="note">{{ 'buy.empty' | t }}</p>
+{% endif %}

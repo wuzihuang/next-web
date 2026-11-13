@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero"
+    },
+    "story": {
+      "type": "home-story"
+    }
+  },
+  "order": [
+    "hero",
+    "story"
+  ]
+}

@@ -1,0 +1,28 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ 'gift_card.title' | t }} · {{ shop.name }}</title>
+  {{ 'hero.css' | asset_url | stylesheet_tag }}
+  {{ 'nb-shop.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body class="nb-gift">
+  <main>
+    <p class="lp-wordmark-name">NEXTBODY</p>
+    <h1>{{ 'gift_card.title' | t }}</h1>
+    {% if gift_card.enabled %}
+      <p>{{ 'gift_card.balance' | t }} {{ gift_card.balance | money }}</p>
+      <p>{{ 'gift_card.code' | t }} {{ gift_card.code | format_code }}</p>
+      <p class="nb-gift-code" data-identifier="{{ gift_card.qr_identifier }}">{{ gift_card.code | format_code }}</p>
+    {% elsif gift_card.expired %}
+      <p>{{ 'gift_card.expired' | t }}</p>
+    {% else %}
+      <p>{{ 'gift_card.disabled' | t }}</p>
+    {% endif %}
+    <p><a class="lp-pill" href="{{ routes.root_url }}">{{ 'gift_card.shop' | t }}</a></p>
+  </main>
+</body>
+</html>

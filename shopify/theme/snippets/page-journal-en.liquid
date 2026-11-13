@@ -1,0 +1,22 @@
+<section class="head">
+    <p class="eyebrow">NEXTBODY</p>
+    <h1>Notes</h1>
+    <p class="lede">Short notes for HOOP, MCP, and the screenless-band category. Nothing here invents medical claims. The citable fact table is on the compare hub.</p>
+  </section>
+  <div class="cards">
+    <a class="card" href="{% if pages['nextbody-mcp'].url != blank %}{{ pages['nextbody-mcp'].url }}{% else %}{{ routes.all_products_collection_url }}?view=nextbody-mcp{% endif %}">
+      <time datetime="2026-10-26">26 Oct 2026</time>
+      <h2>How NEXTBODY MCP connects health data to ChatGPT and Claude</h2>
+      <p>You sign in and authorise it. Assistants can read only your account. Meal logging stays off until you turn it on.</p>
+    </a>
+    <a class="card" href="{% if pages['whoop-alternative'].url != blank %}{{ pages['whoop-alternative'].url }}{% else %}{{ routes.all_products_collection_url }}?view=whoop-alternative{% endif %}">
+      <time datetime="2026-10-26">26 Oct 2026</time>
+      <h2>A screenless band that publishes a hardware price</h2>
+      <p>For “WHOOP alternative / no subscription” searches. Pointer to the compare hub — not a copy of Strain or Recovery.</p>
+    </a>
+    <a class="card" href="{% if pages['oura-alternative'].url != blank %}{{ pages['oura-alternative'].url }}{% else %}{{ routes.all_products_collection_url }}?view=oura-alternative{% endif %}">
+      <time datetime="2026-10-26">26 Oct 2026</time>
+      <h2>Ring or wrist: another way to go screenless</h2>
+      <p>Oura is a ring; Hoop is a wrist band with Body Scan. One caveated same-night sleep note, then the hub.</p>
+    </a>
+  </div>

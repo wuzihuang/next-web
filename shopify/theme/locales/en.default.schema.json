@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "catalog": {
+      "name": "Catalog",
+      "help": "Point the theme at real Shopify products. Prices, inventory and checkout always come from those products. Leave pickers empty until products exist; purchase buttons stay disabled.",
+      "hoop_product": "HOOP product (White and Black variants)",
+      "white_product": "Cloud White product (optional separate product)",
+      "black_product": "Charcoal Black product (optional separate product)",
+      "hoop_handle": "Fallback product handle",
+      "white_sku": "White variant SKU",
+      "black_sku": "Black variant SKU",
+      "shop_collection": "Shop collection for the Buy link"
+    },
+    "social": {
+      "name": "Social",
+      "twitter": "X / Twitter URL",
+      "facebook": "Facebook URL",
+      "instagram": "Instagram URL"
+    }
+  }
+}
