@@ -1,0 +1,63 @@
+{% liquid
+  assign locale_code = request.locale.iso_code | downcase
+  if locale_code contains 'zh'
+    assign board_locale = 'zh'
+  else
+    assign board_locale = 'en'
+  endif
+%}
+<style>
+  :root { --s: 1; --gutter: 80px; }
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  main#product { padding: 0 var(--gutter) 64px; }
+  .ab {
+    position: relative;
+    width: calc(var(--w) * var(--s) * 1px);
+    margin: 0 auto;
+    overflow: hidden;
+    scroll-margin-top: 72px;
+  }
+  @media (max-width: 720px) {
+    .ab { scroll-margin-top: 56px; }
+  }
+  .ab > .in {
+    width: calc(var(--w) * 1px);
+    zoom: var(--s);
+  }
+</style>
+<script>
+  (function () {
+    function fit() {
+      var vw = document.documentElement.clientWidth || window.innerWidth;
+      var gutter = Math.min(80, Math.max(20, vw * 0.05));
+      var content = Math.min(vw - gutter * 2, 1440);
+      var root = document.documentElement.style;
+      root.setProperty("--s", (content / 1440).toFixed(5));
+      root.setProperty("--gutter", ((vw - content) / 2).toFixed(1) + "px");
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  })();
+</script>
+<main id="product" hidden>
+  <h1 class="visually-hidden">{{ 'general.meta.title' | t }}</h1>
+  {% if board_locale == 'zh' %}
+    {% render 'artboards-zh' %}
+  {% else %}
+    {% render 'artboards-en' %}
+  {% endif %}
+</main>
+<script>
+  if (location.hash && document.getElementById(location.hash.slice(1))) {
+    document.getElementById("product").hidden = false;
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Landing artboards",
+  "settings": [],
+  "presets": [{ "name": "Landing artboards" }]
+}
+{% endschema %}

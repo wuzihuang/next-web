@@ -1,0 +1,27 @@
+<section class="nb-search wrap">
+  <h1>{{ 'search.title' | t }}</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}">
+    <button type="submit">{{ 'search.submit' | t }}</button>
+  </form>
+  {% if search.performed %}
+    {% if search.results_count == 0 %}
+      <p>{{ 'search.no_results' | t: terms: search.terms }}</p>
+    {% else %}
+      <ul>
+        {% for item in search.results %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% else %}
+    <p>{{ 'search.empty' | t }}</p>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

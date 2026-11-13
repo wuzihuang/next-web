@@ -1,0 +1,16 @@
+{
+  "name": "next-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint shopify-theme/assets/product-form.js shopify-theme/assets/cart.js shopify-theme/assets/theme-nav.js shopify-theme/scripts/product-form.test.mjs && python3 shopify-theme/scripts/test_theme.py --lint",
+    "test": "node --test shopify-theme/scripts/product-form.test.mjs && python3 shopify-theme/scripts/test_theme.py",
+    "build": "python3 shopify-theme/scripts/export_theme.py",
+    "theme-check": "npx --yes @shopify/cli theme check --path shopify-theme/.build/theme"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0"
+  }
+}

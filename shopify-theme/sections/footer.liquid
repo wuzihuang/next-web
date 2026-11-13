@@ -1,0 +1,52 @@
+<footer class="nb-foot">
+  <div class="nb-foot-wrap">
+    <div class="nb-foot-brand">
+      <span>{{ 'general.brand' | t }}</span>
+      <i aria-hidden="true"></i>
+    </div>
+    <p>{{ 'footer.disclaimer' | t }}</p>
+    {% assign copyright_year = 'now' | date: '%Y' %}
+    <p>{{ 'footer.copyright' | t: year: copyright_year }}</p>
+  </div>
+</footer>
+
+{% stylesheet %}
+.nb-foot {
+  background: #000;
+  color: rgb(255 255 255 / 40%);
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 32px 0 48px;
+}
+.nb-foot-wrap {
+  display: grid;
+  gap: 12px;
+  margin: 0 auto;
+  width: min(1440px, 100% - 2 * clamp(20px, 5vw, 80px));
+}
+.nb-foot-brand {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font: 700 14px/1 "Inter Tight", "Noto Sans SC", system-ui, sans-serif;
+  gap: 8px;
+  letter-spacing: 0.16em;
+}
+.nb-foot-brand i {
+  background: #eff65a;
+  height: 6px;
+  width: 6px;
+}
+body.template-index .nb-foot,
+body.template-password .nb-foot {
+  display: none;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [],
+  "presets": [{ "name": "Footer" }]
+}
+{% endschema %}

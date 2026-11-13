@@ -1,0 +1,42 @@
+{% doc %}
+Renders a catalog tile from a live Shopify product.
+@param {product} product - Shopify product
+@param {number} [index] - Position in the list; unused, reserved for catalog order
+@example
+{% render 'product-card', product: product %}
+{% enddoc %}
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign card_class = 'sku'
+  assign title_down = product.title | downcase
+  if product.tags contains 'dark' or title_down contains 'black' or title_down contains 'charcoal'
+    assign card_class = 'sku dark'
+  endif
+%}
+<article class="{{ card_class }}" {% if index %}data-index="{{ index }}"{% endif %}>
+  <a class="shot" href="{{ product.url }}">
+    {% render 'product-image', product: product, variant: current_variant, img_class: 'nb-product-image', img_width: 1200 %}
+  </a>
+  <div class="info">
+    <div>
+      <h2 class="name">{{ product.title }}</h2>
+      {% if current_variant != blank %}
+        <p class="price">
+          {% if product.price_varies %}
+            {{ 'catalog.from' | t }}
+          {% endif %}
+          {{ current_variant.price | money }}
+          <small>{{ cart.currency.iso_code }}</small>
+        </p>
+      {% endif %}
+      {% unless product.available %}
+        <p class="strap">{{ 'catalog.sold_out' | t }}</p>
+      {% endunless %}
+    </div>
+    {% if product.available %}
+      <a class="buy" href="{{ product.url }}">{{ 'catalog.view_product' | t }}</a>
+    {% else %}
+      <span class="buy is-disabled">{{ 'catalog.unavailable' | t }}</span>
+    {% endif %}
+  </div>
+</article>

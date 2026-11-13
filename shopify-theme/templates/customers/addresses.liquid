@@ -1,0 +1,20 @@
+<section class="wrap nb-account">
+  <h1>{{ 'customers.addresses' | t }}</h1>
+  {% for address in customer.addresses %}
+    {{ address | format_address }}
+  {% endfor %}
+  {% form 'customer_address', customer.new_address %}
+    {{ form.errors | default_errors }}
+    <label for="AddressFirstName">{{ 'customers.first_name' | t }}</label>
+    <input id="AddressFirstName" type="text" name="address[first_name]" autocomplete="given-name">
+    <label for="AddressLastName">{{ 'customers.last_name' | t }}</label>
+    <input id="AddressLastName" type="text" name="address[last_name]" autocomplete="family-name">
+    <label for="AddressAddress1">Address</label>
+    <input id="AddressAddress1" type="text" name="address[address1]" autocomplete="address-line1">
+    <label for="AddressCity">City</label>
+    <input id="AddressCity" type="text" name="address[city]" autocomplete="address-level2">
+    <label for="AddressZip">ZIP</label>
+    <input id="AddressZip" type="text" name="address[zip]" autocomplete="postal-code">
+    <button class="buy" type="submit">{{ 'customers.submit' | t }}</button>
+  {% endform %}
+</section>

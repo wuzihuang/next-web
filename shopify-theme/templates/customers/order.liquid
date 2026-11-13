@@ -1,0 +1,11 @@
+<section class="wrap nb-account">
+  <h1>{{ 'customers.order' | t: name: order.name }}</h1>
+  <p>{{ order.created_at | date: '%Y-%m-%d' }} · {{ order.financial_status_label }}</p>
+  <ul>
+    {% for line_item in order.line_items %}
+      <li>{{ line_item.title }} × {{ line_item.quantity }} · {{ line_item.final_line_price | money }}</li>
+    {% endfor %}
+  </ul>
+  <p>{{ 'cart.subtotal' | t }} {{ order.total_price | money }}</p>
+  <p><a href="{{ routes.account_url }}">{{ 'customers.account' | t }}</a></p>
+</section>

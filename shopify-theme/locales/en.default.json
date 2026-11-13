@@ -1,0 +1,118 @@
+{
+  "general": {
+    "brand": "YEHETAO",
+    "model": "NextBody Hoop",
+    "meta": {
+      "title": "YEHETAO · NextBody Hoop",
+      "description": "YEHETAO sells NextBody Hoop, a screenless smart health band. Heart rate, sleep staging, training load and a 14-metric Body Scan, read in the NEXTBODY App."
+    },
+    "home": "Home",
+    "accessibility": {
+      "skip": "Skip to content",
+      "cart": "Cart"
+    }
+  },
+  "header": {
+    "buy": "BUY",
+    "app": "GET APP",
+    "notes": "Notes",
+    "cart": "Cart",
+    "switch_language": "Switch language"
+  },
+  "footer": {
+    "disclaimer": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
+    "copyright": "© {{ year }} YEHETAO"
+  },
+  "catalog": {
+    "eyebrow": "NEXTBODY HOOP",
+    "title": "Choose your HOOP",
+    "lede": "Colourways, sensors and copy match the product site. Price and availability are the values Shopify has for each variant.",
+    "empty_title": "No products are listed yet",
+    "empty_body": "This store has no products published to the Online Store. When the owner publishes products, they appear here with Shopify prices, variants and stock. This page does not invent SKUs or amounts.",
+    "view_product": "View",
+    "from": "From",
+    "unavailable": "Unavailable",
+    "sold_out": "Sold out",
+    "fact_water": "Water resistant",
+    "fact_battery": "Battery life",
+    "fact_monitor": "All-day health monitoring",
+    "days": " days",
+    "note": "Tax and shipping are calculated in Shopify checkout. Five-day battery life comes from specific test conditions; real battery life varies with use.",
+    "disclaimer": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only."
+  },
+  "product": {
+    "add_to_cart": "Add to cart",
+    "unavailable": "Unavailable",
+    "sold_out": "Sold out",
+    "quantity": "Quantity",
+    "choose": "Choose {{ name }}",
+    "price": "Price",
+    "view_cart": "View cart",
+    "added": "Added to cart",
+    "no_variant": "This combination is not available.",
+    "model_line": "Model · NextBody Hoop",
+    "lede": "Ultra-thin, ultra-light Pro fitness tracker. Activity and sleep tracking. Two colours. The same sensors and AI.",
+    "spec_thin": "8mm thin (device body without the strap)",
+    "spec_mass": "10g light (device body without the strap)",
+    "spec_water": "IP68 water resistant",
+    "spec_battery": "Up to 5 days battery life from specific test conditions; real battery life varies with use",
+    "disclaimer": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only."
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty.",
+    "continue": "Continue shopping",
+    "checkout": "Checkout",
+    "update": "Update",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "quantity": "Quantity",
+    "note": "Shopify checkout calculates tax, shipping and the payable total. This theme does not invent those amounts."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search",
+    "submit": "Search",
+    "no_results": "No results for “{{ terms }}”.",
+    "empty": "Enter a search."
+  },
+  "blog": {
+    "title": "Notes"
+  },
+  "404": {
+    "code": "404",
+    "title": "Page not found",
+    "lede": "This URL is not on this storefront. The product, catalog and app pages are still here.",
+    "pricing": "Catalog"
+  },
+  "password": {
+    "title": "Password",
+    "lede": "This shop is password protected.",
+    "submit": "Enter",
+    "error": "Password is incorrect."
+  },
+  "customers": {
+    "login": "Sign in",
+    "register": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "forgot": "Forgot password",
+    "account": "Account",
+    "logout": "Log out",
+    "orders": "Orders",
+    "addresses": "Addresses",
+    "recover": "Recover password",
+    "reset": "Reset password",
+    "activate": "Activate account",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "order": "Order {{ name }}"
+  },
+  "gift_card": {
+    "title": "Gift card",
+    "disabled": "Disabled",
+    "expired": "Expired on {{ date }}",
+    "redeem": "Use this code at checkout"
+  }
+}

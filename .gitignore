@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 *.log
 __pycache__/
+dist/
+shopify-theme/.build/
+shopify-theme/node_modules/
