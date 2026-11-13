@@ -64,6 +64,26 @@ describe("readSelectedOptions", () => {
     };
     assert.deepEqual(readSelectedOptions(form), ["Cloud White", "Mist Weave"]);
   });
+
+  it("reads the pressed swatch card for a variant option group", () => {
+    const group = {
+      querySelector(selector) {
+        if (String(selector).includes("data-swatch")) {
+          return { getAttribute: (name) => (name === "data-swatch" ? "Charcoal Black" : null) };
+        }
+        return null;
+      },
+      getAttribute() {
+        return "Cloud White · Mist Weave";
+      },
+    };
+    const form = {
+      querySelectorAll() {
+        return [group];
+      },
+    };
+    assert.deepEqual(readSelectedOptions(form), ["Charcoal Black"]);
+  });
 });
 
 describe("featuredImageUrl", () => {

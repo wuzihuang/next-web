@@ -5,6 +5,7 @@ non-blank well; live product photos come from Shopify product metadata.
 @param {variant} [variant] - Selected variant
 @param {string} [img_class] - Class for the img
 @param {number} [img_width] - Image width for Shopify CDN
+@param {string} [loading] - img loading attribute
 @example
 {% render 'product-image', product: product, variant: current_variant %}
 {% enddoc %}
@@ -34,6 +35,7 @@ non-blank well; live product photos come from Shopify product metadata.
   endif
   assign css_class = img_class | default: 'nb-product-image'
   assign cdn_width = img_width | default: 1600
+  assign load_mode = loading | default: 'lazy'
 %}
 {% if media_image != blank %}
   <img
@@ -43,7 +45,7 @@ non-blank well; live product photos come from Shopify product metadata.
     width="{{ media_image.width | default: cdn_width }}"
     height="{{ media_image.height | default: 1200 }}"
     alt="{{ alt_text | escape }}"
-    loading="lazy"
+    loading="{{ load_mode }}"
   >
 {% else %}
   <div

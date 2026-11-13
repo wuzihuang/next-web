@@ -315,6 +315,40 @@ def write_update_bundle() -> None:
     print("Wrote", UPDATE_ZIP)
 
 
+PDP_PHOTO_SOURCES = (
+    ("white-34.webp", ("white-34.webp",)),
+    ("white-front.webp", ("white-front.webp",)),
+    ("white-wrist.webp", ("white-wrist.webp",)),
+    ("black-front.webp", ("black-front.webp",)),
+    ("black-lifestyle.webp", ("black-lifestyle.webp",)),
+)
+
+PDP_PHOTO_DIRS = (
+    "/tmp/pdp-t19u/images",
+    "/cursor/stores/self/artifacts/pdp-options-t19u/images",
+)
+
+
+def copy_pdp_photos(media_dir: str) -> dict[str, str]:
+    copied: dict[str, str] = {}
+    for dest_name, aliases in PDP_PHOTO_SOURCES:
+        found = None
+        for folder in PDP_PHOTO_DIRS:
+            for alias in aliases:
+                path = os.path.join(folder, alias)
+                if os.path.isfile(path):
+                    found = path
+                    break
+            if found:
+                break
+        if not found:
+            continue
+        dest = os.path.join(media_dir, dest_name)
+        shutil.copy2(found, dest)
+        copied[dest_name] = "media/" + dest_name
+    return copied
+
+
 def write_previews() -> None:
     preview_dir = os.path.join(DIST, "previews")
     os.makedirs(preview_dir, exist_ok=True)
@@ -329,9 +363,15 @@ def write_previews() -> None:
     css_href = "../../shopify-theme/assets/theme.css"
     header_css = "../../public/header.css"
     hero_css = "../../public/hero/hero.css"
+    photos = copy_pdp_photos(media_dir)
+    white_34 = photos.get("white-34.webp", "media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp")
+    white_front = photos.get("white-front.webp", "media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp")
+    white_wrist = photos.get("white-wrist.webp", "media/0NBKQTWEC0AE16VN67CS8NG2ST-hd.webp")
+    black_front = photos.get("black-front.webp", "media/0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp")
+    black_life = photos.get("black-lifestyle.webp", "media/0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp")
     chrome = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght@600;800&family=Inter+Tight:wght@500;600;700;800&family=Jost:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<style>@font-face{{font-family:"Inter Tight";src:url("../../public/fonts/inter-tight/InterTight-ExtraBold.ttf") format("truetype");font-weight:800;font-display:swap}}</style>
 <link rel="stylesheet" href="{hero}"><link rel="stylesheet" href="{header}"><link rel="stylesheet" href="{css}">
 <style>
 .nb-fixture-banner{{background:#eff65a;color:#070709;font:600 12px/1.4 Jost,sans-serif;letter-spacing:.08em;padding:8px 16px;text-align:center;text-transform:uppercase}}
@@ -348,7 +388,7 @@ def write_previews() -> None:
 <p class="nb-fixture-banner">Labeled fixture — not a live Shopify deployment</p>
 <div class="nb-top lp" data-locale="en"><header class="lp-nav">
 <a class="lp-wordmark" href="#"><span class="lp-wordmark-name">YEHETAO</span><span class="lp-pip" aria-hidden="true"></span></a>
-<div class="lp-nav-end nb-end"><a class="nb-link" href="#">GET APP</a><a class="lp-pill nb-buy" href="#">BUY</a></div>
+<div class="lp-nav-end nb-end"><a class="nb-link" href="#">Notes</a><a class="nb-link" href="#">GET APP</a><a class="lp-pill nb-buy" href="#">BUY</a></div>
 </header></div>
 {main}
 </body></html>"""
@@ -378,33 +418,57 @@ def write_previews() -> None:
 <a class="buy" href="#">Continue shopping</a>
 <p class="note">Shopify checkout calculates tax, shipping and the payable total. This theme does not invent those amounts.</p>
 </section>"""
-    product = """<section class="nb-product wrap" data-product-section>
-<div class="nb-product-grid">
-<div class="nb-product-media">
-<img class="nb-product-image" data-product-image src="media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp" alt="YEHETAO NextBody Hoop — Cloud White · Mist Weave" width="1200" height="900">
-<ul class="nb-product-thumbs">
-<li><button type="button" class="nb-product-thumb"><img src="media/4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp" alt="" width="240" height="180"></button></li>
-<li><button type="button" class="nb-product-thumb"><img src="media/0EQXR8JCK3RKEXD9RRT4DAPK65-hd.webp" alt="" width="240" height="180"></button></li>
-<li><button type="button" class="nb-product-thumb"><img src="media/0NBKQTWEC0AE16VN67CS8NG2ST-hd.webp" alt="" width="240" height="180"></button></li>
-</ul>
+    product = f"""<section class="nb-pdp" data-product-section>
+<div class="nb-pdp-gallery">
+<div class="nb-pdp-thumbs" role="tablist" aria-label="YEHETAO NextBody Hoop">
+<button type="button" class="nb-pdp-thumb is-on" data-product-thumb data-src="{white_34}"><img src="{white_34}" alt="" width="240" height="180"></button>
+<button type="button" class="nb-pdp-thumb" data-product-thumb data-src="{white_front}"><img src="{white_front}" alt="" width="240" height="180"></button>
+<button type="button" class="nb-pdp-thumb" data-product-thumb data-src="{white_wrist}"><img src="{white_wrist}" alt="" width="240" height="180"></button>
+<button type="button" class="nb-pdp-thumb" data-product-thumb data-src="{black_front}"><img src="{black_front}" alt="" width="240" height="180"></button>
+<button type="button" class="nb-pdp-thumb" data-product-thumb data-src="{black_life}"><img src="{black_life}" alt="" width="240" height="180"></button>
 </div>
-<div class="nb-product-info">
-<p class="eyebrow">YEHETAO</p>
+<div class="nb-pdp-stage">
+<div class="nb-pdp-hero"><img class="nb-pdp-image" data-product-image src="{white_34}" alt="YEHETAO NextBody Hoop, Cloud White three-quarter view" width="1600" height="1200"></div>
+<figure class="nb-pdp-figure"><img src="{white_front}" alt="YEHETAO NextBody Hoop, Cloud White front" width="1600" height="1200"></figure>
+<figure class="nb-pdp-figure"><img src="{white_wrist}" alt="NextBody Hoop Cloud White on wrist" width="1600" height="1200"></figure>
+<figure class="nb-pdp-figure"><img src="{black_front}" alt="YEHETAO NextBody Hoop, Charcoal Black front" width="1600" height="1200"></figure>
+<figure class="nb-pdp-figure"><img src="{black_life}" alt="NextBody Hoop Charcoal Black lifestyle" width="1600" height="1200"></figure>
+</div>
+</div>
+<aside class="nb-pdp-buy">
+<p class="nb-pdp-kicker">YEHETAO</p>
+<div>
 <h1>YEHETAO NextBody Hoop</h1>
-<p class="nb-product-price">$59.99 <small>USD</small></p>
-<div class="nb-product-desc">
-<p>Ultra-thin, ultra-light Pro fitness and health tracking. Activity and sleep tracking. Two colours. The same sensors and AI.</p>
+<p class="nb-pdp-model">Model · NextBody Hoop</p>
 </div>
-<form class="nb-product-form">
-<div class="nb-option"><label>Choose Colour</label>
-<select><option selected>Cloud White · Mist Weave</option><option>Charcoal Black</option></select>
+<p class="nb-pdp-price" data-product-price>$59.99 <small>USD</small></p>
+<p class="nb-pdp-lede">Ultra-thin, ultra-light Pro fitness tracker. Activity and sleep tracking. Two colours. The same sensors and AI.</p>
+<form class="nb-pdp-form" data-product-form="true">
+<input type="hidden" name="id" value="fixture-variant" data-variant-id>
+<div class="nb-pdp-colours"><span>Colour</span>
+<div class="nb-pdp-swatches" role="radiogroup" aria-label="Colour" data-option-index="0" data-selected-value="Cloud White · Mist Weave">
+<button type="button" class="nb-pdp-swatch is-on" role="radio" aria-checked="true" data-swatch="Cloud White · Mist Weave"><i class="nb-pdp-chip nb-pdp-chip--white" aria-hidden="true"></i><b>Cloud White</b><em>Mist Weave</em></button>
+<button type="button" class="nb-pdp-swatch" role="radio" aria-checked="false" data-swatch="Charcoal Black"><i class="nb-pdp-chip nb-pdp-chip--black" aria-hidden="true"></i><b>Charcoal Black</b></button>
+</div></div>
+<div class="nb-pdp-qty">
+<button type="button" data-qty="-1" aria-label="Quantity −">−</button>
+<input id="Quantity-fixture" type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+<button type="button" data-qty="1" aria-label="Quantity +">+</button>
 </div>
-<div class="nb-qty"><label>Quantity</label><input type="number" value="1" min="1"></div>
-<button class="buy" type="button">Add to cart</button>
-<a class="nb-view-cart" href="#">View cart</a>
+<p class="nb-pdp-status" data-product-status role="status"></p>
+<button class="nb-pdp-cta" type="button" data-add>Add to cart</button>
+<a class="nb-pdp-cart" href="#">View cart</a>
 </form>
-<p class="note">Labeled fixture using current yehetao-hoop sample data (vendor YEHETAO, handle yehetao-hoop, title YEHETAO NextBody Hoop). Not a live Shopify deployment. Live photos come from product metadata; this page only illustrates brand/model/image layout.</p>
-</div></div></section>"""
+<ul class="nb-pdp-facts">
+<li>8mm thin (device body without the strap)</li>
+<li>10g light (device body without the strap)</li>
+<li>IP68 water resistant</li>
+<li>Up to 5 days battery life from specific test conditions; real battery life varies with use</li>
+</ul>
+<p class="nb-pdp-listed">Date first listed: 05/05/2026</p>
+<p class="nb-pdp-note">This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.</p>
+</aside>
+</section>"""
     catalog = """<section class="nb-catalog wrap"><header class="nb-catalog-head"><p class="eyebrow">NEXTBODY HOOP</p>
 <h1>Choose your HOOP</h1>
 <p class="lede">Store brand YEHETAO. Wearable model NextBody Hoop. Prices come from Shopify when live.</p></header>
@@ -420,13 +484,44 @@ def write_previews() -> None:
         ("empty-catalog.html", "Empty catalog", "template-collection", empty),
         ("unavailable-variant.html", "Unavailable variant", "template-product", unavailable),
         ("empty-cart.html", "Cart", "template-cart", cart),
-        ("yehetao-product-fixture.html", "YEHETAO NextBody Hoop", "template-product", product),
         ("yehetao-catalog-fixture.html", "YEHETAO catalog", "template-collection", catalog),
     ):
         write_text(
             os.path.join(preview_dir, name),
             chrome.format(title=title, hero=hero_css, header=header_css, css=css_href, body=body, main=main),
         )
+    shutil.copy2(os.path.join(THEME_SRC, "assets", "theme.css"), os.path.join(preview_dir, "theme.css"))
+    font_src = os.path.join(PUBLIC, "fonts", "inter-tight", "InterTight-ExtraBold.ttf")
+    if os.path.isfile(font_src):
+        os.makedirs(os.path.join(preview_dir, "fonts"), exist_ok=True)
+        shutil.copy2(font_src, os.path.join(preview_dir, "fonts", "InterTight-ExtraBold.ttf"))
+    product_chrome = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YEHETAO NextBody Hoop</title>
+<style>@font-face{{font-family:"Inter Tight";src:url("fonts/InterTight-ExtraBold.ttf") format("truetype");font-weight:800;font-display:swap}}</style>
+<link rel="stylesheet" href="theme.css">
+<style>
+.nb-top.lp,.lp-nav{{background:#fff;color:#111}}
+.lp-nav{{align-items:center;border-bottom:1px solid #ececec;display:flex;height:72px;justify-content:space-between;padding:0 40px;position:sticky;top:0;z-index:20}}
+.lp-wordmark{{align-items:center;display:flex;gap:8px;text-decoration:none}}
+.lp-wordmark-name{{color:#111;font-family:"Inter Tight",system-ui,sans-serif;font-size:15px;font-weight:800;letter-spacing:.22em}}
+.lp-pip{{background:#eff65a;height:6px;width:6px}}
+.lp-nav-end{{align-items:center;display:flex;gap:28px}}
+.nb-link{{color:#111;font-size:12px;letter-spacing:.16em;text-decoration:none;text-transform:uppercase}}
+.lp-pill.nb-buy{{border:1px solid #111;color:#111;padding:8px 16px;text-decoration:none}}
+.visually-hidden{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+</style>
+</head><body class="template-product">
+<p class="visually-hidden">Labeled fixture — not a live Shopify deployment</p>
+<div class="nb-top lp" data-locale="en"><header class="lp-nav">
+<a class="lp-wordmark" href="#"><span class="lp-wordmark-name">YEHETAO</span><span class="lp-pip" aria-hidden="true"></span></a>
+<div class="lp-nav-end nb-end"><a class="nb-link" href="#">Notes</a><a class="nb-link" href="#">Get app</a><a class="lp-pill nb-buy" href="#">Bag</a></div>
+</header></div>
+{main}
+</body></html>"""
+    write_text(
+        os.path.join(preview_dir, "yehetao-product-fixture.html"),
+        product_chrome.format(main=product),
+    )
 
 
 if __name__ == "__main__":

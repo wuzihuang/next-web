@@ -19,10 +19,30 @@ export function cartStateForVariant(variant) {
   return { available: true, id: variant.id, reason: "ok" };
 }
 
-export function readSelectedOptions(form) {
-  return Array.from(form.querySelectorAll("[data-option-index]")).map(
-    (field) => field.value
+function pressedSwatch(field) {
+  if (!field || typeof field.querySelector !== "function") {
+    return null;
+  }
+  return (
+    field.querySelector("[data-swatch].is-on") ||
+    field.querySelector("[data-swatch][aria-checked='true']")
   );
+}
+
+export function readSelectedOptions(form) {
+  return Array.from(form.querySelectorAll("[data-option-index]")).map((field) => {
+    const pressed = pressedSwatch(field);
+    if (pressed) {
+      return pressed.getAttribute("data-swatch") || "";
+    }
+    if (typeof field.getAttribute === "function") {
+      const selected = field.getAttribute("data-selected-value");
+      if (selected) {
+        return selected;
+      }
+    }
+    return field.value || "";
+  });
 }
 
 export function formatMoney(cents, format) {
@@ -59,6 +79,13 @@ function imageSrc(value) {
     return imageSrc(value.preview_image);
   }
   return null;
+}
+
+function fileName(url) {
+  return String(url || "")
+    .split("?")[0]
+    .split("/")
+    .pop();
 }
 
 export function featuredImageUrl(variant, product) {
@@ -100,13 +127,55 @@ export function featuredImageUrl(variant, product) {
   return null;
 }
 
+function featuredImageId(variant) {
+  if (!variant) {
+    return null;
+  }
+  if (variant.featured_image && variant.featured_image.id != null) {
+    return String(variant.featured_image.id);
+  }
+  if (variant.featured_media && variant.featured_media.id != null) {
+    return String(variant.featured_media.id);
+  }
+  return null;
+}
+
+function markThumbs(root, live, variant) {
+  const featuredId = featuredImageId(variant);
+  const liveName = fileName(live);
+  root.querySelectorAll("[data-product-thumb]").forEach((thumb) => {
+    const idMatch = featuredId && thumb.getAttribute("data-media-id") === featuredId;
+    const src = thumb.getAttribute("data-src") || "";
+    const srcMatch = Boolean(live && (src === live || fileName(src) === liveName));
+    thumb.classList.toggle("is-on", Boolean(idMatch || srcMatch));
+  });
+}
+
 function applyProductImage(root, variant, product) {
   const img = root.querySelector("[data-product-image]");
   const live = featuredImageUrl(variant, product);
-  if (!img || !live) {
+  if (img && live) {
+    img.src = live;
+  }
+  markThumbs(root, live, variant);
+}
+
+function syncSwatches(form, variant) {
+  if (!variant || !Array.isArray(variant.options)) {
     return;
   }
-  img.src = live;
+  form.querySelectorAll("[data-option-index]").forEach((group, index) => {
+    const wanted = variant.options[index];
+    if (!wanted) {
+      return;
+    }
+    group.setAttribute("data-selected-value", wanted);
+    group.querySelectorAll("[data-swatch]").forEach((button) => {
+      const on = button.getAttribute("data-swatch") === wanted;
+      button.classList.toggle("is-on", on);
+      button.setAttribute("aria-checked", on ? "true" : "false");
+    });
+  });
 }
 
 function applyVariant(root, variant, form, product) {
@@ -116,6 +185,7 @@ function applyVariant(root, variant, form, product) {
   const button = form.querySelector("[data-add]");
   const price = root.querySelector("[data-product-price]");
   applyProductImage(root, variant, product);
+  syncSwatches(form, variant);
   if (idInput && state.id) {
     idInput.value = String(state.id);
   }
@@ -139,6 +209,30 @@ function applyVariant(root, variant, form, product) {
   }
 }
 
+function selectSwatch(group, button) {
+  const value = button.getAttribute("data-swatch") || "";
+  group.setAttribute("data-selected-value", value);
+  group.querySelectorAll("[data-swatch]").forEach((el) => {
+    const on = el === button;
+    el.classList.toggle("is-on", on);
+    el.setAttribute("aria-checked", on ? "true" : "false");
+  });
+}
+
+function bindQuantity(form) {
+  const input = form.querySelector("[name='quantity']");
+  if (!input) {
+    return;
+  }
+  form.querySelectorAll("[data-qty]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const delta = Number(button.getAttribute("data-qty") || 0);
+      const next = Math.max(1, Number(input.value || 1) + delta);
+      input.value = String(next);
+    });
+  });
+}
+
 function bindProductForm(root) {
   const form = root.querySelector("[data-product-form]");
   const jsonNode = root.querySelector("[data-product-json]");
@@ -158,6 +252,16 @@ function bindProductForm(root) {
   form.querySelectorAll("[data-option-index]").forEach((field) => {
     field.addEventListener("change", onChange);
   });
+  form.querySelectorAll("[data-swatch]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = button.closest("[data-option-index]");
+      if (group) {
+        selectSwatch(group, button);
+      }
+      onChange();
+    });
+  });
+  bindQuantity(form);
   root.querySelectorAll("[data-product-thumb]").forEach((thumb) => {
     thumb.addEventListener("click", () => {
       const img = root.querySelector("[data-product-image]");
@@ -165,6 +269,9 @@ function bindProductForm(root) {
       if (img && src) {
         img.src = src;
       }
+      root.querySelectorAll("[data-product-thumb]").forEach((other) => {
+        other.classList.toggle("is-on", other === thumb);
+      });
     });
   });
 }

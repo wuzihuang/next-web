@@ -1,100 +1,207 @@
 {% liquid
   assign current_variant = product.selected_or_first_available_variant
   assign product_form_id = 'product-form-' | append: section.id
+  assign image_count = 0
+  for item in product.media
+    if item.media_type == 'image'
+      assign image_count = image_count | plus: 1
+    endif
+  endfor
 %}
-<section class="nb-product wrap" data-product-section>
-  <div class="nb-product-grid">
-    <div class="nb-product-media">
-      {% render 'product-image', product: product, variant: current_variant, img_class: 'nb-product-image', img_width: 1600 %}
-      {% if product.media.size > 1 %}
-        <ul class="nb-product-thumbs">
-          {% for media in product.media %}
-            {% if media.media_type == 'image' %}
-              <li>
-                <button
-                  type="button"
-                  class="nb-product-thumb"
-                  data-product-thumb
-                  data-src="{{ media | image_url: width: 1600 }}"
-                >
-                  <img
-                    src="{{ media | image_url: width: 240 }}"
-                    alt="{{ media.alt | default: product.title | escape }}"
-                    width="{{ media.preview_image.width | default: 240 }}"
-                    height="{{ media.preview_image.height | default: 180 }}"
-                    loading="lazy"
-                  >
-                </button>
-              </li>
+<section class="nb-pdp" data-product-section>
+  <div class="nb-pdp-gallery">
+    {% if image_count > 1 %}
+      <div class="nb-pdp-thumbs" role="tablist" aria-label="{{ product.title | escape }}">
+        {% for media in product.media %}
+          {% if media.media_type == 'image' %}
+            {% assign is_on = false %}
+            {% if current_variant.featured_image and current_variant.featured_image.id == media.id %}
+              {% assign is_on = true %}
+            {% elsif current_variant.featured_image == blank and forloop.first %}
+              {% assign is_on = true %}
             {% endif %}
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </div>
-    <div class="nb-product-info">
-      <p class="eyebrow">{{ product.vendor | default: shop.name }}</p>
-      <h1>{{ product.title }}</h1>
-      <p class="nb-product-price" data-product-price>
-        {% if current_variant %}
-          {{ current_variant.price | money }}
-          <small>{{ cart.currency.iso_code }}</small>
-        {% endif %}
-      </p>
-      {% if product.description != blank %}
-        <div class="nb-product-desc">{{ product.description }}</div>
-      {% endif %}
-
-      {% capture copy_add %}{{ 'product.add_to_cart' | t }}{% endcapture %}
-      {% capture copy_unavailable %}{{ 'product.unavailable' | t }}{% endcapture %}
-      {% capture copy_sold %}{{ 'product.sold_out' | t }}{% endcapture %}
-      {% capture copy_missing %}{{ 'product.no_variant' | t }}{% endcapture %}
-      {% capture copy_added %}{{ 'product.added' | t }}{% endcapture %}
-      {% form 'product', product, id: product_form_id, class: 'nb-product-form', data-product-form: 'true', data-copy-add: copy_add, data-copy-unavailable: copy_unavailable, data-copy-sold-out: copy_sold, data-copy-no-variant: copy_missing, data-copy-added: copy_added %}
-        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
-        {% unless product.has_only_default_variant %}
-          {% for option in product.options_with_values %}
-            <div class="nb-option">
-              <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ 'product.choose' | t: name: option.name }}</label>
-              <select
-                id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                data-option-index="{{ forloop.index0 }}"
+            <button
+              type="button"
+              class="nb-pdp-thumb{% if is_on %} is-on{% endif %}"
+              data-product-thumb
+              data-media-id="{{ media.id }}"
+              data-src="{{ media | image_url: width: 1600 }}"
+              aria-label="{{ media.alt | default: product.title | escape }}"
+            >
+              <img
+                src="{{ media | image_url: width: 240 }}"
+                alt=""
+                width="{{ media.preview_image.width | default: 240 }}"
+                height="{{ media.preview_image.height | default: 180 }}"
+                loading="lazy"
               >
-                {% for value in option.values %}
-                  <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>
-                    {{ value }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
-          {% endfor %}
-        {% endunless %}
-        <div class="nb-qty">
-          <label for="Quantity-{{ section.id }}">{{ 'product.quantity' | t }}</label>
-          <input id="Quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" step="1">
-        </div>
-        <p class="nb-product-status" data-product-status role="status">
-          {% if current_variant == blank %}
-            {{ 'product.no_variant' | t }}
-          {% elsif current_variant.available == false %}
-            {{ 'product.sold_out' | t }}
+            </button>
           {% endif %}
-        </p>
-        <button
-          class="buy"
-          type="submit"
-          data-add
-          {% unless current_variant.available %}disabled{% endunless %}
-        >
-          {% if current_variant.available %}
-            {{ 'product.add_to_cart' | t }}
-          {% else %}
-            {{ 'product.unavailable' | t }}
-          {% endif %}
-        </button>
-        <a class="nb-view-cart" href="{{ routes.cart_url }}">{{ 'product.view_cart' | t }}</a>
-      {% endform %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="nb-pdp-stage">
+      <div class="nb-pdp-hero">
+        {% render 'product-image', product: product, variant: current_variant, img_class: 'nb-pdp-image', img_width: 1600, loading: 'eager' %}
+      </div>
+      {% liquid
+        assign featured_id = ''
+        if current_variant.featured_image
+          assign featured_id = current_variant.featured_image.id
+        elsif product.featured_image
+          assign featured_id = product.featured_image.id
+        endif
+      %}
+      {% for media in product.media %}
+        {% if media.media_type == 'image' and media.id != featured_id %}
+          <figure class="nb-pdp-figure">
+            <img
+              src="{{ media | image_url: width: 1600 }}"
+              alt="{{ media.alt | default: product.title | escape }}"
+              width="{{ media.preview_image.width | default: 1600 }}"
+              height="{{ media.preview_image.height | default: 1200 }}"
+              loading="lazy"
+            >
+          </figure>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
+
+  <aside class="nb-pdp-buy">
+    <p class="nb-pdp-kicker">{{ product.vendor | default: shop.name }}</p>
+    <div>
+      <h1>{{ product.title }}</h1>
+      <p class="nb-pdp-model">{{ 'product.model_line' | t }}</p>
+    </div>
+    <p class="nb-pdp-price" data-product-price>
+      {% if current_variant %}
+        {{ current_variant.price | money }}
+        <small>{{ cart.currency.iso_code }}</small>
+      {% endif %}
+    </p>
+    <p class="nb-pdp-lede">{{ 'product.lede' | t }}</p>
+
+    {% capture copy_add %}{{ 'product.add_to_cart' | t }}{% endcapture %}
+    {% capture copy_unavailable %}{{ 'product.unavailable' | t }}{% endcapture %}
+    {% capture copy_sold %}{{ 'product.sold_out' | t }}{% endcapture %}
+    {% capture copy_missing %}{{ 'product.no_variant' | t }}{% endcapture %}
+    {% capture copy_added %}{{ 'product.added' | t }}{% endcapture %}
+    {% form 'product', product, id: product_form_id, class: 'nb-pdp-form', data-product-form: 'true', data-copy-add: copy_add, data-copy-unavailable: copy_unavailable, data-copy-sold-out: copy_sold, data-copy-no-variant: copy_missing, data-copy-added: copy_added %}
+      <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          {% liquid
+            assign selected_value = option.selected_value
+            if current_variant
+              if forloop.index == 1
+                assign selected_value = current_variant.option1 | default: selected_value
+              elsif forloop.index == 2
+                assign selected_value = current_variant.option2 | default: selected_value
+              elsif forloop.index == 3
+                assign selected_value = current_variant.option3 | default: selected_value
+              endif
+            endif
+          %}
+          <div class="nb-pdp-colours">
+            <span>{{ option.name }}</span>
+            <div
+              class="nb-pdp-swatches"
+              role="radiogroup"
+              aria-label="{{ option.name | escape }}"
+              data-option-index="{{ forloop.index0 }}"
+              data-selected-value="{{ selected_value | escape }}"
+            >
+              {% for value in option.values %}
+                {% liquid
+                  assign value_down = value | downcase
+                  assign tone = 'neutral'
+                  if value_down contains 'black' or value_down contains 'charcoal' or value_down contains 'ink'
+                    assign tone = 'black'
+                  elsif value_down contains 'white' or value_down contains 'mist' or value_down contains 'cloud'
+                    assign tone = 'white'
+                  endif
+                  assign swatch_title = value
+                  assign swatch_note = ''
+                  if value contains ' · '
+                    assign swatch_bits = value | split: ' · '
+                    assign swatch_title = swatch_bits.first
+                    assign swatch_note = swatch_bits.last
+                  endif
+                  assign selected = false
+                  if selected_value == value
+                    assign selected = true
+                  endif
+                %}
+                <button
+                  type="button"
+                  class="nb-pdp-swatch{% if selected %} is-on{% endif %}"
+                  role="radio"
+                  aria-checked="{% if selected %}true{% else %}false{% endif %}"
+                  data-swatch="{{ value | escape }}"
+                >
+                  <i class="nb-pdp-chip nb-pdp-chip--{{ tone }}" aria-hidden="true"></i>
+                  <b>{{ swatch_title }}</b>
+                  {% if swatch_note != blank %}
+                    <em>{{ swatch_note }}</em>
+                  {% endif %}
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endunless %}
+      <div class="nb-pdp-qty">
+        <button type="button" data-qty="-1" aria-label="{{ 'product.quantity' | t }} −">−</button>
+        <input
+          id="Quantity-{{ section.id }}"
+          type="number"
+          name="quantity"
+          value="1"
+          min="1"
+          step="1"
+          aria-label="{{ 'product.quantity' | t }}"
+        >
+        <button type="button" data-qty="1" aria-label="{{ 'product.quantity' | t }} +">+</button>
+      </div>
+      <p class="nb-pdp-status" data-product-status role="status">
+        {% if current_variant == blank %}
+          {{ 'product.no_variant' | t }}
+        {% elsif current_variant.available == false %}
+          {{ 'product.sold_out' | t }}
+        {% endif %}
+      </p>
+      <button
+        class="nb-pdp-cta"
+        type="submit"
+        data-add
+        {% unless current_variant.available %}disabled{% endunless %}
+      >
+        {% if current_variant.available %}
+          {{ 'product.add_to_cart' | t }}
+        {% else %}
+          {{ 'product.unavailable' | t }}
+        {% endif %}
+      </button>
+      <a class="nb-pdp-cart" href="{{ routes.cart_url }}">{{ 'product.view_cart' | t }}</a>
+    {% endform %}
+
+    <ul class="nb-pdp-facts">
+      <li>{{ 'product.spec_thin' | t }}</li>
+      <li>{{ 'product.spec_mass' | t }}</li>
+      <li>{{ 'product.spec_water' | t }}</li>
+      <li>{{ 'product.spec_battery' | t }}</li>
+    </ul>
+    {% assign desc_plain = product.description | strip_html %}
+    {% if desc_plain contains 'Date first listed' %}
+      {% assign listed_tail = desc_plain | split: 'Date first listed' | last | strip %}
+      {% assign listed_line = listed_tail | split: '.' | first | strip %}
+      <p class="nb-pdp-listed">Date first listed{{ listed_line | truncate: 40 }}</p>
+    {% endif %}
+    <p class="nb-pdp-note">{{ 'product.disclaimer' | t }}</p>
+  </aside>
+
   <script type="application/json" data-product-json>
     {{ product | json }}
   </script>

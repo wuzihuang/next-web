@@ -49,7 +49,14 @@
     "price": "价格",
     "view_cart": "查看购物车",
     "added": "已加入购物车",
-    "no_variant": "该组合不可购买。"
+    "no_variant": "该组合不可购买。",
+    "model_line": "型号 · NextBody Hoop",
+    "lede": "超薄、超轻的专业运动追踪器。活动与睡眠追踪。两种配色。同一套传感器与 AI。",
+    "spec_thin": "厚度 8mm（不含表带的机身）",
+    "spec_mass": "重量 10g（不含表带的机身）",
+    "spec_water": "IP68 防水",
+    "spec_battery": "特定测试条件下续航最长 5 天；实际续航因使用情况而异",
+    "disclaimer": "本产品及 NEXTBODY App 非医疗器械，不用于诊断、治疗、治愈或预防任何疾病；所提供的数据、提示信息与建议仅供参考。"
   },
   "cart": {
     "title": "购物车",

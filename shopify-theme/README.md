@@ -29,8 +29,13 @@ from this package — those steps stay with the store owner.
   variant IDs come from Shopify Liquid. Nothing is hardcoded in commerce UI.
 - Renders Shopify product/variant media and a thumbnail gallery when
   `product.media` exists. It does not upload or duplicate product photos.
-- Uses native `{% form 'product' %}` and `{% form 'cart' %}` so add-to-cart
-  and checkout go through Shopify. Unavailable variants disable submit.
+- Product page is a premium split gallery (vertical thumbs + large stage)
+  with a sticky purchase card. Colour options are swatch cards bound to
+  live variants; they update variant id, price, and featured image. Add to
+  cart uses `{% form 'product' %}`. Spec copy is non-medical (8mm / 10g /
+  IP68 / 5-day test-condition battery). Merchant “Date first listed” appears
+  only when that phrase is in `product.description`.
+- Cart uses `{% form 'cart' %}`. Unavailable variants disable submit.
 - Ships `locales/en.default.json` (default) and `locales/zh.json`. The
   language control uses `{% form 'localization' %}` and only lists locales
   the shop has published.

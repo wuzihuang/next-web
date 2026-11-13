@@ -89,6 +89,24 @@ def check_source() -> None:
         fail("product section must render product-image")
     if "product.media" not in product:
         fail("product section must render Shopify media gallery")
+    if "data-swatch" not in product or "nb-pdp-swatch" not in product:
+        fail("product section must bind colour swatch cards to variants")
+    if "<select" in product:
+        fail("product section must not use a dropdown for options")
+    if "nb-pdp-buy" not in product:
+        fail("product section must use the sticky purchase card")
+    if "data-product-thumb" not in product:
+        fail("product section must render vertical media thumbnails")
+    if "PROPOSED MOCKUP" in product or "NOT LIVE" in product:
+        fail("product section must not ship mockup banners")
+    if "05/05/2026" in product:
+        fail("product section must not hardcode Date first listed")
+    if "health monitoring" in product.lower() or "24h" in product.lower():
+        fail("product section must not add medical monitoring claims")
+    if "warranty" in product.lower() or "free shipping" in product.lower():
+        fail("product section must not promise shipping or warranty")
+    if "nb-pdp-listed" in product and "product.description" not in product:
+        fail("Date first listed must come from the product description")
     if "render 'product-image'" not in card:
         fail("product card must render product-image")
     if "image_url" not in image:

@@ -49,7 +49,14 @@
     "price": "Price",
     "view_cart": "View cart",
     "added": "Added to cart",
-    "no_variant": "This combination is not available."
+    "no_variant": "This combination is not available.",
+    "model_line": "Model · NextBody Hoop",
+    "lede": "Ultra-thin, ultra-light Pro fitness tracker. Activity and sleep tracking. Two colours. The same sensors and AI.",
+    "spec_thin": "8mm thin (device body without the strap)",
+    "spec_mass": "10g light (device body without the strap)",
+    "spec_water": "IP68 water resistant",
+    "spec_battery": "Up to 5 days battery life from specific test conditions; real battery life varies with use",
+    "disclaimer": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only."
   },
   "cart": {
     "title": "Cart",
