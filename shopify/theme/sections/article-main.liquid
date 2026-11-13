@@ -1,0 +1,15 @@
+{{ 'blog.css' | asset_url | stylesheet_tag }}
+<div class="wrap">
+  <article>
+    <p class="eyebrow">{{ blog.title | escape }}</p>
+    <h1>{{ article.title | escape }}</h1>
+    <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d %b %Y' }}</time>
+    <div class="rte">{{ article.content }}</div>
+  </article>
+</div>
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+{{ 'nb-buy.css' | asset_url | stylesheet_tag }}
+<div class="nb-buy-page">
+  <section class="head wrap">
+    <p class="eyebrow">{{ 'buy.eyebrow' | t }}</p>
+    <h1>{{ 'buy.title' | t }}</h1>
+    <p class="lede">{{ 'buy.lede' | t }}</p>
+  </section>
+  <section class="wrap">
+    {% render 'hoop-buy' %}
+    <div class="facts">
+      <div class="fact"><b>IP68</b><span>{{ 'buy.fact_water' | t }}</span></div>
+      <div class="fact"><b>5{{ 'buy.days' | t }}</b><span>{{ 'buy.fact_battery' | t }}</span></div>
+      <div class="fact"><b>24h</b><span>{{ 'buy.fact_monitor' | t }}</span></div>
+    </div>
+    <p class="note">{{ 'buy.note' | t }}</p>
+  </section>
+</div>
+{% schema %}
+{
+  "name": "Buy HOOP",
+  "settings": []
+}
+{% endschema %}

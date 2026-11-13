@@ -1,0 +1,77 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "NEXTBODY",
+    "theme_version": "1.0.0",
+    "theme_author": "NEXTBODY",
+    "theme_documentation_url": "https://nextbody.ai",
+    "theme_support_url": "mailto:wuzihuang@yehetao.com"
+  },
+  {
+    "name": "t:settings.catalog.name",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:settings.catalog.help"
+      },
+      {
+        "type": "product",
+        "id": "hoop_product",
+        "label": "t:settings.catalog.hoop_product"
+      },
+      {
+        "type": "product",
+        "id": "white_product",
+        "label": "t:settings.catalog.white_product"
+      },
+      {
+        "type": "product",
+        "id": "black_product",
+        "label": "t:settings.catalog.black_product"
+      },
+      {
+        "type": "text",
+        "id": "hoop_handle",
+        "label": "t:settings.catalog.hoop_handle",
+        "default": "hoop"
+      },
+      {
+        "type": "text",
+        "id": "white_sku",
+        "label": "t:settings.catalog.white_sku",
+        "default": "hoop-white"
+      },
+      {
+        "type": "text",
+        "id": "black_sku",
+        "label": "t:settings.catalog.black_sku",
+        "default": "hoop-black"
+      },
+      {
+        "type": "collection",
+        "id": "shop_collection",
+        "label": "t:settings.catalog.shop_collection"
+      }
+    ]
+  },
+  {
+    "name": "t:settings.social.name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "t:settings.social.twitter"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "t:settings.social.facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "t:settings.social.instagram"
+      }
+    ]
+  }
+]

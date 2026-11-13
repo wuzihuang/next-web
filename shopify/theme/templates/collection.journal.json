@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "editorial-page",
+      "settings": {
+        "page_key": "journal"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

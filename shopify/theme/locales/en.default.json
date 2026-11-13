@@ -1,0 +1,112 @@
+{
+  "general": {
+    "meta": {
+      "home_title": "NEXTBODY Hoop: Ultra-thin Smart Health Band",
+      "home_description": "NEXTBODY Hoop is a screenless smart health band, 8mm thin and 10g light. Heart rate, sleep staging, training load and a 14-metric Body Scan, read in the NEXTBODY App."
+    },
+    "accessibility": {
+      "skip": "Skip to content",
+      "cart": "Cart, {{ count }} items"
+    }
+  },
+  "header": {
+    "home": "NEXTBODY",
+    "buy": "Buy",
+    "app": "Get app",
+    "blog": "Blog",
+    "cart": "Cart",
+    "lang_to_zh": "中文",
+    "lang_to_en": "EN",
+    "lang_zh_unavailable": "Chinese appears after the language is published in Shopify"
+  },
+  "footer": {
+    "disclaimer": "This product and the NEXTBODY App are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Data, tips and suggestions are for reference only.",
+    "copyright": "© {{ year }} NEXTBODY"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "buy": "Buy",
+    "unavailable": "Unavailable",
+    "sold_out": "Sold out",
+    "coming_soon": "Coming soon",
+    "view_product": "View product",
+    "quantity": "Quantity",
+    "price_pending": "Price appears when this product is published in Shopify"
+  },
+  "buy": {
+    "eyebrow": "NEXTBODY HOOP",
+    "title": "Choose your HOOP",
+    "lede": "Two colours. The same sensors and AI.",
+    "white": "Cloud White",
+    "white_strap": "Mist Weave strap",
+    "white_alt": "HOOP in Cloud White",
+    "black": "Charcoal Black",
+    "black_strap": "Ink Weave strap",
+    "black_alt": "HOOP in Charcoal Black",
+    "fact_water": "Water resistant",
+    "fact_battery": "Battery life",
+    "fact_monitor": "All-day health monitoring",
+    "days": " days",
+    "note": "Prices and availability come from this store. Tax and shipping are shown at checkout. Five-day battery life comes from specific test conditions; real battery life varies with use.",
+    "empty": "HOOP is not in this store catalog yet. Colour cards stay on screen; purchase is disabled until products and variants exist.",
+    "generic_title": "NEXTBODY HOOP"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty.",
+    "continue": "Continue shopping",
+    "checkout": "Checkout",
+    "subtotal": "Subtotal",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "update": "Update",
+    "note": "Tax and shipping are calculated at checkout.",
+    "item_unavailable": "This item is no longer available."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search",
+    "submit": "Search",
+    "no_results": "No results for “{{ terms }}”.",
+    "empty": "Enter a search to find products and pages."
+  },
+  "404": {
+    "code": "404",
+    "title": "Page not found",
+    "lede": "This page is not on the store.",
+    "home": "Home",
+    "shop": "Shop"
+  },
+  "gift_card": {
+    "title": "Gift card",
+    "balance": "Balance",
+    "disabled": "This gift card is no longer available.",
+    "expired": "This gift card has expired.",
+    "code": "Code",
+    "shop": "Shop"
+  },
+  "password": {
+    "title": "Opening soon",
+    "lede": "NEXTBODY HOOP. Enter the store password to preview.",
+    "login": "Enter",
+    "error": "Password is incorrect."
+  },
+  "customers": {
+    "login_title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Sign in",
+    "register": "Create account",
+    "forgot": "Forgot password",
+    "submit": "Submit",
+    "account": "Account",
+    "orders": "Orders",
+    "addresses": "Addresses",
+    "logout": "Log out",
+    "order": "Order {{ name }}",
+    "reset_title": "Reset password",
+    "activate_title": "Activate account",
+    "first_name": "First name",
+    "last_name": "Last name"
+  }
+}

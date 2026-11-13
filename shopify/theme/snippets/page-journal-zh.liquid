@@ -1,0 +1,22 @@
+<section class="head">
+    <p class="eyebrow">NEXTBODY</p>
+    <h1>说明</h1>
+    <p class="lede">关于 HOOP、MCP 与无屏手环品类的短篇说明。不另作医疗宣称。可供核对的事实表在对照页。</p>
+  </section>
+  <div class="cards">
+    <a class="card" href="{% if pages['nextbody-mcp'].url != blank %}{{ pages['nextbody-mcp'].url }}{% else %}{{ routes.all_products_collection_url }}?view=nextbody-mcp{% endif %}">
+      <time datetime="2026-10-26">2026年10月26日</time>
+      <h2>NEXTBODY MCP 如何把健康数据接到 ChatGPT 与 Claude</h2>
+      <p>需本人登录并授权。助手只能读你自己的账号。记录餐食默认关闭，要你打开才会用。</p>
+    </a>
+    <a class="card" href="{% if pages['whoop-alternative'].url != blank %}{{ pages['whoop-alternative'].url }}{% else %}{{ routes.all_products_collection_url }}?view=whoop-alternative{% endif %}">
+      <time datetime="2026-10-26">2026年10月26日</time>
+      <h2>一块公布了硬件价的无屏手环</h2>
+      <p>写给“WHOOP 平替 / 不要订阅”。指向对照页，不是 Strain / Recovery 的复制。</p>
+    </a>
+    <a class="card" href="{% if pages['oura-alternative'].url != blank %}{{ pages['oura-alternative'].url }}{% else %}{{ routes.all_products_collection_url }}?view=oura-alternative{% endif %}">
+      <time datetime="2026-10-26">2026年10月26日</time>
+      <h2>戒指还是手腕：另一种无屏选法</h2>
+      <p>Oura 是戒指；Hoop 是带身体扫描的手环。一则有限定的同晚睡眠说明，然后去对照页。</p>
+    </a>
+  </div>

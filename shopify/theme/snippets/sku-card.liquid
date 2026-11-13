@@ -1,0 +1,33 @@
+<article class="sku{% if tone == 'dark' %} dark{% endif %}">
+  <div class="shot">
+    {% if variant != blank and variant.featured_image %}
+      {%- if variant.featured_image.alt != blank -%}
+        {%- assign shot_alt = variant.featured_image.alt -%}
+      {%- else -%}
+        {%- assign shot_alt = product.title -%}
+      {%- endif -%}
+      {{ variant.featured_image | image_url: width: 1200 | image_tag: alt: shot_alt, loading: 'lazy' }}
+    {% elsif product != blank and product.featured_image %}
+      {%- if product.featured_image.alt != blank -%}
+        {%- assign shot_alt = product.featured_image.alt -%}
+      {%- else -%}
+        {%- assign shot_alt = product.title -%}
+      {%- endif -%}
+      {{ product.featured_image | image_url: width: 1200 | image_tag: alt: shot_alt, loading: 'lazy' }}
+    {% else %}
+      <img src="{{ image_asset | asset_url }}" alt="{{ alt_key | t }}" width="800" height="600" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="info">
+    <div>
+      <h2 class="name"><span class="swatch" style="background:{{ swatch }}"></span>{{ name_key | t }}</h2>
+      <p class="strap">{{ strap_key | t }}</p>
+      {% if variant != blank and variant.id != blank %}
+        <p class="price">{{ variant.price | money }}<small>{{ cart.currency.iso_code }}</small></p>
+      {% else %}
+        <p class="price price-muted">{{ 'products.price_pending' | t }}</p>
+      {% endif %}
+    </div>
+    {% render 'add-to-cart', product: product, variant: variant, tone: tone, form_id: form_id %}
+  </div>
+</article>

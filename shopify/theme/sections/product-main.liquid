@@ -1,0 +1,66 @@
+{{ 'nb-buy.css' | asset_url | stylesheet_tag }}
+<div class="nb-product wrap">
+  <article class="sku{% if product.handle contains 'black' or product.title contains 'Black' or product.title contains '炭黑' %} dark{% endif %}">
+    <div class="shot">
+      {% if product.featured_image %}
+        {%- if product.featured_image.alt != blank -%}
+          {%- assign shot_alt = product.featured_image.alt -%}
+        {%- else -%}
+          {%- assign shot_alt = product.title -%}
+        {%- endif -%}
+        {{ product.featured_image | image_url: width: 1400 | image_tag: alt: shot_alt }}
+      {% else %}
+        <img src="{{ '4BAJ2SX1RGW5N67V6X2SFTGEE2-hd.webp' | asset_url }}" alt="{{ product.title | escape }}" width="800" height="600">
+      {% endif %}
+    </div>
+    <div class="info">
+      <div>
+        <h1 class="name">{{ product.title | escape }}</h1>
+        {% assign current = product.selected_or_first_available_variant %}
+        {% if current != blank %}
+          <p class="price">{{ current.price | money }}<small>{{ cart.currency.iso_code }}</small></p>
+        {% endif %}
+        {% if product.description != blank %}
+          <div class="strap">{{ product.description }}</div>
+        {% endif %}
+      </div>
+      {% if product.has_only_default_variant %}
+        {% render 'add-to-cart', product: product, variant: current, tone: 'light', form_id: 'nb-product-add' %}
+      {% else %}
+        {% form 'product', product, id: 'nb-product-add', class: 'nb-product-form', data-type: 'add-to-cart-form' %}
+          <div class="nb-variant-list" role="list">
+            {% for variant in product.variants %}
+              <label class="nb-variant{% unless variant.available %} is-unavailable{% endunless %}">
+                <input
+                  type="radio"
+                  name="id"
+                  value="{{ variant.id }}"
+                  {% if variant.id == current.id %}checked{% endif %}
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                <span>{{ variant.title | escape }}</span>
+                <span class="nb-variant-price">{{ variant.price | money }}</span>
+                {% unless variant.available %}
+                  <span class="nb-variant-state">{{ 'products.unavailable' | t }}</span>
+                {% endunless %}
+              </label>
+            {% endfor %}
+          </div>
+          <label class="visually-hidden" for="nb-product-qty">{{ 'products.quantity' | t }}</label>
+          <input id="nb-product-qty" type="number" name="quantity" value="1" min="1">
+          {% if current.available %}
+            <button class="buy" type="submit" name="add">{{ 'products.add_to_cart' | t }}{% render 'icon-arrow' %}</button>
+          {% else %}
+            <button class="buy is-disabled" type="button" disabled>{{ 'products.unavailable' | t }}</button>
+          {% endif %}
+        {% endform %}
+      {% endif %}
+    </div>
+  </article>
+</div>
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

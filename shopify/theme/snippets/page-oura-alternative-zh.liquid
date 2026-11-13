@@ -1,0 +1,18 @@
+<article class="wrap">
+    <header class="head">
+      <p class="eyebrow">品类说明</p>
+      <h1>戒指还是手腕：另一种无屏选法</h1>
+      <p class="meta">
+        <time datetime="2026-10-26">2026年10月26日</time>
+        <a href="{% if blogs.news.handle != blank %}{{ blogs.news.url }}{% elsif pages.journal.url != blank %}{{ pages.journal.url }}{% else %}{{ routes.all_products_collection_url }}?view=journal{% endif %}">全部说明</a>
+      </p>
+      <p class="lede">写给在搜“Oura 平替”的人。形态取舍和 HOOP 事实表在对照页。</p>
+    </header>
+
+    <p>Oura 是戒指。NEXTBODY Hoop 是无屏手环。戒指不占手腕。手环可以做 HOOP 的身体扫描：按住侧键约 30 秒，得到 14 项生物电阻抗估算。这是不同取舍，不是说戒指更差。</p>
+    <p>产品站有一次同一人、同一晚与 Oura Ring 同时佩戴的记录，总睡眠时长一致性 99.5%（不含清醒）。注释写明这是单次结果，不是临床结论。HOOP 七项睡眠分数参考了 Oura 公开的睡眠因素，但不是 Oura 的算法。</p>
+    <p>植入起搏器等电子医疗设备者请勿使用身体扫描。HOOP 不是医疗器械。定价页公布的硬件价是 $59.99。</p>
+    <p>若你其实在搜“WHOOP 平替、不要订阅”，或想把不含表带的重量图和睡眠、MCP 限制放在一起看，请去对照页。这篇刻意写短。</p>
+
+    <p class="note">Oura、Oura Ring 及其他商标归其权利人所有。提及仅为描述。 <a href="{% if pages['screenless-fitness-band'].url != blank %}{{ pages['screenless-fitness-band'].url }}{% else %}{{ routes.all_products_collection_url }}?view=compare{% endif %}">打开无屏手环对照页。</a></p>
+  </article>

@@ -1,0 +1,7 @@
+{
+  "name": "nextbody-product-site",
+  "private": true,
+  "scripts": {
+    "lint": "pnpm --dir shopify run lint"
+  }
+}

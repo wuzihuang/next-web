@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>
+    {{ page_title }}
+    {%- unless page_title contains shop.name %} · {{ shop.name }}{% endunless -%}
+  </title>
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {{ 'favicon.ico' | asset_url | preload_tag: as: 'image' }}
+  <link rel="icon" href="{{ 'favicon.ico' | asset_url }}" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32.png' | asset_url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ 'favicon-192.png' | asset_url }}">
+  <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doto:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+  {{ 'hero.css' | asset_url | stylesheet_tag }}
+  {{ 'header.css' | asset_url | stylesheet_tag }}
+  {{ 'motion.css' | asset_url | stylesheet_tag }}
+  {{ 'mobile.css' | asset_url | stylesheet_tag }}
+  {{ 'nb-shop.css' | asset_url | stylesheet_tag }}
+  {% # theme-check-disable ParserBlockingScript %}
+  <script src="{{ 'nav.js' | asset_url }}"></script>
+  {% # theme-check-enable ParserBlockingScript %}
+  <script>
+    window.NB_ASSETS = {
+      heroVector: {{ 'hero-vector.svg' | asset_url | json }}
+    };
+  </script>
+  {% render 'meta-tags' %}
+  {{ content_for_header }}
+  <style>
+    :root { --s: 1; --gutter: 80px; }
+    html, body { margin: 0; padding: 0; background: #ffffff; }
+    body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+    .nb-story-main { padding: 0 var(--gutter) 64px; }
+    .ab {
+      position: relative;
+      width: calc(var(--w) * var(--s) * 1px);
+      margin: 0 auto;
+      overflow: hidden;
+      scroll-margin-top: 72px;
+    }
+    @media (max-width: 720px) {
+      .ab { scroll-margin-top: 56px; }
+    }
+    .ab > .in {
+      width: calc(var(--w) * 1px);
+      zoom: var(--s);
+    }
+  </style>
+  <script>
+    (function () {
+      function fit() {
+        var vw = document.documentElement.clientWidth || window.innerWidth;
+        var gutter = Math.min(80, Math.max(20, vw * 0.05));
+        var content = Math.min(vw - gutter * 2, 1440);
+        var root = document.documentElement.style;
+        root.setProperty('--s', (content / 1440).toFixed(5));
+        root.setProperty('--gutter', ((vw - content) / 2).toFixed(1) + 'px');
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  </script>
+</head>
+<body class="nb-body template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
+  {% section 'header' %}
+  <main id="MainContent" class="content-for-layout" role="main">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+  <script src="{{ 'mobile.js' | asset_url }}" defer></script>
+  <script src="{{ 'motion.js' | asset_url }}" defer></script>
+  <script src="{{ 'nb-shop.js' | asset_url }}" defer></script>
+</body>
+</html>

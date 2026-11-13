@@ -1,0 +1,18 @@
+<article class="wrap">
+    <header class="head">
+      <p class="eyebrow">品类说明</p>
+      <h1>一块公布了硬件价的无屏手环</h1>
+      <p class="meta">
+        <time datetime="2026-10-26">2026年10月26日</time>
+        <a href="{% if blogs.news.handle != blank %}{{ blogs.news.url }}{% elsif pages.journal.url != blank %}{{ pages.journal.url }}{% else %}{{ routes.all_products_collection_url }}?view=journal{% endif %}">全部说明</a>
+      </p>
+      <p class="lede">写给在搜“WHOOP 平替 / 不要订阅”的人。可供核对的事实表在对照页。</p>
+    </header>
+
+    <p>人们提到 WHOOP，多半是一块围绕负荷、恢复和睡眠的无屏腕带，商业模式是会员制。这里只是描述性使用这个名称，不是在评 WHOOP 现在的套餐或价格——本站不转载其他品牌的价格。</p>
+    <p>NEXTBODY Hoop 同样无屏。现网购买页上，云白与炭黑均为 $59.99。这是硬件价，并不表示日后所有 App 功能都永远不订阅。</p>
+    <p>HOOP 的准备度（0–100）和训练负荷（0–21）是 HOOP 自己的算法估算，不是 WHOOP 的 Strain 或 Recovery。睡眠、身体扫描和 MCP 的限制，产品站已经写过。</p>
+    <p>若你还在对比 Oura 这类戒指，或带屏手表，请看对照页。取舍写在同一处，HOOP 的每个数字都脚注回首页、常见问题或购买页。</p>
+
+    <p class="note">WHOOP 及其他商标归其权利人所有。提及仅为描述。 <a href="{% if pages['screenless-fitness-band'].url != blank %}{{ pages['screenless-fitness-band'].url }}{% else %}{{ routes.all_products_collection_url }}?view=compare{% endif %}">打开无屏手环对照页。</a></p>
+  </article>

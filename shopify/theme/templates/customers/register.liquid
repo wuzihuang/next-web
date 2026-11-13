@@ -1,0 +1,15 @@
+<div class="nb-account wrap">
+  <h1>{{ 'customers.register' | t }}</h1>
+  {% form 'create_customer' %}
+    {{ form.errors | default_errors }}
+    <label for="RegisterFirst">{{ 'customers.first_name' | t }}</label>
+    <input type="text" name="customer[first_name]" id="RegisterFirst" autocomplete="given-name">
+    <label for="RegisterLast">{{ 'customers.last_name' | t }}</label>
+    <input type="text" name="customer[last_name]" id="RegisterLast" autocomplete="family-name">
+    <label for="RegisterEmail">{{ 'customers.email' | t }}</label>
+    <input type="email" name="customer[email]" id="RegisterEmail" autocomplete="email" required>
+    <label for="RegisterPassword">{{ 'customers.password' | t }}</label>
+    <input type="password" name="customer[password]" id="RegisterPassword" autocomplete="new-password">
+    <button class="buy" type="submit">{{ 'customers.register' | t }}</button>
+  {% endform %}
+</div>

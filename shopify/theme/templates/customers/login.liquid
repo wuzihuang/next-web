@@ -1,0 +1,18 @@
+<div class="nb-account wrap">
+  <h1>{{ 'customers.login_title' | t }}</h1>
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <label for="CustomerEmail">{{ 'customers.email' | t }}</label>
+    <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" required>
+    <label for="CustomerPassword">{{ 'customers.password' | t }}</label>
+    <input type="password" name="customer[password]" id="CustomerPassword" autocomplete="current-password">
+    <button class="buy" type="submit">{{ 'customers.sign_in' | t }}</button>
+  {% endform %}
+  <p><a href="{{ routes.account_register_url }}">{{ 'customers.register' | t }}</a></p>
+  {% form 'recover_customer_password' %}
+    {{ form.errors | default_errors }}
+    <label for="RecoverEmail">{{ 'customers.email' | t }}</label>
+    <input type="email" name="email" id="RecoverEmail" autocomplete="email">
+    <button type="submit">{{ 'customers.forgot' | t }}</button>
+  {% endform %}
+</div>

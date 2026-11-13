@@ -1,0 +1,32 @@
+<div class="nb-search wrap">
+  <section class="head">
+    <h1>{{ 'search.title' | t }}</h1>
+  </section>
+  <form action="{{ routes.search_url }}" method="get" role="search">
+    <label class="visually-hidden" for="nb-search">{{ 'search.placeholder' | t }}</label>
+    <input id="nb-search" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}">
+    <input type="hidden" name="type" value="product,page,article">
+    <button class="buy" type="submit">{{ 'search.submit' | t }}</button>
+  </form>
+  {% if search.performed %}
+    {% if search.results_count == 0 %}
+      <p class="lede">{{ 'search.no_results' | t: terms: search.terms }}</p>
+    {% else %}
+      <ul class="nb-search-results">
+        {% for result in search.results %}
+          <li>
+            <a href="{{ result.url }}">{{ result.title | escape }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% else %}
+    <p class="lede">{{ 'search.empty' | t }}</p>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

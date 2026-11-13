@@ -1,0 +1,11 @@
+<div class="nb-account wrap">
+  <h1>{{ 'customers.activate_title' | t }}</h1>
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+    <label for="ActivatePassword">{{ 'customers.password' | t }}</label>
+    <input type="password" name="customer[password]" id="ActivatePassword">
+    <label for="ActivatePasswordConfirm">{{ 'customers.password' | t }}</label>
+    <input type="password" name="customer[password_confirmation]" id="ActivatePasswordConfirm">
+    <button class="buy" type="submit">{{ 'customers.submit' | t }}</button>
+  {% endform %}
+</div>

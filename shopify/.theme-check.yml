@@ -1,0 +1,13 @@
+root: theme
+extends: :default
+ignore:
+  - node_modules/**
+ParserBlockingScript:
+  ignore:
+    - layout/theme.liquid
+RemoteAsset:
+  enabled: false
+ImgWidthAndHeight:
+  ignore:
+    - snippets/home-*.liquid
+    - snippets/page-*.liquid

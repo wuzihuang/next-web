@@ -1,0 +1,10 @@
+extends: :default
+ParserBlockingScript:
+  ignore:
+    - layout/theme.liquid
+RemoteAsset:
+  enabled: false
+ImgWidthAndHeight:
+  ignore:
+    - snippets/home-*.liquid
+    - snippets/page-*.liquid

@@ -1,0 +1,12 @@
+<script type="module" src="{{ 'hero.js' | asset_url }}"></script>
+<div class="lp lp-hero-page" data-locale="{% if request.locale.iso_code contains 'zh' %}zh{% else %}en{% endif %}">
+  <div class="lp-shell">
+    <div id="nb-hero" class="nb-hero"></div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Home hero",
+  "settings": []
+}
+{% endschema %}
